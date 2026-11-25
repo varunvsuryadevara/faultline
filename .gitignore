@@ -1,0 +1,14 @@
+node_modules/
+dist/
+dist-artifact/
+.env
+.env.local
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+eval-results/
+server/data/db/
+server/data/evidence_store/
+server/data/custom-scenarios.json

@@ -1,0 +1,356 @@
+[
+  {
+    "id": "TC-126",
+    "area": "Library data",
+    "title": "The library holds 266 scenarios with no structural problems",
+    "type": "automated",
+    "steps": [
+      "Load shared/scenarios/index.js",
+      "Read SCENARIOS and SCENARIO_PROBLEMS"
+    ],
+    "expected": [
+      "SCENARIOS has 266 records: the original 166 plus the 100 new ones",
+      "SCENARIO_PROBLEMS is empty",
+      "Every case file built from a scenario passes validateCase"
+    ]
+  },
+  {
+    "id": "TC-127",
+    "area": "Library data",
+    "title": "The original 166 scenarios are unchanged",
+    "type": "automated",
+    "steps": [
+      "Import the 20 original data files (uk.js to other.js) in index order",
+      "Hash JSON.stringify of the combined list with SHA-256"
+    ],
+    "expected": [
+      "166 records",
+      "SHA-256 fingerprint b035f77f067c01b2b1b4ab8c58e65760da8fd657fe4303b079dd36cf49f8d60e"
+    ]
+  },
+  {
+    "id": "TC-128",
+    "area": "Library data",
+    "title": "Every scenario has a valid claim stage",
+    "type": "automated",
+    "steps": [
+      "Check each scenario’s stage against STAGES",
+      "Check where each stage comes from"
+    ],
+    "expected": [
+      "All 266 have a stage from the 10 in STAGES",
+      "The original 166 take theirs from shared/scenarios/stages.js and their records have no stage field",
+      "The 100 new records carry stage themselves"
+    ]
+  },
+  {
+    "id": "TC-129",
+    "area": "Library data",
+    "title": "New scenario ids continue each country’s series without gaps",
+    "type": "automated",
+    "steps": [
+      "List the ids of the 100 new scenarios by country"
+    ],
+    "expected": [
+      "UK-037 to UK-058, US-035 to US-054, IN-037 to IN-058, CA-009 to CA-013, AU-009 to AU-013, AE-008 to AE-011, DE-008 to DE-011, FR-008 to FR-011, ZA-008 to ZA-011, SG-007 to SG-010, and IE-002, NZ-002, JP-002, IT-002, ES-002, MY-002",
+      "No id or title repeats an existing one"
+    ]
+  },
+  {
+    "id": "TC-130",
+    "area": "Library data",
+    "title": "The new scenarios keep the country mix",
+    "type": "automated",
+    "steps": [
+      "Count the 100 new scenarios by country"
+    ],
+    "expected": [
+      "UK 22, US 20, India 22, other countries 36 (Canada 5, Australia 5, UAE 4, Germany 4, France 4, South Africa 4, Singapore 4, and one each for Ireland, New Zealand, Japan, Italy, Spain, Malaysia)"
+    ]
+  },
+  {
+    "id": "TC-131",
+    "area": "Library data",
+    "title": "The new scenarios cover all four claim areas",
+    "type": "automated",
+    "steps": [
+      "Count the 100 new scenarios by stage and stage group"
+    ],
+    "expected": [
+      "Intake and cover 22, Assessment and settlement 20, Third parties, recovery and legal 31, Fraud, compliance and customer 27",
+      "Every one of the 10 stages has at least 6 new scenarios"
+    ]
+  },
+  {
+    "id": "TC-132",
+    "area": "Search and filters",
+    "title": "The Claim stage filter is offered with grouped options",
+    "type": "automated + manual",
+    "steps": [
+      "Read FILTERS",
+      "Open the library in the browser and open the Claim stage list"
+    ],
+    "expected": [
+      "11 filters; Claim stage is second, after Country",
+      "Its 10 options appear under 4 group headings: Intake and cover; Assessment and settlement; Third parties, recovery and legal; Fraud, compliance and customer",
+      "With no filters set, the stage counts add up to 266"
+    ]
+  },
+  {
+    "id": "TC-133",
+    "area": "Search and filters",
+    "title": "Filtering by one stage returns exactly that stage",
+    "type": "automated",
+    "steps": [
+      "queryScenarios with filters { stage: [stage] } for each stage"
+    ],
+    "expected": [
+      "Coverage 53, Fraud 45, Third-party 44, Assessment 33, Settlement 24, Recovery 21, Notification 17, Legal 14, Customer 9, Compliance 6",
+      "Every result has the requested stage"
+    ]
+  },
+  {
+    "id": "TC-134",
+    "area": "Search and filters",
+    "title": "Stage combines with other filters and facets stay consistent",
+    "type": "automated",
+    "steps": [
+      "queryScenarios with { stage: [\"fraud\"], country: [\"IN\"] }",
+      "facetCounts with { stage: [\"fraud\"] }"
+    ],
+    "expected": [
+      "10 results, all Indian fraud-stage scenarios",
+      "The stage facet ignores its own filter (other stages still show counts)",
+      "Other facets add up to the 45 fraud-stage scenarios"
+    ]
+  },
+  {
+    "id": "TC-135",
+    "area": "Search and filters",
+    "title": "Search finds the new scenarios by their key concepts",
+    "type": "automated",
+    "steps": [
+      "Search for: Part 36; SASRIA; time-limited demand; Werkstattrisiko; subject access request; Enhanced Care; knock-for-knock; family violence; insider fraud; Cashless Treatment Scheme"
+    ],
+    "expected": [
+      "First results: UK-051, ZA-008, US-046, DE-009, UK-057, CA-011, MY-002, AU-011, US-050, IN-048"
+    ]
+  },
+  {
+    "id": "TC-136",
+    "area": "Search and filters",
+    "title": "Search matches stage names",
+    "type": "automated",
+    "steps": [
+      "Search for \"regulatory compliance\"",
+      "Search for \"ombudsman\""
+    ],
+    "expected": [
+      "\"regulatory compliance\" returns the compliance-stage scenarios",
+      "\"ombudsman\" lists IN-057 first"
+    ]
+  },
+  {
+    "id": "TC-137",
+    "area": "Regression",
+    "title": "Existing search behaviour is unchanged",
+    "type": "automated",
+    "steps": [
+      "Run the existing search assertions against the 266-scenario library"
+    ],
+    "expected": [
+      "\"UK crash for cash\" lists UK-021 first and only UK scenarios",
+      "\"kangaroo\" lists AU-001 first",
+      "\"pay and recover\" (quoted) returns exactly IN-010 and IN-025",
+      "\"FIR\" returns only Indian scenarios",
+      "\"EV fire\" returns at most 6 scenarios, including UK-014 and IN-018"
+    ]
+  },
+  {
+    "id": "TC-138",
+    "area": "API",
+    "title": "GET /api/scenarios filters by stage",
+    "type": "automated",
+    "steps": [
+      "GET /api/scenarios?stage=legal&limit=200"
+    ],
+    "expected": [
+      "200 OK",
+      "total is 14 and every item has stage \"legal\"",
+      "Each item summary includes stage"
+    ]
+  },
+  {
+    "id": "TC-139",
+    "area": "API",
+    "title": "GET /api/scenarios returns stage facets",
+    "type": "automated",
+    "steps": [
+      "GET /api/scenarios"
+    ],
+    "expected": [
+      "facets.stage has the 10 stages and adds up to 266",
+      "total is 266"
+    ]
+  },
+  {
+    "id": "TC-140",
+    "area": "API",
+    "title": "GET /api/scenarios/:id returns a new scenario with its case file",
+    "type": "automated",
+    "steps": [
+      "GET /api/scenarios/in-048 (lower case)"
+    ],
+    "expected": [
+      "200 OK",
+      "scenario.id is IN-048 and scenario.stage is \"third-party\"",
+      "The case file has the notification, statement, accounts and evidence exhibits"
+    ]
+  },
+  {
+    "id": "TC-141",
+    "area": "API",
+    "title": "GET /api/scenarios/random honours the stage filter",
+    "type": "automated",
+    "steps": [
+      "GET /api/scenarios/random?stage=compliance ten times"
+    ],
+    "expected": [
+      "Every scenario returned has stage \"compliance\""
+    ]
+  },
+  {
+    "id": "TC-142",
+    "area": "Detail view",
+    "title": "The detail page shows the claim stage and filters by it",
+    "type": "manual",
+    "steps": [
+      "Open #/scenarios/UK-057",
+      "Find Claim stage in the facts",
+      "Click the stage value"
+    ],
+    "expected": [
+      "Claim stage shows \"Regulatory compliance\"",
+      "Clicking it opens the library filtered to that stage (6 scenarios)",
+      "The nine facts sit in three rows of three on desktop and two columns at 390 px wide"
+    ]
+  },
+  {
+    "id": "TC-143",
+    "area": "AI assessment",
+    "title": "Case files never reveal the reference answers or the stage",
+    "type": "automated",
+    "steps": [
+      "Build the case file for each of the 100 new scenarios"
+    ],
+    "expected": [
+      "No case file contains whatHappened, assessment or action text",
+      "No case file contains the stage label",
+      "No missing item appears as held evidence"
+    ]
+  },
+  {
+    "id": "TC-144",
+    "area": "AI assessment",
+    "title": "Assessing a new scenario streams a result with the comparison",
+    "type": "automated + manual",
+    "steps": [
+      "POST /api/scenarios/UK-037/assess with a test provider",
+      "In the browser with a real key: open UK-037 and run the AI assessment"
+    ],
+    "expected": [
+      "NDJSON stream with progress messages and one result",
+      "result.scenarioId is UK-037 and result.comparison has overall, intent and risk",
+      "In the browser the comparison card shows agrees, close or differs"
+    ]
+  },
+  {
+    "id": "TC-145",
+    "area": "Evaluation suite",
+    "title": "The evaluation runner works without a model",
+    "type": "automated",
+    "steps": [
+      "node scripts/run-evals.mjs --dry-run",
+      "node scripts/run-evals.mjs --oracle"
+    ],
+    "expected": [
+      "Dry run checks 125 case files with no errors",
+      "Oracle run passes 100 of 100 scenario cases",
+      "Each run writes results.json and report.md"
+    ]
+  },
+  {
+    "id": "TC-146",
+    "area": "Evaluation suite",
+    "title": "Every AI test case is well formed",
+    "type": "automated",
+    "steps": [
+      "Check AI_CASES with caseProblems"
+    ],
+    "expected": [
+      "125 cases, TC-001 to TC-125 in order",
+      "100 scenario cases cover the 100 new scenarios once each",
+      "Every case has valid families and risks and at least one required check"
+    ]
+  },
+  {
+    "id": "TC-147",
+    "area": "Evaluation suite",
+    "title": "Counterfactual patches apply cleanly and required checks are not in the case file",
+    "type": "automated",
+    "steps": [
+      "Apply each counterfactual patch",
+      "Compare every required phrase with the case file text"
+    ],
+    "expected": [
+      "Each find text occurs exactly once and the patched case file is valid",
+      "No required phrase appears in its case file, so a check passes only when the assessment adds the concept"
+    ]
+  },
+  {
+    "id": "TC-148",
+    "area": "Evaluation suite",
+    "title": "The grader passes good answers and fails weak ones",
+    "type": "automated",
+    "steps": [
+      "Grade each scenario’s reference answer",
+      "Grade an answer that only repeats the case file",
+      "Grade an answer with the wrong intent family"
+    ],
+    "expected": [
+      "All 100 reference answers pass",
+      "The repeat-the-file answers fail every case",
+      "A wrong family fails even when every concept is present"
+    ]
+  },
+  {
+    "id": "TC-149",
+    "area": "Detail view",
+    "title": "The stage filter works on a phone-sized screen",
+    "type": "manual",
+    "steps": [
+      "Open the library at 390 px wide",
+      "Open the filters and choose a stage",
+      "Clear it with the filter chip"
+    ],
+    "expected": [
+      "The grouped list is readable and selectable",
+      "The chip shows the stage name and removes the filter"
+    ]
+  },
+  {
+    "id": "TC-150",
+    "area": "Build",
+    "title": "Both builds include the new scenarios",
+    "type": "manual",
+    "steps": [
+      "npm run build",
+      "npm run build:artifact",
+      "Open the hosted build and search for SASRIA"
+    ],
+    "expected": [
+      "Both builds finish without errors",
+      "The hosted build shows 266 scenarios and finds ZA-008"
+    ]
+  }
+]

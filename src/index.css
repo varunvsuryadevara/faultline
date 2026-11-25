@@ -1,0 +1,666 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *, .dark, .dark *));
+
+/* ---------- Design tokens ----------
+   Centralized Design System supporting:
+   - Dark Theme (FaultLine Deep Forensic Dark)
+   - Light Theme (Clean Forensic Enterprise Light)
+   - Accent Color Customizations (Blue, Electric, Cyan, Violet, Emerald, Amber)
+   - Interface Density (Comfortable, Standard, Compact)
+   - Motion Preferences (Full, Reduced)
+   - Typography Preferences (Standard, Comfortable Reading)
+*/
+@theme {
+  --font-sans: "Archivo Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Source Serif 4 Variable", ui-serif, Georgia, "Times New Roman", serif;
+
+  /* Surfaces & Backgrounds mapped to semantic theme tokens */
+  --color-paper: var(--theme-paper);
+  --color-paper-secondary: var(--theme-paper-secondary);
+  --color-sidebar: var(--theme-sidebar);
+  --color-sheet: var(--theme-sheet);
+  --color-card-elevated: var(--theme-card-elevated);
+  --color-hover: var(--theme-hover);
+
+  /* Borders */
+  --color-rule: var(--theme-rule);
+  --color-rule-strong: var(--theme-rule-strong);
+
+  /* Typography */
+  --color-ink: var(--theme-ink);
+  --color-ink-2: var(--theme-ink-2);
+  --color-ink-3: var(--theme-ink-3);
+
+  /* Accents */
+  --color-pen: var(--theme-pen);
+  --color-pen-dark: var(--theme-pen-dark);
+  --color-pen-bright: var(--theme-pen-bright);
+  --color-pen-wash: var(--theme-pen-wash);
+  --color-pen-border: var(--theme-pen-border);
+  --color-cyan: var(--theme-cyan);
+
+  /* Exhibit tags in theme */
+  --color-manila: var(--theme-manila);
+  --color-manila-ink: var(--theme-manila-ink);
+
+  /* Severity, Status & Forensic Alert Colours */
+  --color-critical: var(--theme-critical);
+  --color-critical-ink: var(--theme-critical-ink);
+  --color-critical-wash: var(--theme-critical-wash);
+  --color-critical-tint: var(--theme-critical-tint);
+  
+  --color-contradiction: var(--theme-contradiction);
+
+  --color-major: var(--theme-major);
+  --color-major-ink: var(--theme-major-ink);
+  --color-major-wash: var(--theme-major-wash);
+
+  --color-minor: var(--theme-minor);
+  --color-minor-ink: var(--theme-minor-ink);
+  --color-minor-wash: var(--theme-minor-wash);
+
+  --color-agree: var(--theme-agree);
+  --color-agree-ink: var(--theme-agree-ink);
+  --color-agree-wash: var(--theme-agree-wash);
+
+  --animate-slip: slip 1100ms cubic-bezier(0.2, 0.9, 0.25, 1) 250ms both;
+  --animate-enter: enter 380ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-ping-mark: ping-mark 1300ms ease-out 2;
+  --animate-trace: trace 2.4s linear infinite;
+  --animate-fade-in-up: fadeInUp 280ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-slide-up: slideUp 240ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-dash-flow: dashFlow 1.6s linear infinite;
+  --animate-float: float 5.5s ease-in-out infinite;
+  --animate-droplet-1: dropletFloat 3.2s ease-in-out infinite;
+  --animate-droplet-2: dropletFloat 3.6s ease-in-out 0.3s infinite;
+  --animate-droplet-3: dropletFloat 4.0s ease-in-out 0.6s infinite;
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+  @keyframes dropletFloat {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-3.5px);
+    }
+  }
+
+  @keyframes dashFlow {
+    from { stroke-dashoffset: 24; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes slip {
+    from { transform: translate(0, 0); }
+    to { transform: translate(7px, 12px); }
+  }
+  @keyframes enter {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(14px) scale(0.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes ping-mark {
+    0% { box-shadow: 0 0 0 0 rgba(79, 107, 255, 0.5); }
+    100% { box-shadow: 0 0 0 9px rgba(79, 107, 255, 0); }
+  }
+  @keyframes trace {
+    from { transform: translateX(0); }
+    to { transform: translateX(-160px); }
+  }
+}
+
+/* ==========================================================================
+   THEME VARIABLES & SEMANTIC TOKENS
+   ========================================================================== */
+
+:root,
+[data-theme="dark"] {
+  /* Surfaces & Backgrounds */
+  --theme-paper: #080B14;
+  --theme-paper-secondary: #0C1220;
+  --theme-sidebar: #0B1020;
+  --theme-sheet: #111827;
+  --theme-card-elevated: #161F32;
+  --theme-hover: #1B2740;
+
+  /* Borders */
+  --theme-rule: #27344C;
+  --theme-rule-strong: #384A6E;
+
+  /* Typography */
+  --theme-ink: #F1F5FF;
+  --theme-ink-2: #B0BCD2;
+  --theme-ink-3: #8392AD;
+
+  /* Default Accents (FaultLine Blue) */
+  --theme-pen: #4F6BFF;
+  --theme-pen-dark: #3B54E6;
+  --theme-pen-bright: #6385FF;
+  --theme-pen-wash: #162142;
+  --theme-pen-border: #2D3E78;
+  --theme-cyan: #22D3EE;
+
+  /* Exhibit tags in dark theme */
+  --theme-manila: #1E293B;
+  --theme-manila-ink: #93C5FD;
+
+  /* Severity, Status & Forensic Alert Colours */
+  --theme-critical: #EF4444;
+  --theme-critical-ink: #FCA5A5;
+  --theme-critical-wash: #2D1217;
+  --theme-critical-tint: #2D1217;
+  --theme-contradiction: #FB5365;
+
+  --theme-major: #F59E0B;
+  --theme-major-ink: #FCD34D;
+  --theme-major-wash: #2B1D0E;
+
+  --theme-minor: #D97706;
+  --theme-minor-ink: #FDE68A;
+  --theme-minor-wash: #24180A;
+
+  --theme-agree: #22C55E;
+  --theme-agree-ink: #86EFAC;
+  --theme-agree-wash: #0A2417;
+
+  /* Selection */
+  --theme-selection-bg: #253765;
+  --theme-selection-text: #F1F5FF;
+}
+
+[data-theme="light"] {
+  /* Surfaces & Backgrounds - Premium Forensic Enterprise SaaS */
+  --theme-paper: #F7F9FC;
+  --theme-paper-secondary: #F1F5FA;
+  --theme-sidebar: #FFFFFF;
+  --theme-sheet: #FFFFFF;
+  --theme-card-elevated: #FFFFFF;
+  --theme-hover: #F0F4F9;
+
+  /* Borders */
+  --theme-rule: #E1E8F1;
+  --theme-rule-strong: #CFDAEA;
+
+  /* Typography */
+  --theme-ink: #192438;
+  --theme-ink-2: #58677F;
+  --theme-ink-3: #7B8BA2;
+
+  /* Default Accents (FaultLine Blue in Light mode) */
+  --theme-pen: #465CE6;
+  --theme-pen-dark: #374BD1;
+  --theme-pen-bright: #4357D8;
+  --theme-pen-wash: #EEF1FF;
+  --theme-pen-border: #D7DFFF;
+  --theme-cyan: #0284C7;
+
+  /* Exhibit tags in light theme */
+  --theme-manila: #F1F5F9;
+  --theme-manila-ink: #1E40AF;
+
+  /* Severity, Status & Forensic Alert Colours */
+  --theme-critical: #DC2626;
+  --theme-critical-ink: #991B1B;
+  --theme-critical-wash: #FEF2F2;
+  --theme-critical-tint: #FEE2E2;
+  --theme-contradiction: #E11D48;
+
+  --theme-major: #D97706;
+  --theme-major-ink: #92400E;
+  --theme-major-wash: #FFFBEB;
+
+  --theme-minor: #B45309;
+  --theme-minor-ink: #78350F;
+  --theme-minor-wash: #FEF3C7;
+
+  --theme-agree: #16A34A;
+  --theme-agree-ink: #166534;
+  --theme-agree-wash: #F0FDF4;
+
+  /* Selection */
+  --theme-selection-bg: #C7D7FE;
+  --theme-selection-text: #192438;
+}
+
+/* Accent Color Customizations (Both Themes) */
+[data-accent="electric"][data-theme="dark"] {
+  --theme-pen: #2563EB;
+  --theme-pen-dark: #1D4ED8;
+  --theme-pen-bright: #3B82F6;
+  --theme-pen-wash: #172554;
+}
+[data-accent="electric"][data-theme="light"],
+[data-accent="electric"] {
+  --theme-pen: #2563EB;
+  --theme-pen-dark: #1D4ED8;
+  --theme-pen-bright: #3B82F6;
+  --theme-pen-wash: #EFF6FF;
+}
+
+[data-accent="cyan"][data-theme="dark"] {
+  --theme-pen: #06B6D4;
+  --theme-pen-dark: #0891B2;
+  --theme-pen-bright: #22D3EE;
+  --theme-pen-wash: #164E63;
+}
+[data-accent="cyan"][data-theme="light"],
+[data-accent="cyan"] {
+  --theme-pen: #0891B2;
+  --theme-pen-dark: #0E7490;
+  --theme-pen-bright: #06B6D4;
+  --theme-pen-wash: #ECFEFF;
+}
+
+[data-accent="violet"][data-theme="dark"] {
+  --theme-pen: #8B5CF6;
+  --theme-pen-dark: #7C3AED;
+  --theme-pen-bright: #A78BFA;
+  --theme-pen-wash: #2E1065;
+}
+[data-accent="violet"][data-theme="light"],
+[data-accent="violet"] {
+  --theme-pen: #7C3AED;
+  --theme-pen-dark: #6D28D9;
+  --theme-pen-bright: #8B5CF6;
+  --theme-pen-wash: #F5F3FF;
+}
+
+[data-accent="emerald"][data-theme="dark"] {
+  --theme-pen: #10B981;
+  --theme-pen-dark: #059669;
+  --theme-pen-bright: #34D399;
+  --theme-pen-wash: #064E3B;
+}
+[data-accent="emerald"][data-theme="light"],
+[data-accent="emerald"] {
+  --theme-pen: #059669;
+  --theme-pen-dark: #047857;
+  --theme-pen-bright: #10B981;
+  --theme-pen-wash: #ECFDF5;
+}
+
+[data-accent="amber"][data-theme="dark"] {
+  --theme-pen: #F59E0B;
+  --theme-pen-dark: #D97706;
+  --theme-pen-bright: #FBBF24;
+  --theme-pen-wash: #451A03;
+}
+[data-accent="amber"][data-theme="light"],
+[data-accent="amber"] {
+  --theme-pen: #D97706;
+  --theme-pen-dark: #B45309;
+  --theme-pen-bright: #F59E0B;
+  --theme-pen-wash: #FFFBEB;
+}
+
+/* Subtle theme transition */
+html.theme-transitioning *,
+html.theme-transitioning *::before,
+html.theme-transitioning *::after {
+  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, fill 180ms ease, stroke 180ms ease, box-shadow 180ms ease !important;
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow !important;
+}
+
+/* Motion Preferences */
+[data-motion="reduced"] *,
+[data-motion="reduced"] *::before,
+[data-motion="reduced"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Typography Preferences */
+[data-typography="comfortable"] p,
+[data-typography="comfortable"] .exhibit-text,
+[data-typography="comfortable"] .quote-text {
+  line-height: 1.76 !important;
+  letter-spacing: 0.012em !important;
+}
+
+/* Density Preferences */
+[data-density="compact"] .p-6 {
+  padding: 1rem !important;
+}
+[data-density="compact"] .p-5 {
+  padding: 0.875rem !important;
+}
+[data-density="comfortable"] .p-6 {
+  padding: 1.75rem !important;
+}
+[data-density="comfortable"] .p-5 {
+  padding: 1.5rem !important;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+    background: var(--color-paper);
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  ::selection {
+    background: var(--theme-selection-bg);
+    color: var(--theme-selection-text);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-pen);
+    outline-offset: 2px;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+  textarea,
+  input,
+  select {
+    font: inherit;
+  }
+}
+
+@layer components {
+  /* Highlighter strokes over exhibit text in dark mode */
+  .mark {
+    border-radius: 2px;
+    padding: 0.06em 0;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    background-color: transparent;
+    color: inherit;
+    background-image: linear-gradient(to bottom, transparent 8%, var(--mark) 8%, var(--mark) 94%, transparent 94%);
+    text-decoration-line: underline;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    transition: text-decoration-color 150ms;
+    cursor: pointer;
+  }
+  .mark:hover {
+    --mark: var(--mark-strong);
+  }
+  .mark:focus-visible {
+    outline-offset: 0;
+  }
+  .mark-critical { --mark: rgba(239, 68, 68, 0.32); --mark-strong: rgba(239, 68, 68, 0.52); }
+  .mark-major { --mark: rgba(245, 158, 11, 0.32); --mark-strong: rgba(245, 158, 11, 0.52); }
+  .mark-minor { --mark: rgba(217, 119, 6, 0.34); --mark-strong: rgba(217, 119, 6, 0.55); }
+  .mark-agree { --mark: rgba(34, 197, 94, 0.28); --mark-strong: rgba(34, 197, 94, 0.48); }
+  .mark-active {
+    --mark: var(--mark-strong);
+    text-decoration-color: var(--color-pen-bright);
+  }
+  .mark-flash {
+    animation: flash-mark 1600ms ease-out 1;
+  }
+  @keyframes flash-mark {
+    0%, 35% { background-color: rgba(79, 107, 255, 0.35); }
+    100% { background-color: transparent; }
+  }
+
+  /* The fault-line headline crack styling */
+  .fault-left { clip-path: polygon(0 0, 62% 0, 50% 100%, 0 100%); }
+  .fault-right { clip-path: polygon(62% 0, 100% 0, 100% 100%, 50% 100%); }
+  
+  .fault-grid {
+    background-image:
+      linear-gradient(to right, rgba(79, 107, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(79, 107, 255, 0.08) 1px, transparent 1px);
+    background-size: 28px 28px;
+    mask-image: radial-gradient(ellipse 70% 85% at 38% 50%, #000 40%, transparent 100%);
+  }
+
+  /* Modern technical grid background */
+  .bg-tech-grid {
+    background-image: 
+      linear-gradient(to right, rgba(79, 107, 255, 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(79, 107, 255, 0.045) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  /* Translucent unified background surfaces for continuous particle atmosphere */
+  .bg-sidebar-translucent {
+    background-color: color-mix(in srgb, var(--color-sidebar) 76%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .bg-sheet-translucent {
+    background-color: color-mix(in srgb, var(--color-sheet) 80%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .exhibit-text {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    line-height: 1.68;
+    font-variation-settings: "opsz" 18;
+    color: var(--color-ink);
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  .quote-text {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    line-height: 1.55;
+    font-variation-settings: "opsz" 16;
+    color: var(--color-ink);
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-rule) transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: var(--color-rule);
+    border-radius: 9999px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: var(--color-rule-strong);
+  }
+
+  /* Prominent visible scrollbar for wide horizontal category bars and carousels */
+  .scrollbar-visible {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-rule-strong) var(--color-paper);
+  }
+  .scrollbar-visible::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+  }
+  .scrollbar-visible::-webkit-scrollbar-track {
+    background: var(--color-paper);
+    border-radius: 9999px;
+    border: 1px solid var(--color-rule);
+    margin: 0 4px;
+  }
+  .scrollbar-visible::-webkit-scrollbar-thumb {
+    background: var(--color-rule-strong);
+    border-radius: 9999px;
+    border: 1.5px solid var(--color-paper);
+  }
+  .scrollbar-visible::-webkit-scrollbar-thumb:hover {
+    background: var(--color-pen);
+  }
+
+  /* Interactive card utility: subtle lift, elevation shadow, and border glow without layout shifts */
+  .interactive-card {
+    transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 200ms ease,
+                background-color 200ms ease;
+  }
+  .interactive-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(79, 107, 255, 0.6);
+    box-shadow: 0 12px 28px -6px rgba(79, 107, 255, 0.16), 0 4px 12px -2px rgba(0, 0, 0, 0.5);
+    background-color: var(--color-card-elevated);
+  }
+  .interactive-card:active {
+    transform: translateY(-1px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Print Media Styles ----------
+   High-contrast, ink-friendly white background, uncollapsed panels,
+   no interactive web chrome or scroll cutoffs.
+*/
+@media print {
+  @page {
+    size: auto;
+    margin: 1.5cm 1.2cm;
+  }
+
+  /* Reset dark backgrounds to crisp white and text to deep black */
+  html,
+  body,
+  #root,
+  main,
+  div,
+  section,
+  article {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Hide interactive chrome, buttons, top navigation, modals, and tooltips */
+  header,
+  nav,
+  aside,
+  button,
+  [role="dialog"],
+  [role="tablist"],
+  .no-print,
+  input,
+  select {
+    display: none !important;
+  }
+
+  /* Force light borders for printable contrast */
+  .border,
+  [class*="border-"] {
+    border-color: #cbd5e1 !important;
+  }
+
+  /* Expand all scroll containers and panels */
+  *,
+  *::before,
+  *::after {
+    overflow: visible !important;
+    max-height: none !important;
+  }
+
+  /* Avoid awkward page break splits */
+  section,
+  article,
+  figure,
+  blockquote,
+  table,
+  tr,
+  li {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    color: #0f172a !important;
+  }
+
+  /* Ensure final decision and metrics print with clear borders */
+  [aria-label="Final Claim Decision"] {
+    border: 2px solid #0f172a !important;
+    border-radius: 8px !important;
+    padding: 16px !important;
+    margin-bottom: 24px !important;
+    background: #f8fafc !important;
+  }
+
+  /* Ensure text colors are readable */
+  .text-ink,
+  .text-ink-2,
+  .text-ink-3 {
+    color: #1e293b !important;
+  }
+
+  .text-pen,
+  .text-pen-bright {
+    color: #2563eb !important;
+  }
+
+  .text-agree,
+  .text-agree-ink {
+    color: #16a34a !important;
+  }
+
+  .text-critical,
+  .text-critical-ink {
+    color: #dc2626 !important;
+  }
+
+  .text-minor,
+  .text-minor-ink,
+  .text-major,
+  .text-major-ink {
+    color: #d97706 !important;
+  }
+
+  /* When printing full investigation, ensure all tab panels are visible */
+  body.printing-full-investigation [role="tabpanel"],
+  body.printing-full-investigation .tab-panel {
+    display: block !important;
+    visibility: visible !important;
+  }
+}

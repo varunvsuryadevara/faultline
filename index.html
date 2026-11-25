@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="FaultLine cross-examines several accounts of one incident and shows, with verified quotes, where they don't line up." />
+    <meta name="theme-color" content="#080B14" />
+    <script>
+      (function() {
+        try {
+          var urlTheme = null;
+          try {
+            urlTheme = new URLSearchParams(window.location.search).get('theme');
+          } catch (e) {}
+          var raw = localStorage.getItem('faultline_appearance_preferences');
+          var prefs = raw ? JSON.parse(raw) : null;
+          var mode = (urlTheme === 'light' || urlTheme === 'dark')
+            ? urlTheme
+            : (prefs && prefs.mode ? prefs.mode : 'dark');
+          var resolved = mode === 'system'
+            ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+            : (mode === 'light' ? 'light' : 'dark');
+          var root = document.documentElement;
+          root.setAttribute('data-theme', resolved);
+          root.setAttribute('data-accent', prefs && prefs.accent ? prefs.accent : 'blue');
+          root.setAttribute('data-density', prefs && prefs.density ? prefs.density : 'standard');
+          root.setAttribute('data-motion', prefs && prefs.motion ? prefs.motion : 'full');
+          root.setAttribute('data-typography', prefs && prefs.typography ? prefs.typography : 'standard');
+          root.style.colorScheme = resolved;
+          if (resolved === 'dark') {
+            root.classList.add('dark');
+            root.classList.remove('light');
+          } else {
+            root.classList.add('light');
+            root.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230B1020'/%3E%3Cpath d='M5 12.5h10M17 19.5h10' stroke='%234F6BFF' stroke-width='2.6' stroke-linecap='round'/%3E%3Cpath d='M18.5 6 13.5 26' stroke='%23FB5365' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E"
+    />
+    <title>FaultLine: find where the stories don't line up</title>
+  </head>
+  <body class="bg-paper text-ink">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

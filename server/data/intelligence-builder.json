@@ -1,0 +1,800 @@
+{
+  "intelligence_builder_proposals": [
+    {
+      "id": "PROP-2026-001",
+      "title": "Independent Vehicle Recovery Timestamp Corroboration Checklist",
+      "category": "WORKFLOW_CHECKLIST",
+      "pattern": "Investigations involving commercial vehicle recovery records frequently exhibit an unrecorded 2 to 4 hour custody window between the reported collision moment and the garage intake timestamp.",
+      "sampleSize": 42,
+      "supportingData": "Analysis of 42 benchmark scenarios with recovery exhibits (e.g. UK-012, US-018, IN-004) identified gaps where intermediate towing stops were uncorroborated.",
+      "proposedChecklist": "Where a towing invoice or garage intake record is present, cross-examine the recorded dispatch timestamp against driver phone call records or dashcam shutoff time before accepting vehicle storage duration.",
+      "proposedRule": "RULE-RECOVERY-TIME-01",
+      "expectedBenefit": "Eliminates uncorroborated storage fee inflation and verifies vehicle was not subjected to staged secondary impacts in compound.",
+      "falsePositiveRisk": "LOW (investigative procedural checklist item only; does not impact genuine claims).",
+      "validationStatus": "VALIDATED",
+      "validationScore": 94.2,
+      "approvalStatus": "APPROVED",
+      "activeVersion": "v1.1.0",
+      "createdAt": "2026-11-20T10:00:00Z",
+      "reviewedBy": "Senior Claims Forensics Architect",
+      "reviewerNotes": "Approved for activation. Adds a non-punitive procedural check for claims handlers."
+    },
+    {
+      "id": "PROP-2026-002",
+      "title": "ABS Anti-Lock Braking Absence vs Evasive Maneuver Heuristic",
+      "category": "EVIDENCE_RULE",
+      "pattern": "Witness statements noting \"no tire skid marks\" are frequently misconstrued as evidence of zero braking, whereas ABS-equipped modern vehicles do not deposit continuous rubber marks on dry asphalt.",
+      "sampleSize": 88,
+      "supportingData": "In 88 staged/genuine collision evaluations, absence of rubber skid marks was mistakenly cited by third parties as proof of lack of braking despite ABS functioning correctly.",
+      "proposedChecklist": "Do not equate the absence of physical road skid marks with lack of deceleration on vehicles manufactured post-2004 equipped with mandatory Electronic Stability Control (ESC) / ABS.",
+      "proposedRule": "RULE-ABS-PHYSICS-02",
+      "expectedBenefit": "Prevents false-positive fraud allegations against genuine drivers who braked firmly under ABS control.",
+      "falsePositiveRisk": "VERY LOW (protective safeguard preventing unfair claim rejection).",
+      "validationStatus": "VALIDATED",
+      "validationScore": 98.6,
+      "approvalStatus": "ACTIVATED",
+      "activeVersion": "v1.0.0",
+      "createdAt": "2026-11-21T14:30:00Z",
+      "reviewedBy": "Chief Underwriting Officer",
+      "reviewerNotes": "Essential Bad-Faith Litigation Guard safeguard. Activated into active ruleset."
+    },
+    {
+      "id": "PROP-2026-003",
+      "title": "Multi-Lane Roundabout Exit Deceleration Dispute Protocol",
+      "category": "WORKFLOW_CHECKLIST",
+      "pattern": "Roundabout spiral lane disputes frequently feature diametrically opposed statements (\"abrupt brake check\" vs \"yielding to circulating traffic in lane\").",
+      "sampleSize": 34,
+      "supportingData": "34 scenarios in UK, IE, and AU highlight word-against-word deadlock on spiral roundabout exits without video evidence.",
+      "proposedChecklist": "Prioritize prompt request for highway authority traffic monitoring cameras or dashcam from trailing vehicles within 14 days before loop recording overwrite occurs.",
+      "proposedRule": "RULE-ROUNDABOUT-CCTV-03",
+      "expectedBenefit": "Resolves 50/50 liability deadlocks early before litigation costs accumulate.",
+      "falsePositiveRisk": "LOW",
+      "validationStatus": "VALIDATED",
+      "validationScore": 92.2,
+      "approvalStatus": "REJECTED",
+      "activeVersion": "v1.1.0",
+      "createdAt": "2026-11-23T09:15:00Z",
+      "reviewedBy": "Governance Board",
+      "reviewerNotes": "Rejected due to excessive scope.",
+      "reviewedAt": "2026-11-25T11:02:47.869Z"
+    }
+  ],
+  "intelligence_builder_active_rules": [
+    {
+      "ruleId": "RULE-ABS-PHYSICS-02",
+      "proposalId": "PROP-2026-002",
+      "title": "ABS Anti-Lock Braking Absence vs Evasive Maneuver Heuristic",
+      "ruleText": "Do not equate the absence of physical road skid marks with lack of deceleration on vehicles manufactured post-2004 equipped with mandatory Electronic Stability Control (ESC) / ABS.",
+      "version": "v1.0.0",
+      "activatedAt": "2026-11-24T10:39:23.391Z",
+      "activatedBy": "Chief Underwriting Officer"
+    }
+  ],
+  "intelligence_builder_audit_log": [
+    {
+      "action": "PROPOSAL_APPROVED",
+      "proposalId": "PROP-2026-003",
+      "approvedBy": "Senior Claims Forensics Architect",
+      "notes": "Approved by Senior Fraud Analyst for multi-lane roundabout protocol.",
+      "timestamp": "2026-11-24T12:37:19.439Z"
+    },
+    {
+      "action": "RULE_ACTIVATED",
+      "ruleId": "RULE-ROUNDABOUT-CCTV-03",
+      "proposalId": "PROP-2026-003",
+      "version": "v1.1.0",
+      "activatedBy": "Chief Claims Officer",
+      "timestamp": "2026-11-24T12:37:19.444Z"
+    },
+    {
+      "action": "RULE_ROLLBACK",
+      "ruleId": "PROP-2026-003",
+      "reason": "Operational test completed, reverting to standard ruleset.",
+      "user": "Chief Claims Officer",
+      "timestamp": "2026-11-24T12:37:19.447Z"
+    },
+    {
+      "action": "PROPOSAL_REJECTED",
+      "proposalId": "PROP-2026-003",
+      "rejectedBy": "Governance Board",
+      "notes": "Rejected due to excessive scope.",
+      "timestamp": "2026-11-24T12:37:19.460Z"
+    },
+    {
+      "action": "PROPOSAL_APPROVED",
+      "proposalId": "PROP-2026-003",
+      "approvedBy": "Senior Claims Forensics Architect",
+      "notes": "Approved by Senior Fraud Analyst for multi-lane roundabout protocol.",
+      "timestamp": "2026-11-24T13:31:26.733Z"
+    },
+    {
+      "action": "RULE_ACTIVATED",
+      "ruleId": "RULE-ROUNDABOUT-CCTV-03",
+      "proposalId": "PROP-2026-003",
+      "version": "v1.1.0",
+      "activatedBy": "Chief Claims Officer",
+      "timestamp": "2026-11-24T13:31:26.764Z"
+    },
+    {
+      "action": "RULE_ROLLBACK",
+      "ruleId": "PROP-2026-003",
+      "reason": "Operational test completed, reverting to standard ruleset.",
+      "user": "Chief Claims Officer",
+      "timestamp": "2026-11-24T13:31:26.784Z"
+    },
+    {
+      "action": "PROPOSAL_REJECTED",
+      "proposalId": "PROP-2026-003",
+      "rejectedBy": "Governance Board",
+      "notes": "Rejected due to excessive scope.",
+      "timestamp": "2026-11-24T13:31:26.786Z"
+    },
+    {
+      "action": "PROPOSAL_APPROVED",
+      "proposalId": "PROP-2026-003",
+      "approvedBy": "Senior Claims Forensics Architect",
+      "notes": "Approved by Senior Fraud Analyst for multi-lane roundabout protocol.",
+      "timestamp": "2026-11-24T14:41:45.179Z"
+    },
+    {
+      "action": "RULE_ACTIVATED",
+      "ruleId": "RULE-ROUNDABOUT-CCTV-03",
+      "proposalId": "PROP-2026-003",
+      "version": "v1.1.0",
+      "activatedBy": "Chief Claims Officer",
+      "timestamp": "2026-11-24T14:41:45.199Z"
+    },
+    {
+      "action": "RULE_ROLLBACK",
+      "ruleId": "PROP-2026-003",
+      "reason": "Operational test completed, reverting to standard ruleset.",
+      "user": "Chief Claims Officer",
+      "timestamp": "2026-11-24T14:41:45.202Z"
+    },
+    {
+      "action": "PROPOSAL_REJECTED",
+      "proposalId": "PROP-2026-003",
+      "rejectedBy": "Governance Board",
+      "notes": "Rejected due to excessive scope.",
+      "timestamp": "2026-11-24T14:41:45.214Z"
+    },
+    {
+      "action": "PROPOSAL_APPROVED",
+      "proposalId": "PROP-2026-003",
+      "approvedBy": "Senior Claims Forensics Architect",
+      "notes": "Approved by Senior Fraud Analyst for multi-lane roundabout protocol.",
+      "timestamp": "2026-11-25T06:16:47.122Z"
+    },
+    {
+      "action": "RULE_ACTIVATED",
+      "ruleId": "RULE-ROUNDABOUT-CCTV-03",
+      "proposalId": "PROP-2026-003",
+      "version": "v1.1.0",
+      "activatedBy": "Chief Claims Officer",
+      "timestamp": "2026-11-25T06:16:47.141Z"
+    },
+    {
+      "action": "RULE_ROLLBACK",
+      "ruleId": "PROP-2026-003",
+      "reason": "Operational test completed, reverting to standard ruleset.",
+      "user": "Chief Claims Officer",
+      "timestamp": "2026-11-25T06:16:47.164Z"
+    },
+    {
+      "action": "PROPOSAL_REJECTED",
+      "proposalId": "PROP-2026-003",
+      "rejectedBy": "Governance Board",
+      "notes": "Rejected due to excessive scope.",
+      "timestamp": "2026-11-25T06:16:47.186Z"
+    },
+    {
+      "action": "PROPOSAL_APPROVED",
+      "proposalId": "PROP-2026-003",
+      "approvedBy": "Senior Claims Forensics Architect",
+      "notes": "Approved by Senior Fraud Analyst for multi-lane roundabout protocol.",
+      "timestamp": "2026-11-25T06:18:51.450Z"
+    },
+    {
+      "action": "RULE_ACTIVATED",
+      "ruleId": "RULE-ROUNDABOUT-CCTV-03",
+      "proposalId": "PROP-2026-003",
+      "version": "v1.1.0",
+      "activatedBy": "Chief Claims Officer",
+      "timestamp": "2026-11-25T06:18:51.454Z"
+    },
+    {
+      "action": "RULE_ROLLBACK",
+      "ruleId": "PROP-2026-003",
+      "reason": "Operational test completed, reverting to standard ruleset.",
+      "user": "Chief Claims Officer",
+      "timestamp": "2026-11-25T06:18:51.478Z"
+    },
+    {
+      "action": "PROPOSAL_REJECTED",
+      "proposalId": "PROP-2026-003",
+      "rejectedBy": "Governance Board",
+      "notes": "Rejected due to excessive scope.",
+      "timestamp": "2026-11-25T06:18:51.491Z"
+    },
+    {
+      "action": "PROPOSAL_APPROVED",
+      "proposalId": "PROP-2026-003",
+      "approvedBy": "Senior Claims Forensics Architect",
+      "notes": "Approved by Senior Fraud Analyst for multi-lane roundabout protocol.",
+      "timestamp": "2026-11-25T06:46:57.854Z"
+    },
+    {
+      "action": "RULE_ACTIVATED",
+      "ruleId": "RULE-ROUNDABOUT-CCTV-03",
+      "proposalId": "PROP-2026-003",
+      "version": "v1.1.0",
+      "activatedBy": "Chief Claims Officer",
+      "timestamp": "2026-11-25T06:46:57.871Z"
+    },
+    {
+      "action": "RULE_ROLLBACK",
+      "ruleId": "PROP-2026-003",
+      "reason": "Operational test completed, reverting to standard ruleset.",
+      "user": "Chief Claims Officer",
+      "timestamp": "2026-11-25T06:46:57.874Z"
+    },
+    {
+      "action": "PROPOSAL_REJECTED",
+      "proposalId": "PROP-2026-003",
+      "rejectedBy": "Governance Board",
+      "notes": "Rejected due to excessive scope.",
+      "timestamp": "2026-11-25T06:46:57.894Z"
+    },
+    {
+      "action": "PROPOSAL_APPROVED",
+      "proposalId": "PROP-2026-003",
+      "approvedBy": "Senior Claims Forensics Architect",
+      "notes": "Approved by Senior Fraud Analyst for multi-lane roundabout protocol.",
+      "timestamp": "2026-11-25T06:54:56.687Z"
+    },
+    {
+      "action": "RULE_ACTIVATED",
+      "ruleId": "RULE-ROUNDABOUT-CCTV-03",
+      "proposalId": "PROP-2026-003",
+      "version": "v1.1.0",
+      "activatedBy": "Chief Claims Officer",
+      "timestamp": "2026-11-25T06:54:56.692Z"
+    },
+    {
+      "action": "RULE_ROLLBACK",
+      "ruleId": "PROP-2026-003",
+      "reason": "Operational test completed, reverting to standard ruleset.",
+      "user": "Chief Claims Officer",
+      "timestamp": "2026-11-25T06:54:56.707Z"
+    },
+    {
+      "action": "PROPOSAL_REJECTED",
+      "proposalId": "PROP-2026-003",
+      "rejectedBy": "Governance Board",
+      "notes": "Rejected due to excessive scope.",
+      "timestamp": "2026-11-25T06:54:56.726Z"
+    },
+    {
+      "action": "PROPOSAL_APPROVED",
+      "proposalId": "PROP-2026-003",
+      "approvedBy": "Senior Claims Forensics Architect",
+      "notes": "Approved by Senior Fraud Analyst for multi-lane roundabout protocol.",
+      "timestamp": "2026-11-25T06:55:05.723Z"
+    },
+    {
+      "action": "RULE_ACTIVATED",
+      "ruleId": "RULE-ROUNDABOUT-CCTV-03",
+      "proposalId": "PROP-2026-003",
+      "version": "v1.1.0",
+      "activatedBy": "Chief Claims Officer",
+      "timestamp": "2026-11-25T06:55:05.739Z"
+    },
+    {
+      "action": "RULE_ROLLBACK",
+      "ruleId": "PROP-2026-003",
+      "reason": "Operational test completed, reverting to standard ruleset.",
+      "user": "Chief Claims Officer",
+      "timestamp": "2026-11-25T06:55:05.743Z"
+    },
+    {
+      "action": "PROPOSAL_REJECTED",
+      "proposalId": "PROP-2026-003",
+      "rejectedBy": "Governance Board",
+      "notes": "Rejected due to excessive scope.",
+      "timestamp": "2026-11-25T06:55:05.746Z"
+    },
+    {
+      "action": "PROPOSAL_APPROVED",
+      "proposalId": "PROP-2026-003",
+      "approvedBy": "Senior Claims Forensics Architect",
+      "notes": "Approved by Senior Fraud Analyst for multi-lane roundabout protocol.",
+      "timestamp": "2026-11-25T06:56:17.869Z"
+    },
+    {
+      "action": "RULE_ACTIVATED",
+      "ruleId": "RULE-ROUNDABOUT-CCTV-03",
+      "proposalId": "PROP-2026-003",
+      "version": "v1.1.0",
+      "activatedBy": "Chief Claims Officer",
+      "timestamp": "2026-11-25T06:56:17.874Z"
+    },
+    {
+      "action": "RULE_ROLLBACK",
+      "ruleId": "PROP-2026-003",
+      "reason": "Operational test completed, reverting to standard ruleset.",
+      "user": "Chief Claims Officer",
+      "timestamp": "2026-11-25T06:56:17.881Z"
+    },
+    {
+      "action": "PROPOSAL_REJECTED",
+      "proposalId": "PROP-2026-003",
+      "rejectedBy": "Governance Board",
+      "notes": "Rejected due to excessive scope.",
+      "timestamp": "2026-11-25T06:56:17.884Z"
+    },
+    {
+      "action": "PROPOSAL_APPROVED",
+      "proposalId": "PROP-2026-003",
+      "approvedBy": "Senior Claims Forensics Architect",
+      "notes": "Approved by Senior Fraud Analyst for multi-lane roundabout protocol.",
+      "timestamp": "2026-11-25T06:58:20.435Z"
+    },
+    {
+      "action": "RULE_ACTIVATED",
+      "ruleId": "RULE-ROUNDABOUT-CCTV-03",
+      "proposalId": "PROP-2026-003",
+      "version": "v1.1.0",
+      "activatedBy": "Chief Claims Officer",
+      "timestamp": "2026-11-25T06:58:20.463Z"
+    },
+    {
+      "action": "RULE_ROLLBACK",
+      "ruleId": "PROP-2026-003",
+      "reason": "Operational test completed, reverting to standard ruleset.",
+      "user": "Chief Claims Officer",
+      "timestamp": "2026-11-25T06:58:20.467Z"
+    },
+    {
+      "action": "PROPOSAL_REJECTED",
+      "proposalId": "PROP-2026-003",
+      "rejectedBy": "Governance Board",
+      "notes": "Rejected due to excessive scope.",
+      "timestamp": "2026-11-25T06:58:20.470Z"
+    },
+    {
+      "action": "PROPOSAL_APPROVED",
+      "proposalId": "PROP-2026-003",
+      "approvedBy": "Senior Claims Forensics Architect",
+      "notes": "Approved by Senior Fraud Analyst for multi-lane roundabout protocol.",
+      "timestamp": "2026-11-25T07:18:30.223Z"
+    },
+    {
+      "action": "RULE_ACTIVATED",
+      "ruleId": "RULE-ROUNDABOUT-CCTV-03",
+      "proposalId": "PROP-2026-003",
+      "version": "v1.1.0",
+      "activatedBy": "Chief Claims Officer",
+      "timestamp": "2026-11-25T07:18:30.248Z"
+    },
+    {
+      "action": "RULE_ROLLBACK",
+      "ruleId": "PROP-2026-003",
+      "reason": "Operational test completed, reverting to standard ruleset.",
+      "user": "Chief Claims Officer",
+      "timestamp": "2026-11-25T07:18:30.269Z"
+    },
+    {
+      "action": "PROPOSAL_REJECTED",
+      "proposalId": "PROP-2026-003",
+      "rejectedBy": "Governance Board",
+      "notes": "Rejected due to excessive scope.",
+      "timestamp": "2026-11-25T07:18:30.287Z"
+    },
+    {
+      "action": "PROPOSAL_APPROVED",
+      "proposalId": "PROP-2026-003",
+      "approvedBy": "Senior Claims Forensics Architect",
+      "notes": "Approved by Senior Fraud Analyst for multi-lane roundabout protocol.",
+      "timestamp": "2026-11-25T07:36:28.991Z"
+    },
+    {
+      "action": "RULE_ACTIVATED",
+      "ruleId": "RULE-ROUNDABOUT-CCTV-03",
+      "proposalId": "PROP-2026-003",
+      "version": "v1.1.0",
+      "activatedBy": "Chief Claims Officer",
+      "timestamp": "2026-11-25T07:36:29.008Z"
+    },
+    {
+      "action": "RULE_ROLLBACK",
+      "ruleId": "PROP-2026-003",
+      "reason": "Operational test completed, reverting to standard ruleset.",
+      "user": "Chief Claims Officer",
+      "timestamp": "2026-11-25T07:36:29.031Z"
+    },
+    {
+      "action": "PROPOSAL_REJECTED",
+      "proposalId": "PROP-2026-003",
+      "rejectedBy": "Governance Board",
+      "notes": "Rejected due to excessive scope.",
+      "timestamp": "2026-11-25T07:36:29.053Z"
+    },
+    {
+      "action": "PROPOSAL_APPROVED",
+      "proposalId": "PROP-2026-003",
+      "approvedBy": "Senior Claims Forensics Architect",
+      "notes": "Approved by Senior Fraud Analyst for multi-lane roundabout protocol.",
+      "timestamp": "2026-11-25T07:42:17.989Z"
+    },
+    {
+      "action": "RULE_ACTIVATED",
+      "ruleId": "RULE-ROUNDABOUT-CCTV-03",
+      "proposalId": "PROP-2026-003",
+      "version": "v1.1.0",
+      "activatedBy": "Chief Claims Officer",
+      "timestamp": "2026-11-25T07:42:18.005Z"
+    },
+    {
+      "action": "RULE_ROLLBACK",
+      "ruleId": "PROP-2026-003",
+      "reason": "Operational test completed, reverting to standard ruleset.",
+      "user": "Chief Claims Officer",
+      "timestamp": "2026-11-25T07:42:18.034Z"
+    },
+    {
+      "action": "PROPOSAL_REJECTED",
+      "proposalId": "PROP-2026-003",
+      "rejectedBy": "Governance Board",
+      "notes": "Rejected due to excessive scope.",
+      "timestamp": "2026-11-25T07:42:18.038Z"
+    },
+    {
+      "action": "PROPOSAL_APPROVED",
+      "proposalId": "PROP-2026-003",
+      "approvedBy": "Senior Claims Forensics Architect",
+      "notes": "Approved by Senior Fraud Analyst for multi-lane roundabout protocol.",
+      "timestamp": "2026-11-25T07:46:21.219Z"
+    },
+    {
+      "action": "RULE_ACTIVATED",
+      "ruleId": "RULE-ROUNDABOUT-CCTV-03",
+      "proposalId": "PROP-2026-003",
+      "version": "v1.1.0",
+      "activatedBy": "Chief Claims Officer",
+      "timestamp": "2026-11-25T07:46:21.237Z"
+    },
+    {
+      "action": "RULE_ROLLBACK",
+      "ruleId": "PROP-2026-003",
+      "reason": "Operational test completed, reverting to standard ruleset.",
+      "user": "Chief Claims Officer",
+      "timestamp": "2026-11-25T07:46:21.258Z"
+    },
+    {
+      "action": "PROPOSAL_REJECTED",
+      "proposalId": "PROP-2026-003",
+      "rejectedBy": "Governance Board",
+      "notes": "Rejected due to excessive scope.",
+      "timestamp": "2026-11-25T07:46:21.280Z"
+    },
+    {
+      "action": "PROPOSAL_APPROVED",
+      "proposalId": "PROP-2026-003",
+      "approvedBy": "Senior Claims Forensics Architect",
+      "notes": "Approved by Senior Fraud Analyst for multi-lane roundabout protocol.",
+      "timestamp": "2026-11-25T07:50:08.157Z"
+    },
+    {
+      "action": "RULE_ACTIVATED",
+      "ruleId": "RULE-ROUNDABOUT-CCTV-03",
+      "proposalId": "PROP-2026-003",
+      "version": "v1.1.0",
+      "activatedBy": "Chief Claims Officer",
+      "timestamp": "2026-11-25T07:50:08.169Z"
+    },
+    {
+      "action": "RULE_ROLLBACK",
+      "ruleId": "PROP-2026-003",
+      "reason": "Operational test completed, reverting to standard ruleset.",
+      "user": "Chief Claims Officer",
+      "timestamp": "2026-11-25T07:50:08.189Z"
+    },
+    {
+      "action": "PROPOSAL_REJECTED",
+      "proposalId": "PROP-2026-003",
+      "rejectedBy": "Governance Board",
+      "notes": "Rejected due to excessive scope.",
+      "timestamp": "2026-11-25T07:50:08.209Z"
+    },
+    {
+      "action": "PROPOSAL_APPROVED",
+      "proposalId": "PROP-2026-003",
+      "approvedBy": "Senior Claims Forensics Architect",
+      "notes": "Approved by Senior Fraud Analyst for multi-lane roundabout protocol.",
+      "timestamp": "2026-11-25T08:03:09.759Z"
+    },
+    {
+      "action": "RULE_ACTIVATED",
+      "ruleId": "RULE-ROUNDABOUT-CCTV-03",
+      "proposalId": "PROP-2026-003",
+      "version": "v1.1.0",
+      "activatedBy": "Chief Claims Officer",
+      "timestamp": "2026-11-25T08:03:09.784Z"
+    },
+    {
+      "action": "RULE_ROLLBACK",
+      "ruleId": "PROP-2026-003",
+      "reason": "Operational test completed, reverting to standard ruleset.",
+      "user": "Chief Claims Officer",
+      "timestamp": "2026-11-25T08:03:09.789Z"
+    },
+    {
+      "action": "PROPOSAL_REJECTED",
+      "proposalId": "PROP-2026-003",
+      "rejectedBy": "Governance Board",
+      "notes": "Rejected due to excessive scope.",
+      "timestamp": "2026-11-25T08:03:09.792Z"
+    },
+    {
+      "action": "PROPOSAL_APPROVED",
+      "proposalId": "PROP-2026-003",
+      "approvedBy": "Senior Claims Forensics Architect",
+      "notes": "Approved by Senior Fraud Analyst for multi-lane roundabout protocol.",
+      "timestamp": "2026-11-25T08:12:47.650Z"
+    },
+    {
+      "action": "RULE_ACTIVATED",
+      "ruleId": "RULE-ROUNDABOUT-CCTV-03",
+      "proposalId": "PROP-2026-003",
+      "version": "v1.1.0",
+      "activatedBy": "Chief Claims Officer",
+      "timestamp": "2026-11-25T08:12:47.653Z"
+    },
+    {
+      "action": "RULE_ROLLBACK",
+      "ruleId": "PROP-2026-003",
+      "reason": "Operational test completed, reverting to standard ruleset.",
+      "user": "Chief Claims Officer",
+      "timestamp": "2026-11-25T08:12:47.657Z"
+    },
+    {
+      "action": "PROPOSAL_REJECTED",
+      "proposalId": "PROP-2026-003",
+      "rejectedBy": "Governance Board",
+      "notes": "Rejected due to excessive scope.",
+      "timestamp": "2026-11-25T08:12:47.660Z"
+    },
+    {
+      "action": "PROPOSAL_APPROVED",
+      "proposalId": "PROP-2026-003",
+      "approvedBy": "Senior Claims Forensics Architect",
+      "notes": "Approved by Senior Fraud Analyst for multi-lane roundabout protocol.",
+      "timestamp": "2026-11-25T09:55:10.178Z"
+    },
+    {
+      "action": "RULE_ACTIVATED",
+      "ruleId": "RULE-ROUNDABOUT-CCTV-03",
+      "proposalId": "PROP-2026-003",
+      "version": "v1.1.0",
+      "activatedBy": "Chief Claims Officer",
+      "timestamp": "2026-11-25T09:55:10.204Z"
+    },
+    {
+      "action": "RULE_ROLLBACK",
+      "ruleId": "PROP-2026-003",
+      "reason": "Operational test completed, reverting to standard ruleset.",
+      "user": "Chief Claims Officer",
+      "timestamp": "2026-11-25T09:55:10.228Z"
+    },
+    {
+      "action": "PROPOSAL_REJECTED",
+      "proposalId": "PROP-2026-003",
+      "rejectedBy": "Governance Board",
+      "notes": "Rejected due to excessive scope.",
+      "timestamp": "2026-11-25T09:55:10.242Z"
+    },
+    {
+      "action": "PROPOSAL_APPROVED",
+      "proposalId": "PROP-2026-003",
+      "approvedBy": "Senior Claims Forensics Architect",
+      "notes": "Approved by Senior Fraud Analyst for multi-lane roundabout protocol.",
+      "timestamp": "2026-11-25T10:03:53.190Z"
+    },
+    {
+      "action": "RULE_ACTIVATED",
+      "ruleId": "RULE-ROUNDABOUT-CCTV-03",
+      "proposalId": "PROP-2026-003",
+      "version": "v1.1.0",
+      "activatedBy": "Chief Claims Officer",
+      "timestamp": "2026-11-25T10:03:53.204Z"
+    },
+    {
+      "action": "RULE_ROLLBACK",
+      "ruleId": "PROP-2026-003",
+      "reason": "Operational test completed, reverting to standard ruleset.",
+      "user": "Chief Claims Officer",
+      "timestamp": "2026-11-25T10:03:53.207Z"
+    },
+    {
+      "action": "PROPOSAL_REJECTED",
+      "proposalId": "PROP-2026-003",
+      "rejectedBy": "Governance Board",
+      "notes": "Rejected due to excessive scope.",
+      "timestamp": "2026-11-25T10:03:53.221Z"
+    },
+    {
+      "action": "PROPOSAL_APPROVED",
+      "proposalId": "PROP-2026-003",
+      "approvedBy": "Senior Claims Forensics Architect",
+      "notes": "Approved by Senior Fraud Analyst for multi-lane roundabout protocol.",
+      "timestamp": "2026-11-25T10:05:04.815Z"
+    },
+    {
+      "action": "RULE_ACTIVATED",
+      "ruleId": "RULE-ROUNDABOUT-CCTV-03",
+      "proposalId": "PROP-2026-003",
+      "version": "v1.1.0",
+      "activatedBy": "Chief Claims Officer",
+      "timestamp": "2026-11-25T10:05:04.822Z"
+    },
+    {
+      "action": "RULE_ROLLBACK",
+      "ruleId": "PROP-2026-003",
+      "reason": "Operational test completed, reverting to standard ruleset.",
+      "user": "Chief Claims Officer",
+      "timestamp": "2026-11-25T10:05:04.824Z"
+    },
+    {
+      "action": "PROPOSAL_REJECTED",
+      "proposalId": "PROP-2026-003",
+      "rejectedBy": "Governance Board",
+      "notes": "Rejected due to excessive scope.",
+      "timestamp": "2026-11-25T10:05:04.827Z"
+    },
+    {
+      "action": "PROPOSAL_APPROVED",
+      "proposalId": "PROP-2026-003",
+      "approvedBy": "Senior Claims Forensics Architect",
+      "notes": "Approved by Senior Fraud Analyst for multi-lane roundabout protocol.",
+      "timestamp": "2026-11-25T10:21:26.224Z"
+    },
+    {
+      "action": "RULE_ACTIVATED",
+      "ruleId": "RULE-ROUNDABOUT-CCTV-03",
+      "proposalId": "PROP-2026-003",
+      "version": "v1.1.0",
+      "activatedBy": "Chief Claims Officer",
+      "timestamp": "2026-11-25T10:21:26.240Z"
+    },
+    {
+      "action": "RULE_ROLLBACK",
+      "ruleId": "PROP-2026-003",
+      "reason": "Operational test completed, reverting to standard ruleset.",
+      "user": "Chief Claims Officer",
+      "timestamp": "2026-11-25T10:21:26.252Z"
+    },
+    {
+      "action": "PROPOSAL_REJECTED",
+      "proposalId": "PROP-2026-003",
+      "rejectedBy": "Governance Board",
+      "notes": "Rejected due to excessive scope.",
+      "timestamp": "2026-11-25T10:21:26.262Z"
+    },
+    {
+      "action": "PROPOSAL_APPROVED",
+      "proposalId": "PROP-2026-003",
+      "approvedBy": "Senior Claims Forensics Architect",
+      "notes": "Approved by Senior Fraud Analyst for multi-lane roundabout protocol.",
+      "timestamp": "2026-11-25T10:30:50.425Z"
+    },
+    {
+      "action": "RULE_ACTIVATED",
+      "ruleId": "RULE-ROUNDABOUT-CCTV-03",
+      "proposalId": "PROP-2026-003",
+      "version": "v1.1.0",
+      "activatedBy": "Chief Claims Officer",
+      "timestamp": "2026-11-25T10:30:50.429Z"
+    },
+    {
+      "action": "RULE_ROLLBACK",
+      "ruleId": "PROP-2026-003",
+      "reason": "Operational test completed, reverting to standard ruleset.",
+      "user": "Chief Claims Officer",
+      "timestamp": "2026-11-25T10:30:50.432Z"
+    },
+    {
+      "action": "PROPOSAL_REJECTED",
+      "proposalId": "PROP-2026-003",
+      "rejectedBy": "Governance Board",
+      "notes": "Rejected due to excessive scope.",
+      "timestamp": "2026-11-25T10:30:50.450Z"
+    },
+    {
+      "action": "PROPOSAL_APPROVED",
+      "proposalId": "PROP-2026-003",
+      "approvedBy": "Senior Claims Forensics Architect",
+      "notes": "Approved by Senior Fraud Analyst for multi-lane roundabout protocol.",
+      "timestamp": "2026-11-25T10:32:15.503Z"
+    },
+    {
+      "action": "RULE_ACTIVATED",
+      "ruleId": "RULE-ROUNDABOUT-CCTV-03",
+      "proposalId": "PROP-2026-003",
+      "version": "v1.1.0",
+      "activatedBy": "Chief Claims Officer",
+      "timestamp": "2026-11-25T10:32:15.515Z"
+    },
+    {
+      "action": "RULE_ROLLBACK",
+      "ruleId": "PROP-2026-003",
+      "reason": "Operational test completed, reverting to standard ruleset.",
+      "user": "Chief Claims Officer",
+      "timestamp": "2026-11-25T10:32:15.527Z"
+    },
+    {
+      "action": "PROPOSAL_REJECTED",
+      "proposalId": "PROP-2026-003",
+      "rejectedBy": "Governance Board",
+      "notes": "Rejected due to excessive scope.",
+      "timestamp": "2026-11-25T10:32:15.538Z"
+    },
+    {
+      "action": "PROPOSAL_APPROVED",
+      "proposalId": "PROP-2026-003",
+      "approvedBy": "Senior Claims Forensics Architect",
+      "notes": "Approved by Senior Fraud Analyst for multi-lane roundabout protocol.",
+      "timestamp": "2026-11-25T10:34:51.608Z"
+    },
+    {
+      "action": "RULE_ACTIVATED",
+      "ruleId": "RULE-ROUNDABOUT-CCTV-03",
+      "proposalId": "PROP-2026-003",
+      "version": "v1.1.0",
+      "activatedBy": "Chief Claims Officer",
+      "timestamp": "2026-11-25T10:34:51.612Z"
+    },
+    {
+      "action": "RULE_ROLLBACK",
+      "ruleId": "PROP-2026-003",
+      "reason": "Operational test completed, reverting to standard ruleset.",
+      "user": "Chief Claims Officer",
+      "timestamp": "2026-11-25T10:34:51.624Z"
+    },
+    {
+      "action": "PROPOSAL_REJECTED",
+      "proposalId": "PROP-2026-003",
+      "rejectedBy": "Governance Board",
+      "notes": "Rejected due to excessive scope.",
+      "timestamp": "2026-11-25T10:34:51.634Z"
+    },
+    {
+      "action": "PROPOSAL_APPROVED",
+      "proposalId": "PROP-2026-003",
+      "approvedBy": "Senior Claims Forensics Architect",
+      "notes": "Approved by Senior Fraud Analyst for multi-lane roundabout protocol.",
+      "timestamp": "2026-11-25T11:02:47.845Z"
+    },
+    {
+      "action": "RULE_ACTIVATED",
+      "ruleId": "RULE-ROUNDABOUT-CCTV-03",
+      "proposalId": "PROP-2026-003",
+      "version": "v1.1.0",
+      "activatedBy": "Chief Claims Officer",
+      "timestamp": "2026-11-25T11:02:47.864Z"
+    },
+    {
+      "action": "RULE_ROLLBACK",
+      "ruleId": "PROP-2026-003",
+      "reason": "Operational test completed, reverting to standard ruleset.",
+      "user": "Chief Claims Officer",
+      "timestamp": "2026-11-25T11:02:47.867Z"
+    },
+    {
+      "action": "PROPOSAL_REJECTED",
+      "proposalId": "PROP-2026-003",
+      "rejectedBy": "Governance Board",
+      "notes": "Rejected due to excessive scope.",
+      "timestamp": "2026-11-25T11:02:47.870Z"
+    }
+  ]
+}

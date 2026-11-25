@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "faultline/ai-test-case.schema.json",
+  "title": "FaultLine AI evaluation test case (TC-001 to TC-125)",
+  "type": "object",
+  "required": [
+    "id",
+    "kind",
+    "scenario",
+    "title",
+    "rule",
+    "expect"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^TC-\\d{3}$"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "scenario",
+        "counterfactual"
+      ]
+    },
+    "scenario": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}-\\d{3}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "change": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Counterfactual only: what the patch changes."
+    },
+    "rule": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The claims rule or practice the case tests."
+    },
+    "patch": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "field",
+          "find",
+          "replace"
+        ],
+        "properties": {
+          "field": {
+            "type": "string",
+            "description": "Path into the scenario: story, statement, damage, accounts.N.text, accounts.N.who, evidence, thirdParties"
+          },
+          "find": {
+            "type": "string",
+            "description": "Must occur exactly once in the field (or in exactly one list item)"
+          },
+          "replace": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "expect": {
+      "type": "object",
+      "required": [
+        "family",
+        "risk",
+        "flags"
+      ],
+      "properties": {
+        "family": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "genuine",
+              "uncertain",
+              "fraud"
+            ]
+          }
+        },
+        "risk": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high",
+              "critical"
+            ]
+          }
+        },
+        "flags": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "label",
+              "any"
+            ],
+            "properties": {
+              "label": {
+                "type": "string",
+                "minLength": 1
+              },
+              "any": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 1
+              },
+              "required": {
+                "type": "boolean"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    }
+  }
+}

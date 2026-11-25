@@ -1,0 +1,939 @@
+﻿"ID","Type","Area","Claim stage","Country","Scenario","Title","Rule or practice tested","Preconditions","Steps","Expected result","Automated","Status","Tester","Date","Notes"
+"TC-001","AI assessment, scenario","Intake and cover","Notice and reporting","United Kingdom","UK-037","Late notice after a private deal with the other driver","Claims condition: report every incident promptly and do not settle privately. Late notice is a breach, but third-party claims are still handled; what matters is whether the delay caused prejudice.","Scenario UK-037 in the library; model configured","1. Open UK-037 (#/scenarios/UK-037)
+2. Run the AI assessment (or: npm run eval -- --only TC-001)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium, High
+Must: Notices the claim was reported months late
+Must: Deals with the private settlement under the policy conditions
+Should: Asks for medical evidence before paying the injury claims
+Should: Keeps handling the third-party claims","Yes (npm run eval)","","","",""
+"TC-002","AI assessment, scenario","Intake and cover","Notice and reporting","United Kingdom","UK-038","Claims firm notifies a claim the policyholder never authorised","Authority to act: only deal with a representative the customer has genuinely instructed; do not accept charges built up by a firm whose authority is unproved. Personal data passed on without consent is a data protection issue.","Scenario UK-038 in the library; model configured","1. Open UK-038 (#/scenarios/UK-038)
+2. Run the AI assessment (or: npm run eval -- --only TC-002)
+3. Compare the assessment with the expected results","Intent family: Needs a closer look or Fraud
+Risk: Medium, High, Critical
+Must: Questions the claims firm’s authority to act
+Must: Refuses the storage charges until authority is proved
+Should: Spots the unsolicited recovery truck
+Should: Considers how his personal data reached the firm","Yes (npm run eval)","","","",""
+"TC-003","AI assessment, scenario","Intake and cover","Cover checks","United Kingdom","UK-039","Driving-other-cars extension on an uninsured car","Driving-other-cars extensions usually give third-party cover only, and only when the borrowed car is insured by its owner under its own policy.","Scenario UK-039 in the library; model configured","1. Open UK-039 (#/scenarios/UK-039)
+2. Run the AI assessment (or: npm run eval -- --only TC-003)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium, High
+Must: Sees that the borrowed car was not insured
+Must: Concludes the extension does not apply
+Should: Explains the van owner’s route (own insurer or MIB)","Yes (npm run eval)","","","",""
+"TC-004","AI assessment, scenario","Intake and cover","Cover checks","United Kingdom","UK-040","Cancellation notice that bounced","An insurer can only rely on a cancellation for non-payment if it gave notice as the policy terms require. A notice that never reached the customer, which the insurer knew had failed, is unlikely to be valid; fair treatment duties apply.","Scenario UK-040 in the library; model configured","1. Open UK-040 (#/scenarios/UK-040)
+2. Run the AI assessment (or: npm run eval -- --only TC-004)
+3. Compare the assessment with the expected results","Intent family: Genuine or Needs a closer look
+Risk: Medium, High, Critical
+Must: Spots that the cancellation notice was never delivered
+Must: Questions whether the cancellation was valid
+Should: Considers fair treatment of the customer","Yes (npm run eval)","","","",""
+"TC-005","AI assessment, scenario","Intake and cover","Cover checks","United Kingdom","UK-041","Learner supervised by someone licensed for under three years","A learner’s supervisor must be at least 21 and have held a full licence for that type of vehicle for three years. Breach removes the learner’s own cover, but third parties are still protected.","Scenario UK-041 in the library; model configured","1. Open UK-041 (#/scenarios/UK-041)
+2. Run the AI assessment (or: npm run eval -- --only TC-005)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium, High
+Must: Identifies the supervisor did not meet the three-year rule
+Must: Still deals with the parked Kia owner’s claim
+Should: Addresses the learner’s own damage or recovery","Yes (npm run eval)","","","",""
+"TC-006","AI assessment, scenario","Intake and cover","Cover checks","United Kingdom","UK-042","Comprehensive cover abroad ran out after 90 days","Cover abroad: UK policies give the legal minimum in the EU, and full cover only for the days stated. ""Any one period of insurance"" means the days are not reset by a trip home.","Scenario UK-042 in the library; model configured","1. Open UK-042 (#/scenarios/UK-042)
+2. Run the AI assessment (or: npm run eval -- --only TC-006)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Finds the 90 days of full cover were used up
+Must: Notes the days run per period of insurance, not per trip
+Should: Keeps the Spanish third party covered at the legal minimum
+Should: Raises the broker’s advice","Yes (npm run eval)","","","",""
+"TC-007","AI assessment, scenario","Intake and cover","Cover checks","United Kingdom","UK-043","Car-share fuel money is not hire and reward","Road Traffic Act 1988 section 150: car-sharing contributions that do not exceed running costs, arranged before the journey, in a car carrying no more than eight passengers, are not hire or reward.","Scenario UK-043 in the library; model configured","1. Open UK-043 (#/scenarios/UK-043)
+2. Run the AI assessment (or: npm run eval -- --only TC-007)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium, High
+Must: Concludes the payments are car-sharing contributions, not fares
+Should: Handles the passengers’ injuries
+Should: Accepts fault for pulling out in fog","Yes (npm run eval)","","","",""
+"TC-008","AI assessment, scenario","Assessment and settlement","Survey and valuation","United Kingdom","UK-044","Supplement that includes old corrosion","Supplementary estimates after strip-down are normal, but only crash damage is paid; pre-existing corrosion is betterment or wear. Inspect before approving a large supplement.","Scenario UK-044 in the library; model configured","1. Open UK-044 (#/scenarios/UK-044)
+2. Run the AI assessment (or: npm run eval -- --only TC-008)
+3. Compare the assessment with the expected results","Intent family: Genuine or Needs a closer look
+Risk: Low, Medium, High
+Must: Uses the MOT advisory to show the corrosion pre-dates the crash
+Must: Asks for an engineer’s inspection before approving
+Should: Accepts the chassis leg as crash damage
+Should: Applies a contribution or split","Yes (npm run eval)","","","",""
+"TC-009","AI assessment, scenario","Assessment and settlement","Survey and valuation","United Kingdom","UK-045","Betterment on worn exhaust and tyres","Indemnity puts the car back as it was. Replacing worn, undamaged parts is betterment, but no contribution should be charged where a like-for-like partial repair was not possible.","Scenario UK-045 in the library; model configured","1. Open UK-045 (#/scenarios/UK-045)
+2. Run the AI assessment (or: npm run eval -- --only TC-009)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Pays only for parts the accident damaged
+Must: Checks whether the damaged exhaust section could be bought on its own
+Should: Does not pay for the undamaged offside tyres","Yes (npm run eval)","","","",""
+"TC-010","AI assessment, scenario","Assessment and settlement","Settlement and payment","United Kingdom","UK-046","Agreed value policy offered market value","On an agreed value policy the agreed sum is paid for a total loss, unless something material was misstated or has changed since it was agreed.","Scenario UK-046 in the library; model configured","1. Open UK-046 (#/scenarios/UK-046)
+2. Run the AI assessment (or: npm run eval -- --only TC-010)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Settles at the agreed value, not market value
+Must: Recovers from the tractor’s insurer
+Should: Checks nothing material changed since the valuation","Yes (npm run eval)","","","",""
+"TC-011","AI assessment, scenario","Assessment and settlement","Settlement and payment","United Kingdom","UK-047","Stolen car recovered after the payout","After a total loss settlement the insurer owns the vehicle; a recovered car is the insurer’s salvage, and a buy-back can be offered. Theft registers must be updated.","Scenario UK-047 in the library; model configured","1. Open UK-047 (#/scenarios/UK-047)
+2. Run the AI assessment (or: npm run eval -- --only TC-011)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Says the car now belongs to the insurer
+Must: Offers a buy-back or explains the options
+Should: Updates the theft register and police","Yes (npm run eval)","","","",""
+"TC-012","AI assessment, scenario","Third parties, recovery and legal","Third-party claims","United Kingdom","UK-048","Whiplash claim longer than the medical prognosis","Whiplash claims are valued on the statutory tariff by duration, using the medical evidence; any uplift for exceptional circumstances is capped and must be proved, and lost earnings need records.","Scenario UK-048 in the library; model configured","1. Open UK-048 (#/scenarios/UK-048)
+2. Run the AI assessment (or: npm run eval -- --only TC-012)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium, High
+Must: Values the injury on the medical prognosis, not the longer period claimed
+Must: Puts the salon post to her side as an inconsistency
+Should: Asks for proof of the lost earnings
+Should: Values on the tariff and questions the uplift","Yes (npm run eval)","","","",""
+"TC-013","AI assessment, scenario","Third parties, recovery and legal","Third-party claims","United Kingdom","UK-049","Foreign lorry lane change and evidence preservation","Claims against foreign vehicles in the UK go to the vehicle insurer’s UK claims representative, or the Motor Insurers’ Bureau. Lorry camera and tachograph data must be requested quickly before it is overwritten.","Scenario UK-049 in the library; model configured","1. Open UK-049 (#/scenarios/UK-049)
+2. Run the AI assessment (or: npm run eval -- --only TC-013)
+3. Compare the assessment with the expected results","Intent family: Genuine or Needs a closer look
+Risk: Low, Medium, High
+Must: Uses the dashcam timing and the steady legal speed
+Must: Asks for the lorry’s footage, tachograph or sensor data
+Should: Routes the claim through the foreign insurer’s UK representative or the MIB","Yes (npm run eval)","","","",""
+"TC-014","AI assessment, scenario","Third parties, recovery and legal","Court and tribunal","United Kingdom","UK-050","Child injury settlement needs court approval","A settlement with a child (under 18) is only binding once approved by the court (CPR Part 21); limitation does not start until the child turns 18. Speeding outside a school weighs heavily on liability.","Scenario UK-050 in the library; model configured","1. Open UK-050 (#/scenarios/UK-050)
+2. Run the AI assessment (or: npm run eval -- --only TC-014)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Medium, High, Critical
+Must: Says the settlement must be approved by the court
+Must: Notes 24 mph in a 20 mph zone
+Should: Mentions limitation running from age 18
+Should: Gets medical evidence or offers an interim payment","Yes (npm run eval)","","","",""
+"TC-015","AI assessment, scenario","Third parties, recovery and legal","Court and tribunal","United Kingdom","UK-051","Part 36 offer about to expire","A Part 36 offer has a relevant period (here 21 days). If the claimant beats her own offer at trial, the defendant faces enhanced interest, indemnity costs and an additional amount.","Scenario UK-051 in the library; model configured","1. Open UK-051 (#/scenarios/UK-051)
+2. Run the AI assessment (or: npm run eval -- --only TC-015)
+3. Compare the assessment with the expected results","Intent family: Genuine or Needs a closer look
+Risk: Medium, High, Critical
+Must: Identifies the deadline (21 days from 3 March)
+Must: Explains the costs risk of ignoring the offer
+Should: Sees the van turning across a cyclist in a cycle lane","Yes (npm run eval)","","","",""
+"TC-016","AI assessment, scenario","Third parties, recovery and legal","Recovery and subrogation","United Kingdom","UK-052","Uninsured friend driving with permission","Road Traffic Act 1988 section 151: the insurer must meet third-party claims even where the driver was not covered, and may recover from the driver or the person who permitted the use (s.151(8)).","Scenario UK-052 in the library; model configured","1. Open UK-052 (#/scenarios/UK-052)
+2. Run the AI assessment (or: npm run eval -- --only TC-016)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium, High
+Must: Sees that the friend was not insured to drive
+Must: Pays the third parties and recovers the outlay
+Should: Declines the policyholder’s own repairs","Yes (npm run eval)","","","",""
+"TC-017","AI assessment, scenario","Third parties, recovery and legal","Recovery and subrogation","United Kingdom","UK-053","Car park exclusion sign and a known sensor fault","Consumer Rights Act 2015: a term excluding liability for negligence is subject to the fairness test (and cannot exclude death or injury). Recovery is reduced for the customer’s own contributory negligence.","Scenario UK-053 in the library; model configured","1. Open UK-053 (#/scenarios/UK-053)
+2. Run the AI assessment (or: npm run eval -- --only TC-017)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Challenges the operator’s exclusion of liability
+Must: Uses the operator’s knowledge of the sensor fault as negligence
+Should: Allows for her following too closely","Yes (npm run eval)","","","",""
+"TC-018","AI assessment, scenario","Fraud, compliance and customer","Fraud investigation","United Kingdom","UK-054","Edited dashcam clip","Video evidence must be authenticated. Re-encoding, missing metadata, frame-rate changes and a non-standard overlay are signs of editing; ask for the original memory card before concluding.","Scenario UK-054 in the library; model configured","1. Open UK-054 (#/scenarios/UK-054)
+2. Run the AI assessment (or: npm run eval -- --only TC-018)
+3. Compare the assessment with the expected results","Intent family: Fraud or Needs a closer look
+Risk: High, Critical
+Must: Treats the clip as unreliable because of signs of editing
+Must: Asks for the original memory card or files
+Should: Relies on the independent van footage
+Should: Refers to the counter-fraud team","Yes (npm run eval)","","","",""
+"TC-019","AI assessment, scenario","Fraud, compliance and customer","Fraud investigation","United Kingdom","UK-055","Settlement diversion by a look-alike email","Payment diversion: verify any change of bank details through a known, independent contact before paying; the customer is the victim, not the suspect.","Scenario UK-055 in the library; model configured","1. Open UK-055 (#/scenarios/UK-055)
+2. Run the AI assessment (or: npm run eval -- --only TC-019)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Medium, High, Critical
+Must: Spots the look-alike email address
+Must: Verifies with the customer through the number on file before paying
+Should: Notes the failed payee name check
+Should: Treats the customer as the victim","Yes (npm run eval)","","","",""
+"TC-020","AI assessment, scenario","Fraud, compliance and customer","Fraud investigation","United Kingdom","UK-056","Policy bought after the crash","Cover only applies to losses after the policy starts. Moving the time of an accident to bring it into cover is a fraudulent claim; the third party is then an uninsured-driver claim for the MIB.","Scenario UK-056 in the library; model configured","1. Open UK-056 (#/scenarios/UK-056)
+2. Run the AI assessment (or: npm run eval -- --only TC-020)
+3. Compare the assessment with the expected results","Intent family: Fraud
+Risk: High, Critical
+Must: Puts the accident before the policy start
+Must: Declines the claim
+Should: Points the Puma owner to the MIB
+Should: Reports or records the fraud","Yes (npm run eval)","","","",""
+"TC-021","AI assessment, scenario","Fraud, compliance and customer","Regulatory compliance","United Kingdom","UK-057","Subject access request during an investigation","UK GDPR: answer a subject access request within one month. The Data Protection Act 2018 crime exemption allows withholding only what would prejudice the prevention or detection of crime; the rest must be disclosed.","Scenario UK-057 in the library; model configured","1. Open UK-057 (#/scenarios/UK-057)
+2. Run the AI assessment (or: npm run eval -- --only TC-021)
+3. Compare the assessment with the expected results","Intent family: Needs a closer look or Fraud
+Risk: Medium, High
+Must: Identifies the one-month deadline
+Must: Limits withholding to the crime exemption
+Should: Still discloses non-exempt data such as call recordings
+Should: Keeps the theft concerns in view","Yes (npm run eval)","","","",""
+"TC-022","AI assessment, scenario","Fraud, compliance and customer","Complaints and customer care","United Kingdom","UK-058","Bereaved spouse reporting the claim","Customers in vulnerable circumstances (here bereavement) need adapted handling: one contact, minimal repetition, clear steps. The settlement goes to the estate; the fatal claim is against the at-fault driver’s insurer.","Scenario UK-058 in the library; model configured","1. Open UK-058 (#/scenarios/UK-058)
+2. Run the AI assessment (or: npm run eval -- --only TC-022)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium, High
+Must: Recognises the vulnerability and adapts the handling
+Must: Sees the policyholder was not at fault
+Should: Explains the estate receives the settlement
+Should: Arranges a replacement vehicle","Yes (npm run eval)","","","",""
+"TC-023","AI assessment, scenario","Intake and cover","Notice and reporting","United States","US-035","Late no-fault application while in hospital","New York no-fault: written notice within 30 days, but late notice must be accepted where the claimant gives clear and reasonable justification, such as hospitalization.","Scenario US-035 in the library; model configured","1. Open US-035 (#/scenarios/US-035)
+2. Run the AI assessment (or: npm run eval -- --only TC-023)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium, High
+Must: Accepts the late filing as justified
+Must: Notes the daughter’s call gave notice within the 30 days
+Should: Moves on to paying benefits","Yes (npm run eval)","","","",""
+"TC-024","AI assessment, scenario","Intake and cover","Notice and reporting","United States","US-036","Miss-and-run needs independent corroboration","Ohio uninsured motorist claims for an unidentified driver require independent corroborative evidence; the insured’s own account is not enough. Collision cover does not depend on another driver.","Scenario US-036 in the library; model configured","1. Open US-036 (#/scenarios/US-036)
+2. Run the AI assessment (or: npm run eval -- --only TC-024)
+3. Compare the assessment with the expected results","Intent family: Needs a closer look or Genuine
+Risk: Low, Medium, High
+Must: Says the injury claim needs independent corroboration
+Must: Uses the earlier 911 call about a weaving pickup
+Should: Pays the car under collision","Yes (npm run eval)","","","",""
+"TC-025","AI assessment, scenario","Intake and cover","Cover checks","United States","US-037","Michigan PIP limit chosen at $250,000","Michigan PIP choice: medical benefits are paid to the limit the insured selected; allowable expenses above the limit can be claimed from the at-fault driver. Family attendant care is capped by hours; mini-tort up to $3,000.","Scenario US-037 in the library; model configured","1. Open US-037 (#/scenarios/US-037)
+2. Run the AI assessment (or: npm run eval -- --only TC-025)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Medium, High, Critical
+Must: Applies the $250,000 limit he chose
+Must: Points to the at-fault driver for costs above the limit
+Should: Addresses family attendant care
+Should: Mentions the mini-tort","Yes (npm run eval)","","","",""
+"TC-026","AI assessment, scenario","Third parties, recovery and legal","Third-party claims","United States","US-038","Limited tort claimant demanding pain and suffering","Pennsylvania limited tort: no non-economic damages unless a serious injury or a statutory exception; economic losses are still recoverable.","Scenario US-038 in the library; model configured","1. Open US-038 (#/scenarios/US-038)
+2. Run the AI assessment (or: npm run eval -- --only TC-026)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium, High
+Must: Applies limited tort: no pain and suffering without a serious injury
+Must: Notes the minor, resolved injury
+Should: Checks for serious injury or an exception","Yes (npm run eval)","","","",""
+"TC-027","AI assessment, scenario","Intake and cover","Cover checks","United States","US-039","Roommate and implied permission","Liability cover usually extends to permissive users; implied permission can arise from a pattern of earlier use. Whether this use fell within it is a question of fact.","Scenario US-039 in the library; model configured","1. Open US-039 (#/scenarios/US-039)
+2. Run the AI assessment (or: npm run eval -- --only TC-027)
+3. Compare the assessment with the expected results","Intent family: Needs a closer look or Genuine
+Risk: Low, Medium, High
+Must: Frames the issue as permissive use
+Must: Uses the texts showing earlier borrowing
+Should: Checks the roommate’s own insurance
+Should: Notes the drinking","Yes (npm run eval)","","","",""
+"TC-028","AI assessment, scenario","Assessment and settlement","Survey and valuation","United States","US-040","Valuation dispute and the appraisal clause","Actual cash value should use local, like-for-like comparables; condition deductions need support. The policy appraisal clause lets either side demand appraisal with an umpire.","Scenario US-040 in the library; model configured","1. Open US-040 (#/scenarios/US-040)
+2. Run the AI assessment (or: npm run eval -- --only TC-028)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Challenges the distant or lower-spec comparables
+Must: Takes part in the appraisal he has demanded
+Should: Questions the rough interior deduction
+Should: Pays the undisputed amount now","Yes (npm run eval)","","","",""
+"TC-029","AI assessment, scenario","Assessment and settlement","Survey and valuation","United States","US-041","Aftermarket parts in the ADAS path","Parts that affect radar and camera systems should follow the manufacturer’s repair procedures, which may require genuine parts, and calibration must be included. Non-OEM parts must be disclosed.","Scenario US-041 in the library; model configured","1. Open US-041 (#/scenarios/US-041)
+2. Run the AI assessment (or: npm run eval -- --only TC-029)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Requires genuine parts where the sensors depend on them
+Must: Adds radar and camera calibration to the estimate
+Should: Discloses any aftermarket parts","Yes (npm run eval)","","","",""
+"TC-030","AI assessment, scenario","Assessment and settlement","Settlement and payment","United States","US-042","California total loss without tax and fees","California fair claims regulations: a total loss settlement must include sales tax, license and transfer fees for a comparable vehicle. Unscheduled custom equipment is limited by the policy.","Scenario US-042 in the library; model configured","1. Open US-042 (#/scenarios/US-042)
+2. Run the AI assessment (or: npm run eval -- --only TC-030)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium, High
+Must: Adds the missing tax and fees to the total loss offer
+Must: Declines the lift kit that was never fitted
+Should: Applies the custom equipment limit","Yes (npm run eval)","","","",""
+"TC-031","AI assessment, scenario","Assessment and settlement","Settlement and payment","United States","US-043","Owner-retained total loss in Texas","Owner-retained total loss: pay actual cash value less salvage value and deductible, and follow the state rules so the title is branded salvage.","Scenario US-043 in the library; model configured","1. Open US-043 (#/scenarios/US-043)
+2. Run the AI assessment (or: npm run eval -- --only TC-031)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Deducts the salvage value
+Must: Handles the salvage title
+Should: Recovers from the at-fault driver","Yes (npm run eval)","","","",""
+"TC-032","AI assessment, scenario","Third parties, recovery and legal","Third-party claims","United States","US-044","Medicare beneficiary with a pre-existing knee","Value an aggravation of a pre-existing condition, not the whole condition. For Medicare beneficiaries, liability settlements must be reported under Section 111 and Medicare’s conditional payments reimbursed.","Scenario US-044 in the library; model configured","1. Open US-044 (#/scenarios/US-044)
+2. Run the AI assessment (or: npm run eval -- --only TC-032)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Medium, High
+Must: Values the knee as an aggravation, not the whole condition
+Must: Deals with Medicare reporting and reimbursement
+Should: Gets an independent medical opinion","Yes (npm run eval)","","","",""
+"TC-033","AI assessment, scenario","Third parties, recovery and legal","Third-party claims","United States","US-045","Lost profits for a food truck","Loss of use of a commercial vehicle is net lost profit, proved by records, for a reasonable period. The duty to mitigate does not cover delay caused by the insurer itself.","Scenario US-045 in the library; model configured","1. Open US-045 (#/scenarios/US-045)
+2. Run the AI assessment (or: npm run eval -- --only TC-033)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Requires net, documented lost profits
+Must: Recognises the insurer’s own delay contributed
+Should: Pays the repair cost","Yes (npm run eval)","","","",""
+"TC-034","AI assessment, scenario","Third parties, recovery and legal","Court and tribunal","United States","US-046","Time-limited policy-limits demand","Georgia time-limited demands: an insurer that unreasonably fails to accept a demand within limits, on clear liability and excess damages, risks liability for the full judgment. Every condition of the demand must be met.","Scenario US-046 in the library; model configured","1. Open US-046 (#/scenarios/US-046)
+2. Run the AI assessment (or: npm run eval -- --only TC-034)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: High, Critical
+Must: Treats the demand as urgent with a deadline
+Must: Recognises the bad faith and excess exposure
+Should: Accepts within limits and meets the conditions
+Should: Tells the insured about the demand and his exposure","Yes (npm run eval)","","","",""
+"TC-035","AI assessment, scenario","Third parties, recovery and legal","Court and tribunal","United States","US-047","Florida 51% bar on a speeding, texting claimant","Florida HB 837 (24 March 2023): a claimant more than 50% at fault recovers nothing; negligence claims must be filed within two years.","Scenario US-047 in the library; model configured","1. Open US-047 (#/scenarios/US-047)
+2. Run the AI assessment (or: npm run eval -- --only TC-035)
+3. Compare the assessment with the expected results","Intent family: Needs a closer look or Genuine
+Risk: Medium, High, Critical
+Must: Applies the more-than-50% bar
+Must: Uses her speed and phone use against her
+Should: Commissions a reconstruction
+Should: Checks the two-year limitation period","Yes (npm run eval)","","","",""
+"TC-036","AI assessment, scenario","Third parties, recovery and legal","Recovery and subrogation","United States","US-048","Arbitration award and the deductible refund","Subrogation recoveries must be shared with the insured for the deductible as the policy and state law require; inter-company arbitration awards set the split.","Scenario US-048 in the library; model configured","1. Open US-048 (#/scenarios/US-048)
+2. Run the AI assessment (or: npm run eval -- --only TC-036)
+3. Compare the assessment with the expected results","Intent family: Needs a closer look or Genuine
+Risk: Low, Medium
+Must: Refunds her deductible from the recovery
+Must: Collects 70% under the award
+Should: Treats flashing reds as an all-way stop","Yes (npm run eval)","","","",""
+"TC-037","AI assessment, scenario","Third parties, recovery and legal","Recovery and subrogation","United States","US-049","Tread separation and evidence preservation","Product subrogation depends on preserving the failed part with a chain of custody and allowing the manufacturer to inspect; destroying it risks a spoliation defence.","Scenario US-049 in the library; model configured","1. Open US-049 (#/scenarios/US-049)
+2. Run the AI assessment (or: npm run eval -- --only TC-037)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium, High
+Must: Preserves the tire and stops the salvage sale
+Must: Pursues the tire manufacturer or retailer
+Should: Uses an expert and checks recalls","Yes (npm run eval)","","","",""
+"TC-038","AI assessment, scenario","Fraud, compliance and customer","Fraud investigation","United States","US-050","Customer payment diverted to a fictitious vendor","Insider fraud: the customer whose payment was diverted must be paid; the scheme is contained through investigation, access restriction and segregation of duties.","Scenario US-050 in the library; model configured","1. Open US-050 (#/scenarios/US-050)
+2. Run the AI assessment (or: npm run eval -- --only TC-038)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: High, Critical
+Must: Identifies the adjuster-created vendor as insider fraud
+Must: Pays the customer
+Should: Fixes segregation of duties
+Should: Checks the other affected claims","Yes (npm run eval)","","","",""
+"TC-039","AI assessment, scenario","Fraud, compliance and customer","Fraud investigation","United States","US-051","Theft reported after the car was exported","Export records that pre-date a theft report, filed with the owner’s title copy, are strong evidence of a false theft; refer to SIU and NICB and use the examination under oath where facts are disputed.","Scenario US-051 in the library; model configured","1. Open US-051 (#/scenarios/US-051)
+2. Run the AI assessment (or: npm run eval -- --only TC-039)
+3. Compare the assessment with the expected results","Intent family: Fraud
+Risk: High, Critical
+Must: Concludes the car was exported before it was reported stolen
+Must: Refers to investigators or denies
+Should: Considers an examination under oath
+Should: Uses the mall camera review","Yes (npm run eval)","","","",""
+"TC-040","AI assessment, scenario","Fraud, compliance and customer","Regulatory compliance","United States","US-052","California claim-handling time limits missed","California Fair Claims Settlement Practices Regulations: acknowledge within 15 calendar days, accept or deny within 40 days of proof of claim, and give written notice every 30 days if more time is needed.","Scenario US-052 in the library; model configured","1. Open US-052 (#/scenarios/US-052)
+2. Run the AI assessment (or: npm run eval -- --only TC-040)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium, High
+Must: Identifies the time-limit breaches
+Must: Responds to the Department of Insurance
+Should: Pays the claim and the rental costs
+Should: Fixes the leave cover process","Yes (npm run eval)","","","",""
+"TC-041","AI assessment, scenario","Fraud, compliance and customer","Regulatory compliance","United States","US-053","Claim file emailed to the wrong person","Privacy incidents: escalate immediately, contain (deletion confirmed), assess state breach notification and insurance data security duties, notify the person affected and fix the cause.","Scenario US-053 in the library; model configured","1. Open US-053 (#/scenarios/US-053)
+2. Run the AI assessment (or: npm run eval -- --only TC-041)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Medium, High, Critical
+Must: Treats it as a privacy incident and escalates
+Must: Asks the recipient to delete and confirm
+Should: Assesses notification and supports the policyholder
+Should: Fixes the cause","Yes (npm run eval)","","","",""
+"TC-042","AI assessment, scenario","Fraud, compliance and customer","Complaints and customer care","United States","US-054","Statement taken without an interpreter","Fair treatment: a statement taken in a language the customer does not understand well is unreliable; retake it with a qualified interpreter and decide fault on independent evidence.","Scenario US-054 in the library; model configured","1. Open US-054 (#/scenarios/US-054)
+2. Run the AI assessment (or: npm run eval -- --only TC-042)
+3. Compare the assessment with the expected results","Intent family: Genuine or Needs a closer look
+Risk: Low, Medium, High
+Must: Does not rely on the statement taken without an interpreter
+Must: Uses the doorbell camera
+Should: Reopens the fault decision
+Should: Looks at the other driver’s speed","Yes (npm run eval)","","","",""
+"TC-043","AI assessment, scenario","Intake and cover","Notice and reporting","India","IN-037","Claim told to the agent but never registered","An agent acts for the insurer: intimation to the insurer’s agent is intimation to the insurer. Delay alone, with no prejudice (the car is unrepaired), should not defeat a genuine claim.","Scenario IN-037 in the library; model configured","1. Open IN-037 (#/scenarios/IN-037)
+2. Run the AI assessment (or: npm run eval -- --only TC-043)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Treats notice to the agent as notice to the insurer
+Must: Notes there is no prejudice because the car is unrepaired
+Should: Settles within the regulator’s timelines","Yes (npm run eval)","","","",""
+"TC-044","AI assessment, scenario","Intake and cover","Cover checks","India","IN-038","Road test by a service centre","The standard private car policy excludes use for any purpose in connection with the motor trade; a road test during servicing falls under the service centre’s motor trade cover.","Scenario IN-038 in the library; model configured","1. Open IN-038 (#/scenarios/IN-038)
+2. Run the AI assessment (or: npm run eval -- --only TC-044)
+3. Compare the assessment with the expected results","Intent family: Needs a closer look or Genuine
+Risk: Medium, High, Critical
+Must: Concludes the technician was driving
+Must: Places responsibility on the motor trade use and the service centre’s cover
+Should: Checks the son’s attendance or CCTV","Yes (npm run eval)","","","",""
+"TC-045","AI assessment, scenario","Intake and cover","Cover checks","India","IN-039","Owner-driver personal accident cover opted out","Owner-driver compulsory personal accident cover (₹15 lakh) can be opted out if the owner holds a separate PA cover of that amount; if opted out, the motor policy has no PA benefit to pay.","Scenario IN-039 in the library; model configured","1. Open IN-039 (#/scenarios/IN-039)
+2. Run the AI assessment (or: npm run eval -- --only TC-045)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium, High
+Must: Recognises the PA cover was opted out
+Must: Points the family to the claim against the lorry’s insurer
+Should: Checks employer group cover","Yes (npm run eval)","","","",""
+"TC-046","AI assessment, scenario","Intake and cover","Cover checks","India","IN-040","Passengers carried free in a goods vehicle","A goods carriage policy does not cover gratuitous passengers; tribunals may still direct the insurer to satisfy the award first and recover it from the owner.","Scenario IN-040 in the library; model configured","1. Open IN-040 (#/scenarios/IN-040)
+2. Run the AI assessment (or: npm run eval -- --only TC-046)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: High, Critical
+Must: Says gratuitous passengers in a goods vehicle are not covered
+Must: Plans to recover from the owner if ordered to pay
+Should: Addresses the own damage claim","Yes (npm run eval)","","","",""
+"TC-047","AI assessment, scenario","Intake and cover","Cover checks","India","IN-041","Fake licence despite the owner’s checks","Swaran Singh principles: the insurer can avoid liability against the owner for a fake licence only if it proves the owner failed to take reasonable care; third parties are paid in any event.","Scenario IN-041 in the library; model configured","1. Open IN-041 (#/scenarios/IN-041)
+2. Run the AI assessment (or: npm run eval -- --only TC-047)
+3. Compare the assessment with the expected results","Intent family: Genuine or Needs a closer look
+Risk: Medium, High
+Must: Applies the owner’s reasonable care in checking the licence
+Must: Keeps the third-party claims payable
+Should: Reports the fake licence","Yes (npm run eval)","","","",""
+"TC-048","AI assessment, scenario","Intake and cover","Cover checks","India","IN-042","Repudiation recommended for an expired PUC","IRDAI clarified in August 2020 that not holding a valid PUC certificate is not a valid reason to deny a motor claim.","Scenario IN-042 in the library; model configured","1. Open IN-042 (#/scenarios/IN-042)
+2. Run the AI assessment (or: npm run eval -- --only TC-048)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Says an expired PUC is not a ground to repudiate
+Must: Settles the assessed loss
+Should: Recovers from the tempo’s side","Yes (npm run eval)","","","",""
+"TC-049","AI assessment, scenario","Assessment and settlement","Survey and valuation","India","IN-043","Depreciation at the wrong rates","Standard depreciation: metal parts by vehicle age (4–5 years: 35%; 5–10 years: 40%); plastic and rubber 50%; fibreglass 30%; glass nil; paint 50% on materials only.","Scenario IN-043 in the library; model configured","1. Open IN-043 (#/scenarios/IN-043)
+2. Run the AI assessment (or: npm run eval -- --only TC-049)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Applies 35% to metal parts for a car aged 4 to 5 years
+Must: Applies nil depreciation to glass
+Should: Works out the age from the registration date","Yes (npm run eval)","","","",""
+"TC-050","AI assessment, scenario","Assessment and settlement","Survey and valuation","India","IN-044","Auto-rickshaw above the 75% line","Constructive total loss when repair exceeds 75% of the IDV; a net-of-salvage settlement lets the owner keep the vehicle. Safety-critical parts on a CNG vehicle must not be compromised.","Scenario IN-044 in the library; model configured","1. Open IN-044 (#/scenarios/IN-044)
+2. Run the AI assessment (or: npm run eval -- --only TC-050)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Treats it as a total loss because repair is above 75% of the IDV
+Must: Rejects refurbished safety-critical parts
+Should: Offers a net-of-salvage settlement so he keeps the auto","Yes (npm run eval)","","","",""
+"TC-051","AI assessment, scenario","Assessment and settlement","Settlement and payment","India","IN-045","Garage delisted during a cashless repair","A cashless approval given while the garage was in the network should be honoured; the customer should not fund a repair because of the insurer’s own delisting.","Scenario IN-045 in the library; model configured","1. Open IN-045 (#/scenarios/IN-045)
+2. Run the AI assessment (or: npm run eval -- --only TC-051)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Honours the existing cashless approval
+Must: Pays the garage directly so the customer does not fund it
+Should: Falls back to quick reimbursement","Yes (npm run eval)","","","",""
+"TC-052","AI assessment, scenario","Assessment and settlement","Settlement and payment","India","IN-046","Theft with an undisclosed duplicate key","Theft settlement needs all keys, the non-traceable report and transfer documents. An undisclosed duplicate key made shortly before the theft must be investigated before settlement.","Scenario IN-046 in the library; model configured","1. Open IN-046 (#/scenarios/IN-046)
+2. Run the AI assessment (or: npm run eval -- --only TC-052)
+3. Compare the assessment with the expected results","Intent family: Needs a closer look or Fraud
+Risk: Medium, High
+Must: Makes him explain the undisclosed duplicate key
+Must: Investigates before settling
+Should: Collects the theft settlement documents","Yes (npm run eval)","","","",""
+"TC-053","AI assessment, scenario","Assessment and settlement","Settlement and payment","India","IN-047","Hypothecation still on the RC after the loan closed","Where the financier confirms the loan is closed (NOC, zero dues, Form 35), the total loss settlement can be paid to the owner once verified with the bank.","Scenario IN-047 in the library; model configured","1. Open IN-047 (#/scenarios/IN-047)
+2. Run the AI assessment (or: npm run eval -- --only TC-053)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Verifies the NOC and zero-dues letter with the bank
+Must: Pays the customer once verified
+Should: Deals with the hypothecation termination","Yes (npm run eval)","","","",""
+"TC-054","AI assessment, scenario","Third parties, recovery and legal","Third-party claims","India","IN-048","Hospital bills the insurer for scheme-paid treatment","Cashless Treatment of Road Accident Victims Scheme, 2025 (from 5 May 2025): up to ₹1.5 lakh per victim for 7 days at designated hospitals. Expenses met by the scheme must not be paid again by the insurer or included in tribunal compensation.","Scenario IN-048 in the library; model configured","1. Open IN-048 (#/scenarios/IN-048)
+2. Run the AI assessment (or: npm run eval -- --only TC-054)
+3. Compare the assessment with the expected results","Intent family: Needs a closer look or Genuine
+Risk: Low, Medium, High
+Must: Spots that the scheme already paid for the same admission
+Must: Keeps scheme-paid expenses out of the compensation
+Should: Reports the duplicate bill","Yes (npm run eval)","","","",""
+"TC-055","AI assessment, scenario","Third parties, recovery and legal","Third-party claims","India","IN-049","Choosing between section 164 and section 166","Motor Vehicles Act section 164: fixed no-fault compensation (₹5 lakh death, ₹2.5 lakh grievous hurt). The family cannot also receive full fault-based compensation under section 166 for the same death.","Scenario IN-049 in the library; model configured","1. Open IN-049 (#/scenarios/IN-049)
+2. Run the AI assessment (or: npm run eval -- --only TC-055)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Medium, High, Critical
+Must: Explains that both cannot be paid in full for the same death
+Must: Holds that fog does not clear the truck driver
+Should: Assesses dependency","Yes (npm run eval)","","","",""
+"TC-056","AI assessment, scenario","Third parties, recovery and legal","Court and tribunal","India","IN-050","Designated officer’s 30-day offer on the DAR","Central Motor Vehicles Rules (2022): the police file the Detailed Accident Report within 90 days; the insurer’s designated officer must make a settlement offer within 30 days. Income must be assessed on evidence.","Scenario IN-050 in the library; model configured","1. Open IN-050 (#/scenarios/IN-050)
+2. Run the AI assessment (or: npm run eval -- --only TC-056)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Medium, High
+Must: Identifies the 30-day offer deadline
+Must: Questions the stated income against the bank statements
+Should: Uses the standard dependency method","Yes (npm run eval)","","","",""
+"TC-057","AI assessment, scenario","Third parties, recovery and legal","Court and tribunal","India","IN-051","Hit-and-run payment refunded after the vehicle is traced","Hit-and-run scheme (2022): ₹2 lakh for death when the vehicle is unidentified, paid on an undertaking to refund if compensation is later awarded. Once traced and insured, the policy responds and the scheme payment is refunded from the award.","Scenario IN-051 in the library; model configured","1. Open IN-051 (#/scenarios/IN-051)
+2. Run the AI assessment (or: npm run eval -- --only TC-057)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Medium, High
+Must: Refunds or adjusts the scheme payment from the award
+Must: Accepts that the policy now responds
+Should: Assesses dependency on the evidence","Yes (npm run eval)","","","",""
+"TC-058","AI assessment, scenario","Third parties, recovery and legal","Recovery and subrogation","India","IN-052","Delivery damage disputed between transporter and dealer","Pay the policyholder for a loss he did not cause, then preserve and pursue recovery: serve notice of claim on the carrier and the dealer promptly.","Scenario IN-052 in the library; model configured","1. Open IN-052 (#/scenarios/IN-052)
+2. Run the AI assessment (or: npm run eval -- --only TC-058)
+3. Compare the assessment with the expected results","Intent family: Genuine or Needs a closer look
+Risk: Low, Medium
+Must: Pays the policyholder first
+Must: Preserves recovery with notices
+Should: Uses the evidence to locate where it happened","Yes (npm run eval)","","","",""
+"TC-059","AI assessment, scenario","Fraud, compliance and customer","Fraud investigation","India","IN-053","Scrapped vehicle identities across five claims","A chassis number belonging to a scrapped, deregistered vehicle cannot be on the road; linked claims through one garage and one contact indicate organised fraud.","Scenario IN-053 in the library; model configured","1. Open IN-053 (#/scenarios/IN-053)
+2. Run the AI assessment (or: npm run eval -- --only TC-059)
+3. Compare the assessment with the expected results","Intent family: Fraud
+Risk: High, Critical
+Must: Concludes the cars carry scrapped vehicles’ identities
+Must: Links the five claims as organised
+Should: Inspects the stamped numbers
+Should: Reports and voids the policies","Yes (npm run eval)","","","",""
+"TC-060","AI assessment, scenario","Fraud, compliance and customer","Fraud investigation","India","IN-054","Fabricated nursing-home bills in a tribunal claim","Medical expenses must be proved by genuine records; unregistered facilities, wrong registrations and shared bill sequences show fabrication. The genuine injury is still compensated.","Scenario IN-054 in the library; model configured","1. Open IN-054 (#/scenarios/IN-054)
+2. Run the AI assessment (or: npm run eval -- --only TC-060)
+3. Compare the assessment with the expected results","Intent family: Fraud
+Risk: Medium, High, Critical
+Must: Contests the bills as fabricated using the hospital record
+Must: Flags the unregistered home, the dentist’s number or the bill sequence
+Should: Still pays the genuine injury
+Should: Links the other claims or reports","Yes (npm run eval)","","","",""
+"TC-061","AI assessment, scenario","Fraud, compliance and customer","Fraud investigation","India","IN-055","Car ""stolen"" but still crossing tolls","A vehicle sold privately and still in use is not stolen; FASTag and e-challan records after the reported theft are strong evidence of a false claim.","Scenario IN-055 in the library; model configured","1. Open IN-055 (#/scenarios/IN-055)
+2. Run the AI assessment (or: npm run eval -- --only TC-061)
+3. Compare the assessment with the expected results","Intent family: Fraud or Needs a closer look
+Risk: High, Critical
+Must: Concludes the car is still being driven, so there was no theft
+Must: Raises the private sale on stamp paper
+Should: Traces the car with the police","Yes (npm run eval)","","","",""
+"TC-062","AI assessment, scenario","Fraud, compliance and customer","Regulatory compliance","India","IN-056","IRDAI claim timelines missed","IRDAI (2024): surveyor appointed within 24 hours, survey report within 15 days, claim decided within 7 days of the report; delays attract interest and grievances must be answered.","Scenario IN-056 in the library; model configured","1. Open IN-056 (#/scenarios/IN-056)
+2. Run the AI assessment (or: npm run eval -- --only TC-062)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium, High
+Must: Identifies the timeline breaches
+Must: Pays interest for the delay
+Should: Answers the grievance and the Bima Bharosa complaint","Yes (npm run eval)","","","",""
+"TC-063","AI assessment, scenario","Fraud, compliance and customer","Complaints and customer care","India","IN-057","Unexplained deductions on a zero-depreciation policy","Deductions must be explained item by item; a zero-depreciation add-on removes depreciation. Insurance Ombudsman: within one year, claims up to ₹50 lakh, after the insurer rejects or does not reply within a month.","Scenario IN-057 in the library; model configured","1. Open IN-057 (#/scenarios/IN-057)
+2. Run the AI assessment (or: npm run eval -- --only TC-063)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium, High
+Must: Refunds the depreciation the add-on covers
+Must: Gives an item-by-item explanation of the other deductions
+Should: Explains the ombudsman route","Yes (npm run eval)","","","",""
+"TC-064","AI assessment, scenario","Fraud, compliance and customer","Complaints and customer care","India","IN-058","""Full and final"" voucher signed under pressure","A discharge voucher obtained by pressure from a customer who could not read it does not bar the claim for the balance; vulnerable customers need communication they understand.","Scenario IN-058 in the library; model configured","1. Open IN-058 (#/scenarios/IN-058)
+2. Run the AI assessment (or: npm run eval -- --only TC-064)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium, High
+Must: Treats the voucher as not binding
+Must: Pays the balance of the assessed loss
+Should: Investigates the surveyor
+Should: Communicates in a language she understands","Yes (npm run eval)","","","",""
+"TC-065","AI assessment, scenario","Intake and cover","Notice and reporting","Canada","CA-009","Ontario collision not reported to a reporting centre","Ontario: collisions with combined damage over $2,000 (or injury) must be reported to police or a collision reporting centre. Late reporting weakens evidence but does not void cover.","Scenario CA-009 in the library; model configured","1. Open CA-009 (#/scenarios/CA-009)
+2. Run the AI assessment (or: npm run eval -- --only TC-065)
+3. Compare the assessment with the expected results","Intent family: Genuine or Needs a closer look
+Risk: Low, Medium
+Must: Says the collision should be reported now
+Must: Uses the scene photos to assess fault
+Should: Applies the Fault Determination Rules","Yes (npm run eval)","","","",""
+"TC-066","AI assessment, scenario","Assessment and settlement","Settlement and payment","Canada","CA-010","Removing depreciation endorsement ignored","Ontario’s removing depreciation endorsement (leased version) replaces actual cash value with the purchase price for a vehicle bought or leased new, for a set period; pay the lessor as loss payee first.","Scenario CA-010 in the library; model configured","1. Open CA-010 (#/scenarios/CA-010)
+2. Run the AI assessment (or: npm run eval -- --only TC-066)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Settles under the endorsement instead of actual cash value
+Must: Pays the lessor first, then her
+Should: Checks other files for the same error","Yes (npm run eval)","","","",""
+"TC-067","AI assessment, scenario","Third parties, recovery and legal","Court and tribunal","Canada","CA-011","BC Enhanced Care and the right to sue","British Columbia Enhanced Care (accidents since May 2021): care-based benefits regardless of fault; the right to sue an at-fault driver for injuries removed in most cases.","Scenario CA-011 in the library; model configured","1. Open CA-011 (#/scenarios/CA-011)
+2. Run the AI assessment (or: npm run eval -- --only TC-067)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium, High
+Must: Explains the right to sue has been largely removed
+Must: Pays treatment and income replacement benefits
+Should: Explains the review route","Yes (npm run eval)","","","",""
+"TC-068","AI assessment, scenario","Fraud, compliance and customer","Complaints and customer care","Canada","CA-012","Fault rule complaint escalated","Ontario Fault Determination Rules (Regulation 668) apply as written for rating and direct compensation; customers can escalate complaints to the insurer’s ombudsman, then the General Insurance OmbudService.","Scenario CA-012 in the library; model configured","1. Open CA-012 (#/scenarios/CA-012)
+2. Run the AI assessment (or: npm run eval -- --only TC-068)
+3. Compare the assessment with the expected results","Intent family: Genuine or Needs a closer look
+Risk: Low, Medium
+Must: Applies the Fault Determination Rules as written
+Must: Explains the escalation route
+Should: Explains clearly and keeps the dashcam","Yes (npm run eval)","","","",""
+"TC-069","AI assessment, scenario","Fraud, compliance and customer","Fraud investigation","Canada","CA-013","Innocent buyer of a re-VINned stolen car","A re-VINned stolen vehicle belongs to its original owner (or the insurer that paid the theft). The innocent buyer is a fraud victim; ownership decides the own-damage claim.","Scenario CA-013 in the library; model configured","1. Open CA-013 (#/scenarios/CA-013)
+2. Run the AI assessment (or: npm run eval -- --only TC-069)
+3. Compare the assessment with the expected results","Intent family: Genuine or Needs a closer look
+Risk: High, Critical
+Must: Spots the re-VIN
+Must: Treats the policyholder as an innocent victim
+Should: Addresses ownership of the vehicle
+Should: Keeps the third party’s claim in view","Yes (npm run eval)","","","",""
+"TC-070","AI assessment, scenario","Third parties, recovery and legal","Third-party claims","Australia","AU-009","Uninsured motorist extension with an unidentified driver","Uninsured motorist extensions on third party property policies pay up to a limit (here $5,000) when the at-fault, uninsured driver can be identified by name and address or registration details.","Scenario AU-009 in the library; model configured","1. Open AU-009 (#/scenarios/AU-009)
+2. Run the AI assessment (or: npm run eval -- --only TC-070)
+3. Compare the assessment with the expected results","Intent family: Needs a closer look or Genuine
+Risk: Low, Medium
+Must: Works to identify the driver
+Must: Applies the $5,000 limit
+Should: Traces the buyer or gets a police report","Yes (npm run eval)","","","",""
+"TC-071","AI assessment, scenario","Fraud, compliance and customer","Regulatory compliance","Australia","AU-010","Code of Practice timeframes missed","General Insurance Code of Practice: updates at least every 20 business days; decision within 10 business days of having the information and within 4 months; complaints answered in the Code timeframe, then AFCA.","Scenario AU-010 in the library; model configured","1. Open AU-010 (#/scenarios/AU-010)
+2. Run the AI assessment (or: npm run eval -- --only TC-071)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium, High
+Must: Identifies the Code timeframe breaches
+Must: Explains AFCA as the next step
+Should: Responds to the complaint in time","Yes (npm run eval)","","","",""
+"TC-072","AI assessment, scenario","Fraud, compliance and customer","Complaints and customer care","Australia","AU-011","Family violence by a co-insured","Code of Practice family violence commitments: do not apply an intentional damage exclusion against a victim who did not cause or consent; protect her details and safety; remove the perpetrator on request.","Scenario AU-011 in the library; model configured","1. Open AU-011 (#/scenarios/AU-011)
+2. Run the AI assessment (or: npm run eval -- --only TC-072)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium, High
+Must: Does not hold the deliberate damage against the victim
+Must: Protects her safety and details
+Should: Removes the former partner from the policy","Yes (npm run eval)","","","",""
+"TC-073","AI assessment, scenario","Assessment and settlement","Survey and valuation","Australia","AU-012","Cash settlement versus a quote with old hail","A cash settlement must be fair and explained, not limited to the insurer’s internal discounted rates; unrelated pre-existing damage is excluded.","Scenario AU-012 in the library; model configured","1. Open AU-012 (#/scenarios/AU-012)
+2. Run the AI assessment (or: npm run eval -- --only TC-073)
+3. Compare the assessment with the expected results","Intent family: Genuine or Needs a closer look
+Risk: Low, Medium
+Must: Removes the unrelated hail repairs
+Must: Makes the cash figure fair and itemised
+Should: Offers a repair through the insurer","Yes (npm run eval)","","","",""
+"TC-074","AI assessment, scenario","Fraud, compliance and customer","Fraud investigation","Australia","AU-013","Pop-up hail repairer inflating claims","Pay genuine storm damage at a fair rate; exclude unrelated damage; investigate a repairer’s claims as a group when patterns appear. A repairer cannot waive the policy excess.","Scenario AU-013 in the library; model configured","1. Open AU-013 (#/scenarios/AU-013)
+2. Run the AI assessment (or: npm run eval -- --only TC-074)
+3. Compare the assessment with the expected results","Intent family: Fraud or Needs a closer look
+Risk: Medium, High, Critical
+Must: Pays the genuine hail damage and declines the old damage
+Must: Investigates the business across its claims
+Should: Keeps the policy excess payable","Yes (npm run eval)","","","",""
+"TC-075","AI assessment, scenario","Intake and cover","Cover checks","United Arab Emirates","AE-008","Dune rollover without the off-road extension","A clear exclusion for off-road and dune driving applies unless the optional extension was bought; how it was sold can still be reviewed as a complaint.","Scenario AE-008 in the library; model configured","1. Open AE-008 (#/scenarios/AE-008)
+2. Run the AI assessment (or: npm run eval -- --only TC-075)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium, High
+Must: Applies the off-road exclusion
+Should: Checks whether the extension was offered at sale
+Should: Offers the extension for the future","Yes (npm run eval)","","","",""
+"TC-076","AI assessment, scenario","Intake and cover","Notice and reporting","United Arab Emirates","AE-009","Car park damage reported to police four days later","UAE garages need a police report to repair accident damage. A late report loses evidence such as CCTV but is not in itself suspicious; check the damage against the location.","Scenario AE-009 in the library; model configured","1. Open AE-009 (#/scenarios/AE-009)
+2. Run the AI assessment (or: npm run eval -- --only TC-076)
+3. Compare the assessment with the expected results","Intent family: Needs a closer look or Genuine
+Risk: Low, Medium
+Must: Notes the delay and the lost CCTV
+Must: Checks the paint transfer against the car park
+Should: Pays as unknown-party damage if consistent","Yes (npm run eval)","","","",""
+"TC-077","AI assessment, scenario","Assessment and settlement","Settlement and payment","United Arab Emirates","AE-010","Agency repair in the schedule, age limit in a guideline","The policy schedule issued to the customer defines her entitlement for the policy period; an internal underwriting guideline cannot override it.","Scenario AE-010 in the library; model configured","1. Open AE-010 (#/scenarios/AE-010)
+2. Run the AI assessment (or: npm run eval -- --only TC-077)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Relies on the schedule for the policy period
+Must: Authorises the agency repair
+Should: Recovers from the at-fault driver’s insurer","Yes (npm run eval)","","","",""
+"TC-078","AI assessment, scenario","Third parties, recovery and legal","Recovery and subrogation","United Arab Emirates","AE-011","Rental insurer refuses despite a signed police report","In the UAE the police report determines fault; an informal email from the other driver is not a formal objection. Refusals can be escalated through the insurance dispute channels.","Scenario AE-011 in the library; model configured","1. Open AE-011 (#/scenarios/AE-011)
+2. Run the AI assessment (or: npm run eval -- --only TC-078)
+3. Compare the assessment with the expected results","Intent family: Genuine or Needs a closer look
+Risk: Low, Medium
+Must: Relies on the signed police report over the email
+Must: Escalates the recovery
+Should: Recovers her excess","Yes (npm run eval)","","","",""
+"TC-079","AI assessment, scenario","Assessment and settlement","Survey and valuation","Germany","DE-008","Notional settlement with VAT claimed","German Civil Code section 249(2): on a notional (fiktive) settlement, VAT is only payable if actually incurred. For cars over three years not serviced at brand workshops, a concrete cheaper equivalent workshop can be used.","Scenario DE-008 in the library; model configured","1. Open DE-008 (#/scenarios/DE-008)
+2. Run the AI assessment (or: npm run eval -- --only TC-079)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Pays net costs; VAT only if incurred
+Must: Considers equivalent independent workshop rates
+Should: Pays the expert’s fee and expenses","Yes (npm run eval)","","","",""
+"TC-080","AI assessment, scenario","Third parties, recovery and legal","Third-party claims","Germany","DE-009","Workshop risk after the 2024 rulings","Federal Court of Justice, 16 January 2024 (VI ZR 253/22 and others): the liable insurer bears the workshop risk for an injured party who had the repair done; it can demand assignment of claims against the workshop.","Scenario DE-009 in the library; model configured","1. Open DE-009 (#/scenarios/DE-009)
+2. Run the AI assessment (or: npm run eval -- --only TC-080)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Places the workshop risk on the liable insurer
+Must: Takes an assignment of claims against the workshop
+Should: Pays the balance to the workshop if unpaid","Yes (npm run eval)","","","",""
+"TC-081","AI assessment, scenario","Assessment and settlement","Settlement and payment","Germany","DE-010","Loss of use with a second car available","Loss of use compensation covers only the necessary repair period for a car that cannot be used, and may not be due where another household car was freely available.","Scenario DE-010 in the library; model configured","1. Open DE-010 (#/scenarios/DE-010)
+2. Run the AI assessment (or: npm run eval -- --only TC-081)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Limits the claim to the necessary repair period
+Must: Considers the second household car
+Should: Excludes the holiday delay","Yes (npm run eval)","","","",""
+"TC-082","AI assessment, scenario","Fraud, compliance and customer","Fraud investigation","Germany","DE-011","Series of inflated expert reports","An expert report is evidence, not a binding figure; where its scope exceeds the visible damage, an independent inspection is justified, and repeated patterns should be reviewed together.","Scenario DE-011 in the library; model configured","1. Open DE-011 (#/scenarios/DE-011)
+2. Run the AI assessment (or: npm run eval -- --only TC-082)
+3. Compare the assessment with the expected results","Intent family: Fraud or Needs a closer look
+Risk: Medium, High, Critical
+Must: Sees the report goes beyond the photographed damage
+Must: Instructs an independent inspection
+Should: Reviews the 26 claims together","Yes (npm run eval)","","","",""
+"TC-083","AI assessment, scenario","Third parties, recovery and legal","Court and tribunal","France","FR-008","Badinter law offer deadline","Code des assurances L211-9: an offer to an injured victim within 8 months of the accident (provisional if not consolidated), final offer within 5 months of learning of consolidation; L211-13: late offers bear interest at double the legal rate.","Scenario FR-008 in the library; model configured","1. Open FR-008 (#/scenarios/FR-008)
+2. Run the AI assessment (or: npm run eval -- --only TC-083)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Medium, High, Critical
+Must: Makes a provisional offer before the 8-month deadline
+Must: Notes the double-interest sanction
+Should: Diaries the final offer after consolidation","Yes (npm run eval)","","","",""
+"TC-084","AI assessment, scenario","Third parties, recovery and legal","Third-party claims","France","FR-009","Uninsured driver and the guarantee fund","France: the FGAO guarantee fund compensates victims of uninsured drivers under its own conditions; a third-party-only policy does not cover the policyholder’s own car.","Scenario FR-009 in the library; model configured","1. Open FR-009 (#/scenarios/FR-009)
+2. Run the AI assessment (or: npm run eval -- --only TC-084)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Helps him claim from the guarantee fund
+Must: Explains his third-party policy does not cover his car
+Should: Uses legal protection and protects his bonus","Yes (npm run eval)","","","",""
+"TC-085","AI assessment, scenario","Intake and cover","Notice and reporting","France","FR-010","Late declaration without prejudice","Code des assurances L113-2: a late declaration can only cause loss of cover (déchéance) if the insurer proves the delay caused it prejudice.","Scenario FR-010 in the library; model configured","1. Open FR-010 (#/scenarios/FR-010)
+2. Run the AI assessment (or: npm run eval -- --only TC-085)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Requires prejudice before refusing for lateness
+Must: Handles the claim on the joint report","Yes (npm run eval)","","","",""
+"TC-086","AI assessment, scenario","Fraud, compliance and customer","Complaints and customer care","France","FR-011","Full malus applied to a shared-liability claim","French bonus-malus: +25% for a responsible claim, +12.5% for a partly responsible one. Complaints should be answered within two months; then La Médiation de l’Assurance.","Scenario FR-011 in the library; model configured","1. Open FR-011 (#/scenarios/FR-011)
+2. Run the AI assessment (or: npm run eval -- --only TC-086)
+3. Compare the assessment with the expected results","Intent family: Genuine or Needs a closer look
+Risk: Low, Medium
+Must: Applies the 12.5% increase for shared liability
+Must: Explains the mediation route
+Should: Refunds the overcharged premium","Yes (npm run eval)","","","",""
+"TC-087","AI assessment, scenario","Intake and cover","Cover checks","South Africa","ZA-008","Unrest damage and SASRIA cover","South Africa: riot, strike and public disorder are excluded from ordinary motor cover and insured through SASRIA special risks cover sold with the policy.","Scenario ZA-008 in the library; model configured","1. Open ZA-008 (#/scenarios/ZA-008)
+2. Run the AI assessment (or: npm run eval -- --only TC-087)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium, High
+Must: Handles the claim under the SASRIA cover
+Must: Does not reject under the riot exclusion
+Should: Uses the SAPS case number and evidence of unrest","Yes (npm run eval)","","","",""
+"TC-088","AI assessment, scenario","Third parties, recovery and legal","Recovery and subrogation","South Africa","ZA-009","Pothole recovery and the six-month notice","Institution of Legal Proceedings against Certain Organs of State Act 2002: written notice to the municipality within six months, or the recovery may be lost. A prior report helps prove the municipality knew of the defect.","Scenario ZA-009 in the library; model configured","1. Open ZA-009 (#/scenarios/ZA-009)
+2. Run the AI assessment (or: npm run eval -- --only TC-088)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Serves notice on the municipality within six months
+Must: Uses the earlier report of the pothole
+Should: Includes her excess in the recovery","Yes (npm run eval)","","","",""
+"TC-089","AI assessment, scenario","Fraud, compliance and customer","Fraud investigation","South Africa","ZA-010","Tracker contradicts the hijacking","Tracking data showing the vehicle at a related address with a tamper alert before the reported hijacking must be explained before any settlement.","Scenario ZA-010 in the library; model configured","1. Open ZA-010 (#/scenarios/ZA-010)
+2. Run the AI assessment (or: npm run eval -- --only TC-089)
+3. Compare the assessment with the expected results","Intent family: Fraud or Needs a closer look
+Risk: High, Critical
+Must: Uses the tracker data before the reported time
+Must: Investigates before deciding","Yes (npm run eval)","","","",""
+"TC-090","AI assessment, scenario","Fraud, compliance and customer","Complaints and customer care","South Africa","ZA-011","Tracker condition never mentioned at sale","Policyholder Protection Rules and treating customers fairly: material conditions must be disclosed at sale; relying on an undisclosed condition, after the agent described full cover, is unlikely to be upheld by the ombud.","Scenario ZA-011 in the library; model configured","1. Open ZA-011 (#/scenarios/ZA-011)
+2. Run the AI assessment (or: npm run eval -- --only TC-090)
+3. Compare the assessment with the expected results","Intent family: Genuine or Needs a closer look
+Risk: Medium, High
+Must: Sees the condition was not disclosed at sale
+Must: Reconsiders the rejection
+Should: Explains the ombud route","Yes (npm run eval)","","","",""
+"TC-091","AI assessment, scenario","Third parties, recovery and legal","Third-party claims","Singapore","SG-007","Cross-border collision in Johor","Singapore policies usually extend to West Malaysia; Malaysian law requires a police report within 24 hours. Liability follows the evidence, here the lane markings and dashcam.","Scenario SG-007 in the library; model configured","1. Open SG-007 (#/scenarios/SG-007)
+2. Run the AI assessment (or: npm run eval -- --only TC-091)
+3. Compare the assessment with the expected results","Intent family: Genuine or Needs a closer look
+Risk: Low, Medium
+Must: Concludes the footage puts fault on the merging Malaysian driver
+Must: Confirms cover in West Malaysia and timely reports
+Should: Recovers the policyholder’s losses","Yes (npm run eval)","","","",""
+"TC-092","AI assessment, scenario","Fraud, compliance and customer","Fraud investigation","Singapore","SG-008","Friends’ collision with old damage added","Only damage caused by the incident is payable; earlier damage shown in dated photos is excluded, and links between parties and the workshop warrant scrutiny.","Scenario SG-008 in the library; model configured","1. Open SG-008 (#/scenarios/SG-008)
+2. Run the AI assessment (or: npm run eval -- --only TC-092)
+3. Compare the assessment with the expected results","Intent family: Fraud or Needs a closer look
+Risk: Medium, High
+Must: Uses the earlier photo to exclude the older damage
+Must: Pays only the fresh damage
+Should: Notes the friend and workshop links","Yes (npm run eval)","","","",""
+"TC-093","AI assessment, scenario","Assessment and settlement","Settlement and payment","Singapore","SG-009","Wrong driver named to avoid excesses","Apply the excesses for the actual driver; a deliberate misstatement in a claim is serious and can justify refusal, even if corrected before payment.","Scenario SG-009 in the library; model configured","1. Open SG-009 (#/scenarios/SG-009)
+2. Run the AI assessment (or: npm run eval -- --only TC-093)
+3. Compare the assessment with the expected results","Intent family: Needs a closer look or Fraud
+Risk: Medium, High
+Must: Applies the excesses for the actual driver
+Must: Treats the false statement seriously
+Should: Works out that the excesses exceed the damage","Yes (npm run eval)","","","",""
+"TC-094","AI assessment, scenario","Third parties, recovery and legal","Court and tribunal","Singapore","SG-010","Injury claim above the online assessment range","Singapore’s Motor Accident Claims Online tool gives liability and quantum ranges from past cases; loss of earnings must be proved by records.","Scenario SG-010 in the library; model configured","1. Open SG-010 (#/scenarios/SG-010)
+2. Run the AI assessment (or: npm run eval -- --only TC-094)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium, High
+Must: Limits lost earnings to the time actually off work
+Must: Values within the online assessment range
+Should: Accepts liability is mainly the policyholder’s","Yes (npm run eval)","","","",""
+"TC-095","AI assessment, scenario","Third parties, recovery and legal","Court and tribunal","Ireland","IE-002","Accepting a fair Injuries Resolution Board assessment","Ireland: an Injuries Resolution Board assessment under the Personal Injuries Guidelines, if rejected, leads to an authorisation to sue and litigation costs; accept assessments within the Guidelines unless there are specific grounds.","Scenario IE-002 in the library; model configured","1. Open IE-002 (#/scenarios/IE-002)
+2. Run the AI assessment (or: npm run eval -- --only TC-095)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Accepts the assessment
+Must: Explains the litigation cost of rejecting it
+Should: Checks it against the Guidelines","Yes (npm run eval)","","","",""
+"TC-096","AI assessment, scenario","Third parties, recovery and legal","Third-party claims","New Zealand","NZ-002","ACC and the bar on suing","New Zealand: ACC covers personal injury on a no-fault basis and the law bars suing for compensation for injury it covers; vehicle damage is still claimed from the at-fault driver.","Scenario NZ-002 in the library; model configured","1. Open NZ-002 (#/scenarios/NZ-002)
+2. Run the AI assessment (or: npm run eval -- --only TC-096)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Explains she cannot sue for the injury
+Must: Recovers the vehicle damage from the other driver’s insurer","Yes (npm run eval)","","","",""
+"TC-097","AI assessment, scenario","Third parties, recovery and legal","Third-party claims","Japan","JP-002","Injury above the compulsory insurance limit","Japan: compulsory automobile liability insurance pays injury losses up to ¥1.2 million; voluntary insurance pays above that, usually with one-stop handling of both.","Scenario JP-002 in the library; model configured","1. Open JP-002 (#/scenarios/JP-002)
+2. Run the AI assessment (or: npm run eval -- --only TC-097)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Medium, High, Critical
+Must: Applies the ¥1.2 million compulsory limit
+Must: Takes on one-stop handling and pays the hospital
+Should: Plans for future care and consolation money","Yes (npm run eval)","","","",""
+"TC-098","AI assessment, scenario","Fraud, compliance and customer","Regulatory compliance","Italy","IT-002","Article 148 offer period missed","Italy, Codice delle assicurazioni private article 148: reasoned offer or refusal within 30 days if the CAI is signed by both drivers, 60 days otherwise, 90 days with injuries; complaints can go to IVASS.","Scenario IT-002 in the library; model configured","1. Open IT-002 (#/scenarios/IT-002)
+2. Run the AI assessment (or: npm run eval -- --only TC-098)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Applies the 30-day period for a jointly signed CAI
+Must: Explains the IVASS complaint route
+Should: Pays interest for the delay","Yes (npm run eval)","","","",""
+"TC-099","AI assessment, scenario","Assessment and settlement","Settlement and payment","Spain","ES-002","Market value versus repair for an old car","Spain: where repair is disproportionate to the market value (valor venal), practice is to pay market value plus an uplift for the owner’s loss (valor de afección); repair may be allowed if not excessive in context.","Scenario ES-002 in the library; model configured","1. Open ES-002 (#/scenarios/ES-002)
+2. Run the AI assessment (or: npm run eval -- --only TC-099)
+3. Compare the assessment with the expected results","Intent family: Genuine or Needs a closer look
+Risk: Low, Medium
+Must: Adds an afección uplift to the market value
+Must: Weighs whether repair is disproportionate","Yes (npm run eval)","","","",""
+"TC-100","AI assessment, scenario","Third parties, recovery and legal","Recovery and subrogation","Malaysia","MY-002","Knock-for-knock claim and a disputed rear-end","Malaysia: an own-damage knock-for-knock claim lets a not-at-fault policyholder claim from his own insurer without losing his no-claim discount; a following driver who fails to keep a safe distance is usually at fault.","Scenario MY-002 in the library; model configured","1. Open MY-002 (#/scenarios/MY-002)
+2. Run the AI assessment (or: npm run eval -- --only TC-100)
+3. Compare the assessment with the expected results","Intent family: Genuine or Needs a closer look
+Risk: Low, Medium
+Must: Protects his no-claim discount while liability is resolved
+Must: Uses the dashcam: braking for a hazard, follower too close
+Should: Escalates through the industry dispute process if refused","Yes (npm run eval)","","","",""
+"TC-101","AI assessment, counterfactual variant","Fraud, compliance and customer","Fraud investigation","United Kingdom","UK-056","Variant: the accident really was after the policy started","Cover applies to losses after the policy starts; buying shortly before an accident is not by itself fraud.","Scenario UK-056 with this change applied: Police log and doorbell clip moved to 00:24–00:31 on 12 November, after the 23:52 purchase.","1. Build the case file for UK-056 with the patch in evals/cases/counterfactual.js
+2. Run the AI assessment (or: npm run eval -- --only TC-101)
+3. Compare the assessment with the expected results","Intent family: Genuine or Needs a closer look
+Risk: Low, Medium, High
+Must: Accepts the accident happened after the policy started
+Should: Notes the policy was bought shortly before
+Should: Addresses leaving the scene","Yes (npm run eval)","","","",""
+"TC-102","AI assessment, counterfactual variant","Fraud, compliance and customer","Fraud investigation","United States","US-051","Variant: no export record, and the car is seen entering the mall","Without contrary evidence, a theft with both keys produced and the car seen at the location is consistent with keyless theft.","Scenario US-051 with this change applied: Export check finds nothing; the entrance camera shows the car entering the lot on the day.","1. Build the case file for US-051 with the patch in evals/cases/counterfactual.js
+2. Run the AI assessment (or: npm run eval -- --only TC-102)
+3. Compare the assessment with the expected results","Intent family: Genuine or Needs a closer look
+Risk: Low, Medium, High
+Must: Treats the camera evidence as supporting the theft
+Should: Considers keyless or relay theft with both keys present","Yes (npm run eval)","","","",""
+"TC-103","AI assessment, counterfactual variant","Assessment and settlement","Settlement and payment","India","IN-046","Variant: no duplicate key was ever made","A single lost key with a plausible history is common; theft settlement then turns on the standard documents.","Scenario IN-046 with this change applied: Dealer records show no duplicate key; only the lost second key is missing.","1. Build the case file for IN-046 with the patch in evals/cases/counterfactual.js
+2. Run the AI assessment (or: npm run eval -- --only TC-103)
+3. Compare the assessment with the expected results","Intent family: Genuine or Needs a closer look
+Risk: Low, Medium, High
+Must: Moves on to the theft settlement documents","Yes (npm run eval)","","","",""
+"TC-104","AI assessment, counterfactual variant","Intake and cover","Notice and reporting","United Arab Emirates","AE-009","Variant: CCTV shows a delivery van scraping the car","Independent footage of the incident removes the evidential gap and opens a recovery.","Scenario AE-009 with this change applied: The building CCTV was kept and shows the van responsible.","1. Build the case file for AE-009 with the patch in evals/cases/counterfactual.js
+2. Run the AI assessment (or: npm run eval -- --only TC-104)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Attributes the damage to the van and pursues it
+Should: Considers recovery from the van’s owner","Yes (npm run eval)","","","",""
+"TC-105","AI assessment, counterfactual variant","Intake and cover","Cover checks","United Kingdom","UK-040","Variant: the cancellation notice was delivered and opened","A cancellation for non-payment that followed the policy’s notice terms is effective; cover was not in force at the time of the accident.","Scenario UK-040 with this change applied: Correct email address; email opened the same day; letter also posted.","1. Build the case file for UK-040 with the patch in evals/cases/counterfactual.js
+2. Run the AI assessment (or: npm run eval -- --only TC-105)
+3. Compare the assessment with the expected results","Intent family: Genuine or Needs a closer look
+Risk: Medium, High, Critical
+Must: Treats the notice as validly given and the policy as cancelled
+Should: Still deals fairly with the third party side","Yes (npm run eval)","","","",""
+"TC-106","AI assessment, counterfactual variant","Intake and cover","Cover checks","United Kingdom","UK-043","Variant: the lift money is a profit, not a contribution","Section 150 protects only contributions that do not exceed running costs; payments that make a profit are hire or reward.","Scenario UK-043 with this change applied: £60 a week each plus paid weekend trips, well above running costs.","1. Build the case file for UK-043 with the patch in evals/cases/counterfactual.js
+2. Run the AI assessment (or: npm run eval -- --only TC-106)
+3. Compare the assessment with the expected results","Intent family: Genuine or Needs a closer look
+Risk: Medium, High
+Must: Sees the payments exceed running costs
+Should: Keeps the passengers’ and van owner’s claims protected","Yes (npm run eval)","","","",""
+"TC-107","AI assessment, counterfactual variant","Fraud, compliance and customer","Fraud investigation","United Kingdom","UK-055","Variant: the bank change is genuine and verified","A verified change of bank details from the customer, with a matching payee check, can be actioned.","Scenario UK-055 with this change applied: Request from her usual address, confirmed by phone; payee name matches.","1. Build the case file for UK-055 with the patch in evals/cases/counterfactual.js
+2. Run the AI assessment (or: npm run eval -- --only TC-107)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Relies on the verification and the matching payee check","Yes (npm run eval)","","","",""
+"TC-108","AI assessment, counterfactual variant","Fraud, compliance and customer","Fraud investigation","India","IN-055","Variant: no toll trail, and the theft is on camera","With independent evidence of the theft and no sign of later use, the claim proceeds to the standard theft settlement.","Scenario IN-055 with this change applied: No FASTag or challan activity; temple CCTV and a guard describe the theft.","1. Build the case file for IN-055 with the patch in evals/cases/counterfactual.js
+2. Run the AI assessment (or: npm run eval -- --only TC-108)
+3. Compare the assessment with the expected results","Intent family: Genuine or Needs a closer look
+Risk: Low, Medium, High
+Must: Uses the CCTV and the guard’s account of the theft
+Should: Proceeds with the theft settlement documents","Yes (npm run eval)","","","",""
+"TC-109","AI assessment, counterfactual variant","Assessment and settlement","Survey and valuation","India","IN-043","Variant: the car is five and a half years old","Metal parts on a vehicle over 5 and up to 10 years old take 40%; glass still takes nil.","Scenario IN-043 with this change applied: First registration a year earlier, so 40% on metal parts is correct; the glass error remains.","1. Build the case file for IN-043 with the patch in evals/cases/counterfactual.js
+2. Run the AI assessment (or: npm run eval -- --only TC-109)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Accepts 40% on metal parts for this age
+Must: Still corrects the glass to nil","Yes (npm run eval)","","","",""
+"TC-110","AI assessment, counterfactual variant","Intake and cover","Cover checks","United Kingdom","UK-042","Variant: day 75 of the trip","Within the days of full cover abroad, own damage is covered as at home.","Scenario UK-042 with this change applied: The collision happens 75 days into the trip, inside the 90-day period.","1. Build the case file for UK-042 with the patch in evals/cases/counterfactual.js
+2. Run the AI assessment (or: npm run eval -- --only TC-110)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Finds the collision within the 90 days and covers own damage","Yes (npm run eval)","","","",""
+"TC-111","AI assessment, counterfactual variant","Intake and cover","Cover checks","United Kingdom","UK-041","Variant: the supervisor has held his licence for over three years","A supervisor aged 21 or over with a full licence held for three years meets the requirement; the learner is covered.","Scenario UK-041 with this change applied: Licence held for 3 years and 5 months.","1. Build the case file for UK-041 with the patch in evals/cases/counterfactual.js
+2. Run the AI assessment (or: npm run eval -- --only TC-111)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Finds the supervision condition met and the claim covered","Yes (npm run eval)","","","",""
+"TC-112","AI assessment, counterfactual variant","Intake and cover","Notice and reporting","United States","US-036","Variant: no corroborating 911 call","Without independent corroboration, an Ohio uninsured motorist claim for an unidentified vehicle cannot succeed on the insured’s word alone; collision still pays the car.","Scenario US-036 with this change applied: The earlier call about a weaving pickup is removed.","1. Build the case file for US-036 with the patch in evals/cases/counterfactual.js
+2. Run the AI assessment (or: npm run eval -- --only TC-112)
+3. Compare the assessment with the expected results","Intent family: Needs a closer look or Genuine
+Risk: Low, Medium, High
+Must: Sees there is no independent corroboration yet
+Must: Still pays the car under collision","Yes (npm run eval)","","","",""
+"TC-113","AI assessment, counterfactual variant","Third parties, recovery and legal","Court and tribunal","United States","US-047","Variant: the claimant was at the limit and not on her phone","A left-turning driver must yield to oncoming traffic; without claimant fault the 51% bar does not apply.","Scenario US-047 with this change applied: Event data shows 41 mph; phone records show no use.","1. Build the case file for US-047 with the patch in evals/cases/counterfactual.js
+2. Run the AI assessment (or: npm run eval -- --only TC-113)
+3. Compare the assessment with the expected results","Intent family: Genuine or Needs a closer look
+Risk: Medium, High, Critical
+Must: Puts liability mainly on the left-turning policyholder","Yes (npm run eval)","","","",""
+"TC-114","AI assessment, counterfactual variant","Assessment and settlement","Settlement and payment","Singapore","SG-009","Variant: she really was driving","Only the standard excess applies when the named policyholder was driving.","Scenario SG-009 with this change applied: Footage confirms the policyholder drove; her son was the passenger.","1. Build the case file for SG-009 with the patch in evals/cases/counterfactual.js
+2. Run the AI assessment (or: npm run eval -- --only TC-114)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Applies only the standard S$600 excess","Yes (npm run eval)","","","",""
+"TC-115","AI assessment, counterfactual variant","Fraud, compliance and customer","Fraud investigation","United Kingdom","UK-054","Variant: the dashcam clip is an authenticated original","Authenticated video evidence should be relied on; without contrary evidence the claim proceeds against the van operator.","Scenario UK-054 with this change applied: Forensics finds an original file; the van footage does not show the contact.","1. Build the case file for UK-054 with the patch in evals/cases/counterfactual.js
+2. Run the AI assessment (or: npm run eval -- --only TC-115)
+3. Compare the assessment with the expected results","Intent family: Genuine or Needs a closer look
+Risk: Low, Medium, High
+Must: Relies on the authenticated dashcam
+Should: Pursues the van operator’s insurer","Yes (npm run eval)","","","",""
+"TC-116","AI assessment, counterfactual variant","Fraud, compliance and customer","Fraud investigation","South Africa","ZA-010","Variant: the tracker supports the hijacking","Tracking data consistent with the reported hijacking supports the claim.","Scenario ZA-010 with this change applied: Tracker shows the vehicle at the Midrand intersection at 21:00, then a fast departure and jamming.","1. Build the case file for ZA-010 with the patch in evals/cases/counterfactual.js
+2. Run the AI assessment (or: npm run eval -- --only TC-116)
+3. Compare the assessment with the expected results","Intent family: Genuine or Needs a closer look
+Risk: Low, Medium, High
+Must: Finds the tracker consistent with the hijacking","Yes (npm run eval)","","","",""
+"TC-117","AI assessment, counterfactual variant","Third parties, recovery and legal","Third-party claims","United Kingdom","UK-048","Variant: the medical evidence supports 12 months and the lost work is documented","When the medical prognosis and records support the claim, value it on that evidence.","Scenario UK-048 with this change applied: Prognosis 12 months; the appointment book shows cancelled colour work instead of a work photo.","1. Build the case file for UK-048 with the patch in evals/cases/counterfactual.js
+2. Run the AI assessment (or: npm run eval -- --only TC-117)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Accepts the duration the medical evidence supports
+Must: Accepts the documented lost work","Yes (npm run eval)","","","",""
+"TC-118","AI assessment, counterfactual variant","Third parties, recovery and legal","Third-party claims","Australia","AU-009","Variant: the uninsured driver is identified","With the at-fault, uninsured driver identified, the uninsured motorist extension pays up to its limit and the insurer recovers from the driver.","Scenario AU-009 with this change applied: The registered operator was driving, admits fault and has no insurance.","1. Build the case file for AU-009 with the patch in evals/cases/counterfactual.js
+2. Run the AI assessment (or: npm run eval -- --only TC-118)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Pays under the extension up to $5,000
+Should: Recovers from the driver","Yes (npm run eval)","","","",""
+"TC-119","AI assessment, counterfactual variant","Assessment and settlement","Settlement and payment","Germany","DE-010","Variant: the car was undrivable and there was no second car","Loss of use is due for the whole period the car could not be used, including a parts delay the claimant did not cause.","Scenario DE-010 with this change applied: Car not roadworthy; parts delay; no other household car.","1. Build the case file for DE-010 with the patch in evals/cases/counterfactual.js
+2. Run the AI assessment (or: npm run eval -- --only TC-119)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Pays loss of use for the whole period off the road","Yes (npm run eval)","","","",""
+"TC-120","AI assessment, counterfactual variant","Assessment and settlement","Survey and valuation","India","IN-044","Variant: repair is below the 75% line","Below 75% of the IDV the vehicle is repaired, not treated as a constructive total loss.","Scenario IN-044 with this change applied: Surveyor assesses ₹82,000 (about 68% of IDV); garage quotes new parts.","1. Build the case file for IN-044 with the patch in evals/cases/counterfactual.js
+2. Run the AI assessment (or: npm run eval -- --only TC-120)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Low, Medium
+Must: Repairs rather than treating it as a total loss","Yes (npm run eval)","","","",""
+"TC-121","AI assessment, counterfactual variant","Intake and cover","Notice and reporting","France","FR-010","Variant: late, unexplained, already repaired and no joint report","Late declaration leads to loss of cover only with proven prejudice; repair before inspection and an untraced third party may amount to prejudice.","Scenario FR-010 with this change applied: No constat; the other driver is untraced; repaired before declaration; no reason for the delay.","1. Build the case file for FR-010 with the patch in evals/cases/counterfactual.js
+2. Run the AI assessment (or: npm run eval -- --only TC-121)
+3. Compare the assessment with the expected results","Intent family: Needs a closer look or Genuine
+Risk: Low, Medium, High
+Must: Considers prejudice from the repair and the untraced driver","Yes (npm run eval)","","","",""
+"TC-122","AI assessment, counterfactual variant","Intake and cover","Notice and reporting","India","IN-037","Variant: nobody was told, and the car was repaired first","Delay with prejudice (the car repaired before survey, no photos) weakens the claim; the insurer may verify by other means but can limit or decline.","Scenario IN-037 with this change applied: No message to the agent; repaired locally before intimation; no photos.","1. Build the case file for IN-037 with the patch in evals/cases/counterfactual.js
+2. Run the AI assessment (or: npm run eval -- --only TC-122)
+3. Compare the assessment with the expected results","Intent family: Needs a closer look or Genuine
+Risk: Low, Medium, High
+Must: Sees the repair before survey prevents verification","Yes (npm run eval)","","","",""
+"TC-123","AI assessment, counterfactual variant","Intake and cover","Cover checks","United States","US-039","Variant: she had refused to lend the car","Without express or implied permission, liability cover does not extend to the driver as a permissive user.","Scenario US-039 with this change applied: Texts show a refusal; the roommate admits she had said no.","1. Build the case file for US-039 with the patch in evals/cases/counterfactual.js
+2. Run the AI assessment (or: npm run eval -- --only TC-123)
+3. Compare the assessment with the expected results","Intent family: Needs a closer look or Genuine
+Risk: Low, Medium, High
+Must: Finds no permission for this use","Yes (npm run eval)","","","",""
+"TC-124","AI assessment, counterfactual variant","Fraud, compliance and customer","Fraud investigation","Canada","CA-013","Variant: a third of the price and no papers","A buyer who pays a fraction of the value without papers may not be an innocent purchaser; the circumstances warrant investigation.","Scenario CA-013 with this change applied: Bought for $14,000 with no registration at the sale.","1. Build the case file for CA-013 with the patch in evals/cases/counterfactual.js
+2. Run the AI assessment (or: npm run eval -- --only TC-124)
+3. Compare the assessment with the expected results","Intent family: Needs a closer look or Fraud
+Risk: High, Critical
+Must: Sees the price and missing papers as warning signs he should have noticed","Yes (npm run eval)","","","",""
+"TC-125","AI assessment, counterfactual variant","Third parties, recovery and legal","Third-party claims","United States","US-044","Variant: a healthy knee before the crash","Without a pre-existing condition, causation for the surgery is accepted; Medicare obligations still apply.","Scenario US-044 with this change applied: Pre-crash records show no knee problems.","1. Build the case file for US-044 with the patch in evals/cases/counterfactual.js
+2. Run the AI assessment (or: npm run eval -- --only TC-125)
+3. Compare the assessment with the expected results","Intent family: Genuine
+Risk: Medium, High
+Must: Accepts the crash caused the knee injury
+Must: Still deals with Medicare reporting and reimbursement","Yes (npm run eval)","","","",""
+"TC-126","Application","Library data","","","","The library holds 266 scenarios with no structural problems","","FaultLine installed with the claims-stage pack (npm install)","1. Load shared/scenarios/index.js
+2. Read SCENARIOS and SCENARIO_PROBLEMS","SCENARIOS has 266 records: the original 166 plus the 100 new ones
+SCENARIO_PROBLEMS is empty
+Every case file built from a scenario passes validateCase","Yes (npm test)","","","",""
+"TC-127","Application","Library data","","","","The original 166 scenarios are unchanged","","FaultLine installed with the claims-stage pack (npm install)","1. Import the 20 original data files (uk.js to other.js) in index order
+2. Hash JSON.stringify of the combined list with SHA-256","166 records
+SHA-256 fingerprint b035f77f067c01b2b1b4ab8c58e65760da8fd657fe4303b079dd36cf49f8d60e","Yes (npm test)","","","",""
+"TC-128","Application","Library data","","","","Every scenario has a valid claim stage","","FaultLine installed with the claims-stage pack (npm install)","1. Check each scenario’s stage against STAGES
+2. Check where each stage comes from","All 266 have a stage from the 10 in STAGES
+The original 166 take theirs from shared/scenarios/stages.js and their records have no stage field
+The 100 new records carry stage themselves","Yes (npm test)","","","",""
+"TC-129","Application","Library data","","","","New scenario ids continue each country’s series without gaps","","FaultLine installed with the claims-stage pack (npm install)","1. List the ids of the 100 new scenarios by country","UK-037 to UK-058, US-035 to US-054, IN-037 to IN-058, CA-009 to CA-013, AU-009 to AU-013, AE-008 to AE-011, DE-008 to DE-011, FR-008 to FR-011, ZA-008 to ZA-011, SG-007 to SG-010, and IE-002, NZ-002, JP-002, IT-002, ES-002, MY-002
+No id or title repeats an existing one","Yes (npm test)","","","",""
+"TC-130","Application","Library data","","","","The new scenarios keep the country mix","","FaultLine installed with the claims-stage pack (npm install)","1. Count the 100 new scenarios by country","UK 22, US 20, India 22, other countries 36 (Canada 5, Australia 5, UAE 4, Germany 4, France 4, South Africa 4, Singapore 4, and one each for Ireland, New Zealand, Japan, Italy, Spain, Malaysia)","Yes (npm test)","","","",""
+"TC-131","Application","Library data","","","","The new scenarios cover all four claim areas","","FaultLine installed with the claims-stage pack (npm install)","1. Count the 100 new scenarios by stage and stage group","Intake and cover 22, Assessment and settlement 20, Third parties, recovery and legal 31, Fraud, compliance and customer 27
+Every one of the 10 stages has at least 6 new scenarios","Yes (npm test)","","","",""
+"TC-132","Application","Search and filters","","","","The Claim stage filter is offered with grouped options","","FaultLine installed with the claims-stage pack (npm install)","1. Read FILTERS
+2. Open the library in the browser and open the Claim stage list","11 filters; Claim stage is second, after Country
+Its 10 options appear under 4 group headings: Intake and cover; Assessment and settlement; Third parties, recovery and legal; Fraud, compliance and customer
+With no filters set, the stage counts add up to 266","Partly (npm test + manual)","","","",""
+"TC-133","Application","Search and filters","","","","Filtering by one stage returns exactly that stage","","FaultLine installed with the claims-stage pack (npm install)","1. queryScenarios with filters { stage: [stage] } for each stage","Coverage 53, Fraud 45, Third-party 44, Assessment 33, Settlement 24, Recovery 21, Notification 17, Legal 14, Customer 9, Compliance 6
+Every result has the requested stage","Yes (npm test)","","","",""
+"TC-134","Application","Search and filters","","","","Stage combines with other filters and facets stay consistent","","FaultLine installed with the claims-stage pack (npm install)","1. queryScenarios with { stage: [""fraud""], country: [""IN""] }
+2. facetCounts with { stage: [""fraud""] }","10 results, all Indian fraud-stage scenarios
+The stage facet ignores its own filter (other stages still show counts)
+Other facets add up to the 45 fraud-stage scenarios","Yes (npm test)","","","",""
+"TC-135","Application","Search and filters","","","","Search finds the new scenarios by their key concepts","","FaultLine installed with the claims-stage pack (npm install)","1. Search for: Part 36; SASRIA; time-limited demand; Werkstattrisiko; subject access request; Enhanced Care; knock-for-knock; family violence; insider fraud; Cashless Treatment Scheme","First results: UK-051, ZA-008, US-046, DE-009, UK-057, CA-011, MY-002, AU-011, US-050, IN-048","Yes (npm test)","","","",""
+"TC-136","Application","Search and filters","","","","Search matches stage names","","FaultLine installed with the claims-stage pack (npm install)","1. Search for ""regulatory compliance""
+2. Search for ""ombudsman""","""regulatory compliance"" returns the compliance-stage scenarios
+""ombudsman"" lists IN-057 first","Yes (npm test)","","","",""
+"TC-137","Application","Regression","","","","Existing search behaviour is unchanged","","FaultLine installed with the claims-stage pack (npm install)","1. Run the existing search assertions against the 266-scenario library","""UK crash for cash"" lists UK-021 first and only UK scenarios
+""kangaroo"" lists AU-001 first
+""pay and recover"" (quoted) returns exactly IN-010 and IN-025
+""FIR"" returns only Indian scenarios
+""EV fire"" returns at most 6 scenarios, including UK-014 and IN-018","Yes (npm test)","","","",""
+"TC-138","Application","API","","","","GET /api/scenarios filters by stage","","FaultLine installed with the claims-stage pack (npm install)","1. GET /api/scenarios?stage=legal&limit=200","200 OK
+total is 14 and every item has stage ""legal""
+Each item summary includes stage","Yes (npm test)","","","",""
+"TC-139","Application","API","","","","GET /api/scenarios returns stage facets","","FaultLine installed with the claims-stage pack (npm install)","1. GET /api/scenarios","facets.stage has the 10 stages and adds up to 266
+total is 266","Yes (npm test)","","","",""
+"TC-140","Application","API","","","","GET /api/scenarios/:id returns a new scenario with its case file","","FaultLine installed with the claims-stage pack (npm install)","1. GET /api/scenarios/in-048 (lower case)","200 OK
+scenario.id is IN-048 and scenario.stage is ""third-party""
+The case file has the notification, statement, accounts and evidence exhibits","Yes (npm test)","","","",""
+"TC-141","Application","API","","","","GET /api/scenarios/random honours the stage filter","","FaultLine installed with the claims-stage pack (npm install)","1. GET /api/scenarios/random?stage=compliance ten times","Every scenario returned has stage ""compliance""","Yes (npm test)","","","",""
+"TC-142","Application","Detail view","","","","The detail page shows the claim stage and filters by it","","FaultLine installed with the claims-stage pack (npm install)","1. Open #/scenarios/UK-057
+2. Find Claim stage in the facts
+3. Click the stage value","Claim stage shows ""Regulatory compliance""
+Clicking it opens the library filtered to that stage (6 scenarios)
+The nine facts sit in three rows of three on desktop and two columns at 390 px wide","No (manual)","","","",""
+"TC-143","Application","AI assessment","","","","Case files never reveal the reference answers or the stage","","FaultLine installed with the claims-stage pack (npm install)","1. Build the case file for each of the 100 new scenarios","No case file contains whatHappened, assessment or action text
+No case file contains the stage label
+No missing item appears as held evidence","Yes (npm test)","","","",""
+"TC-144","Application","AI assessment","","","","Assessing a new scenario streams a result with the comparison","","FaultLine installed with the claims-stage pack (npm install)","1. POST /api/scenarios/UK-037/assess with a test provider
+2. In the browser with a real key: open UK-037 and run the AI assessment","NDJSON stream with progress messages and one result
+result.scenarioId is UK-037 and result.comparison has overall, intent and risk
+In the browser the comparison card shows agrees, close or differs","Partly (npm test + manual)","","","",""
+"TC-145","Application","Evaluation suite","","","","The evaluation runner works without a model","","FaultLine installed with the claims-stage pack (npm install)","1. node scripts/run-evals.mjs --dry-run
+2. node scripts/run-evals.mjs --oracle","Dry run checks 125 case files with no errors
+Oracle run passes 100 of 100 scenario cases
+Each run writes results.json and report.md","Yes (npm test)","","","",""
+"TC-146","Application","Evaluation suite","","","","Every AI test case is well formed","","FaultLine installed with the claims-stage pack (npm install)","1. Check AI_CASES with caseProblems","125 cases, TC-001 to TC-125 in order
+100 scenario cases cover the 100 new scenarios once each
+Every case has valid families and risks and at least one required check","Yes (npm test)","","","",""
+"TC-147","Application","Evaluation suite","","","","Counterfactual patches apply cleanly and required checks are not in the case file","","FaultLine installed with the claims-stage pack (npm install)","1. Apply each counterfactual patch
+2. Compare every required phrase with the case file text","Each find text occurs exactly once and the patched case file is valid
+No required phrase appears in its case file, so a check passes only when the assessment adds the concept","Yes (npm test)","","","",""
+"TC-148","Application","Evaluation suite","","","","The grader passes good answers and fails weak ones","","FaultLine installed with the claims-stage pack (npm install)","1. Grade each scenario’s reference answer
+2. Grade an answer that only repeats the case file
+3. Grade an answer with the wrong intent family","All 100 reference answers pass
+The repeat-the-file answers fail every case
+A wrong family fails even when every concept is present","Yes (npm test)","","","",""
+"TC-149","Application","Detail view","","","","The stage filter works on a phone-sized screen","","FaultLine installed with the claims-stage pack (npm install)","1. Open the library at 390 px wide
+2. Open the filters and choose a stage
+3. Clear it with the filter chip","The grouped list is readable and selectable
+The chip shows the stage name and removes the filter","No (manual)","","","",""
+"TC-150","Application","Build","","","","Both builds include the new scenarios","","FaultLine installed with the claims-stage pack (npm install)","1. npm run build
+2. npm run build:artifact
+3. Open the hosted build and search for SASRIA","Both builds finish without errors
+The hosted build shows 266 scenarios and finds ZA-008","No (manual)","","","",""

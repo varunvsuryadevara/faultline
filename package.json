@@ -1,0 +1,43 @@
+{
+  "name": "faultline",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FaultLine cross-examines several accounts of one incident and shows, with verified quotes, where they don't line up.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "dev": "concurrently --kill-others-on-fail --names api,web --prefix-colors magenta,cyan \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "node --watch server/index.js",
+    "dev:web": "vite",
+    "build": "vite build",
+    "start": "node server/index.js",
+    "test": "node --test tests/pipeline.test.js tests/scenarios.test.js tests/scenario-customisation.test.js tests/evidence.test.js tests/e2e-evidence.test.js tests/claims-pack.test.js tests/decision-engine.test.js tests/report-export.test.js tests/theme-system.test.js tests/regulatory-library.test.js tests/decision-legal-intelligence.test.js",
+    "eval": "node scripts/run-evals.mjs",
+    "export:test-cases": "node scripts/export-test-cases.mjs",
+    "build:artifact": "vite build --mode artifact"
+  },
+  "dependencies": {
+    "@fontsource-variable/archivo": "^5.3.0",
+    "@fontsource-variable/source-serif-4": "^5.3.1",
+    "express": "^5.3.0",
+    "jspdf": "^4.2.1",
+    "lucide-react": "^1.75.0",
+    "mammoth": "^1.13.0",
+    "multer": "^2.5.0",
+    "partial-json": "^0.1.7",
+    "pdf-parse": "^2.4.5",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.5",
+    "@vitejs/plugin-react": "^6.3.0",
+    "concurrently": "^10.0.7",
+    "tailwindcss": "^4.3.5",
+    "vite": "^8.3.8",
+    "vite-plugin-singlefile": "^2.3.4"
+  }
+}

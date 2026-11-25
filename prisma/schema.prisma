@@ -1,0 +1,404 @@
+// FaultLine Enterprise Relational Database Schema
+// PostgreSQL + Prisma ORM Data Architecture
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  CLAIMS_MANAGER
+  INVESTIGATOR
+  LEGAL_REVIEWER
+  AUDITOR
+  READ_ONLY
+}
+
+enum InvestigationStatus {
+  OPEN
+  UNDER_REVIEW
+  ANALYZED
+  DECISION_PENDING
+  APPROVED
+  REJECTED
+  ARCHIVED
+}
+
+enum DecisionOutcome {
+  APPROVE
+  REJECT
+  KEEP_UNDER_REVIEW
+}
+
+enum RiskLevel {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum LegalAssessmentStatus {
+  SATISFIED_BY_AVAILABLE_EVIDENCE
+  POTENTIALLY_SATISFIED
+  NOT_ESTABLISHED
+  POTENTIAL_NON_COMPLIANCE_IDENTIFIED
+  NOT_APPLICABLE
+  REQUIRES_FURTHER_VERIFICATION
+}
+
+model Tenant {
+  id             String          @id @default(uuid())
+  name           String
+  slug           String          @unique
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  users          User[]
+  investigations Investigation[]
+}
+
+model User {
+  id              String           @id @default(uuid())
+  tenantId        String
+  tenant          Tenant           @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  email           String           @unique
+  name            String
+  passwordHash    String
+  role            Role             @default(INVESTIGATOR)
+  isActive        Boolean          @default(true)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  investigations  Investigation[]  @relation("AssignedInvestigator")
+  decisionsMade   Decision[]       @relation("DecisionSignOff")
+  approvals       DecisionApproval[]
+  auditEvents     AuditEvent[]
+  conversations   Conversation[]
+
+  @@index([tenantId])
+  @@index([email])
+}
+
+model Investigation {
+  id                String              @id @default(uuid())
+  tenantId          String
+  tenant            Tenant              @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  claimReference    String              @unique
+  title             String
+  context           String?             @db.Text
+  country           String              @default("UK")
+  region            String?
+  status            InvestigationStatus @default(OPEN)
+  risk              RiskLevel           @default(MEDIUM)
+  incidentDate      DateTime?
+  incidentTime      String?
+  incidentLocation  String?
+  incidentPostcode  String?
+  assignedToId      String?
+  assignedTo        User?               @relation("AssignedInvestigator", fields: [assignedToId], references: [id])
+  claim             Claim?
+  exhibits          Evidence[]
+  findings          Finding[]
+  contradictions    Contradiction[]
+  timelineEvents    TimelineEvent[]
+  legalAssessments  LegalAssessment[]
+  analyses          AIAnalysis[]
+  decision          Decision?
+  subrogation       SubrogationCase?
+  salvage           SalvageRecord?
+  auditEvents       AuditEvent[]
+  conversations     Conversation[]
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+
+  @@index([tenantId])
+  @@index([claimReference])
+  @@index([status])
+  @@index([country])
+}
+
+model Claim {
+  id                String         @id @default(uuid())
+  investigationId   String         @unique
+  investigation     Investigation  @relation(fields: [investigationId], references: [id], onDelete: Cascade)
+  policyNumber      String
+  claimType         String         @default("Motor Collision")
+  claimAmount       Decimal?       @db.Decimal(12, 2)
+  excessDeductible  Decimal?       @db.Decimal(10, 2)
+  claimantName      String
+  claimantPhone     String?
+  claimantEmail     String?
+  policyholderName  String
+  policyStartDate   DateTime?
+  policyEndDate     DateTime?
+  vehicles          Vehicle[]
+  thirdParties      ThirdParty[]
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+}
+
+model Vehicle {
+  id                String   @id @default(uuid())
+  claimId           String
+  claim             Claim    @relation(fields: [claimId], references: [id], onDelete: Cascade)
+  role              String   @default("INSURED") // INSURED or THIRD_PARTY
+  registrationPlate String
+  make              String
+  model             String
+  year              Int?
+  vin               String?
+  estimatedValue    Decimal? @db.Decimal(10, 2)
+  damageSeverity    String?
+  driveable         Boolean  @default(true)
+  createdAt         DateTime @default(now())
+}
+
+model ThirdParty {
+  id              String   @id @default(uuid())
+  claimId         String
+  claim           Claim    @relation(fields: [claimId], references: [id], onDelete: Cascade)
+  name            String
+  driverLicense   String?
+  insurerName     String?
+  policyNumber    String?
+  vehicleReg      String?
+  contactInfo     String?
+  createdAt       DateTime @default(now())
+}
+
+model Evidence {
+  id               String               @id @default(uuid())
+  investigationId  String
+  investigation    Investigation        @relation(fields: [investigationId], references: [id], onDelete: Cascade)
+  exhibitLetter    String               // A, B, C, D...
+  label            String
+  kind             String               @default("statement") // statement, telematics, police_report, photo, estimate
+  text             String               @db.Text
+  attachments      EvidenceAttachment[]
+  createdAt        DateTime             @default(now())
+  updatedAt        DateTime             @updatedAt
+
+  @@unique([investigationId, exhibitLetter])
+  @@index([investigationId])
+}
+
+model EvidenceAttachment {
+  id               String            @id @default(uuid())
+  evidenceId       String
+  evidence         Evidence          @relation(fields: [evidenceId], references: [id], onDelete: Cascade)
+  filename         String
+  originalName     String
+  fileType         String
+  mimeType         String
+  fileSizeBytes    Int
+  sha256Hash       String
+  storagePath      String
+  storageUrl       String?
+  isVerified       Boolean           @default(true)
+  extractionStatus String            @default("ready") // pending, ready, error
+  extractedText    String?           @db.Text
+  ocrObservations  String?           @db.Text
+  metaJson         Json?
+  chainOfCustody   Json?
+  createdAt        DateTime          @default(now())
+
+  @@index([evidenceId])
+  @@index([sha256Hash])
+}
+
+model Finding {
+  id              String         @id @default(uuid())
+  investigationId String
+  investigation   Investigation  @relation(fields: [investigationId], references: [id], onDelete: Cascade)
+  title           String
+  explanation     String         @db.Text
+  exhibitCitations String[]
+  probativeWeight String         @default("MEDIUM")
+  isCorroborated  Boolean        @default(false)
+  createdAt       DateTime       @default(now())
+
+  @@index([investigationId])
+}
+
+model Contradiction {
+  id              String         @id @default(uuid())
+  investigationId String
+  investigation   Investigation  @relation(fields: [investigationId], references: [id], onDelete: Cascade)
+  quote1          String         @db.Text
+  quote2          String         @db.Text
+  exhibit1        String
+  exhibit2        String
+  topic           String
+  severity        String         @default("MATERIAL")
+  explanation     String         @db.Text
+  isResolved      Boolean        @default(false)
+  createdAt       DateTime       @default(now())
+
+  @@index([investigationId])
+}
+
+model TimelineEvent {
+  id              String         @id @default(uuid())
+  investigationId String
+  investigation   Investigation  @relation(fields: [investigationId], references: [id], onDelete: Cascade)
+  timestamp       DateTime?
+  timeString      String?
+  description     String         @db.Text
+  sourceExhibit   String
+  isDisputed      Boolean        @default(false)
+  createdAt       DateTime       @default(now())
+
+  @@index([investigationId])
+}
+
+model LegalAssessment {
+  id               String                @id @default(uuid())
+  investigationId  String
+  investigation    Investigation         @relation(fields: [investigationId], references: [id], onDelete: Cascade)
+  statuteId        String
+  legalReference   String
+  statuteTitle     String
+  status           LegalAssessmentStatus @default(REQUIRES_FURTHER_VERIFICATION)
+  requirementText  String                @db.Text
+  evidenceStatus   String                @db.Text
+  implications     String                @db.Text
+  officialUrl      String
+  lastVerified     DateTime              @default(now())
+
+  @@index([investigationId])
+}
+
+model AIAnalysis {
+  id              String         @id @default(uuid())
+  investigationId String
+  investigation   Investigation  @relation(fields: [investigationId], references: [id], onDelete: Cascade)
+  provider        String         @default("anthropic")
+  model           String         @default("claude-sonnet-5-5")
+  promptTokens    Int?
+  completionTokens Int?
+  durationSeconds Float?
+  rawOutputJson   Json
+  createdAt       DateTime       @default(now())
+
+  @@index([investigationId])
+}
+
+model Decision {
+  id                  String             @id @default(uuid())
+  investigationId     String             @unique
+  investigation       Investigation      @relation(fields: [investigationId], references: [id], onDelete: Cascade)
+  outcome             DecisionOutcome
+  aiConfidence        Int
+  riskScore           String
+  completeness        Int
+  explanationParagraph String            @db.Text
+  keyReasons          String[]
+  supportingEvidence  String[]
+  contradictingEvidence String[]
+  unresolvedIssues    String[]
+  recommendedActions  String[]
+  signedOffById       String?
+  signedOffBy         User?              @relation("DecisionSignOff", fields: [signedOffById], references: [id])
+  signedOffAt         DateTime?
+  approvals           DecisionApproval[]
+  createdAt           DateTime           @default(now())
+  updatedAt           DateTime           @updatedAt
+}
+
+model DecisionApproval {
+  id              String    @id @default(uuid())
+  decisionId      String
+  decision        Decision  @relation(fields: [decisionId], references: [id], onDelete: Cascade)
+  approverId      String
+  approver        User      @relation(fields: [approverId], references: [id])
+  status          String    @default("APPROVED") // APPROVED, REJECTED, PENDING
+  comments        String?   @db.Text
+  badFaithReviewAcknowledged Boolean @default(true)
+  timestamp       DateTime  @default(now())
+
+  @@index([decisionId])
+}
+
+model SubrogationCase {
+  id                String         @id @default(uuid())
+  investigationId   String         @unique
+  investigation     Investigation  @relation(fields: [investigationId], references: [id], onDelete: Cascade)
+  targetInsurer     String
+  targetPolicyNum   String?
+  targetClaimNum    String?
+  recoveryAmount    Decimal        @db.Decimal(12, 2)
+  recoveredAmount   Decimal?       @db.Decimal(12, 2)
+  recoveryStatus    String         @default("IDENTIFIED") // IDENTIFIED, NOTICE_ISSUED, NEGOTIATING, SETTLED, DISPUTED
+  statutoryBasis    String         // e.g. UK RTA s. 152 or Inter-Company Arbitration
+  noticeSentAt      DateTime?
+  settledAt         DateTime?
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+}
+
+model SalvageRecord {
+  id              String         @id @default(uuid())
+  investigationId String         @unique
+  investigation   Investigation  @relation(fields: [investigationId], references: [id], onDelete: Cascade)
+  salvageCategory String         // ABI Cat A (Scrap only), Cat B (Break only), Cat S (Structural repairable), Cat N (Non-structural)
+  preAccidentValue Decimal       @db.Decimal(12, 2)
+  repairEstimate  Decimal        @db.Decimal(12, 2)
+  estimatedSalvage Decimal?      @db.Decimal(12, 2)
+  isTotalLoss     Boolean        @default(false)
+  buyerName       String?
+  disposedAt      DateTime?
+  createdAt       DateTime       @default(now())
+}
+
+model Conversation {
+  id              String         @id @default(uuid())
+  tenantId        String
+  userId          String?
+  user            User?          @relation(fields: [userId], references: [id])
+  investigationId String?
+  investigation   Investigation? @relation(fields: [investigationId], references: [id])
+  title           String         @default("New Investigation Chat")
+  messages        Message[]
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+
+  @@index([investigationId])
+}
+
+model Message {
+  id             String       @id @default(uuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  role           String       // user or assistant
+  content        String       @db.Text
+  sources        String[]
+  routingOutcome String?
+  durationMs     Int?
+  tokensUsed     Int?
+  createdAt      DateTime     @default(now())
+
+  @@index([conversationId])
+}
+
+model AuditEvent {
+  id              String         @id @default(uuid())
+  tenantId        String?
+  userId          String?
+  user            User?          @relation(fields: [userId], references: [id])
+  investigationId String?
+  investigation   Investigation? @relation(fields: [investigationId], references: [id])
+  actionType      String         // e.g. INVESTIGATION_CREATED, EVIDENCE_UPLOADED, DECISION_SIGNED
+  details         String         @db.Text
+  previousValue   Json?
+  newValue        Json?
+  ipAddress       String?
+  userAgent       String?
+  timestamp       DateTime       @default(now())
+
+  @@index([investigationId])
+  @@index([userId])
+  @@index([timestamp])
+}

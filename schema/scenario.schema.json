@@ -1,0 +1,415 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "faultline/scenario.schema.json",
+  "title": "FaultLine motor claim scenario",
+  "description": "One scenario record as exported in data/scenarios-*.json. Mirrors shared/scenarios/validate.js plus the case-file limits in shared/validate.js. In the project data files the 166 original records have no stage field: shared/scenarios/index.js adds it from stages.js, so every exported record has one. New records must carry stage themselves.",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "country",
+    "stage",
+    "category",
+    "type",
+    "claimType",
+    "intent",
+    "fraudType",
+    "difficulty",
+    "risk",
+    "confidence",
+    "vehicle",
+    "weather",
+    "accidentType",
+    "story",
+    "statement",
+    "whatHappened",
+    "damage",
+    "thirdParties",
+    "evidence",
+    "missing",
+    "inconsistencies",
+    "indicators",
+    "innocent",
+    "questions",
+    "steps",
+    "assessment",
+    "action",
+    "outcomes"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}-\\d{3}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "country": {
+      "type": "string",
+      "enum": [
+        "UK",
+        "US",
+        "IN",
+        "CA",
+        "AU",
+        "AE",
+        "DE",
+        "FR",
+        "ZA",
+        "SG",
+        "IE",
+        "NZ",
+        "JP",
+        "BR",
+        "NG",
+        "KE",
+        "MY",
+        "NL",
+        "IT",
+        "ES"
+      ]
+    },
+    "stage": {
+      "type": "string",
+      "enum": [
+        "notification",
+        "coverage",
+        "assessment",
+        "settlement",
+        "third-party",
+        "legal",
+        "recovery",
+        "fraud",
+        "compliance",
+        "customer"
+      ],
+      "description": "The claims stage where the key decision sits. Required: new records carry it, the original 166 get it from stages.js."
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "genuine-accident",
+        "unintentional-damage",
+        "environmental",
+        "mechanical",
+        "theft",
+        "negligence",
+        "fraud",
+        "grey-area"
+      ]
+    },
+    "type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claimType": {
+      "type": "string",
+      "enum": [
+        "own-damage",
+        "third-party",
+        "injury",
+        "theft",
+        "vandalism",
+        "glass",
+        "weather",
+        "fire",
+        "total-loss",
+        "mechanical",
+        "hire-recovery",
+        "policy"
+      ]
+    },
+    "intent": {
+      "type": "string",
+      "enum": [
+        "genuine",
+        "genuine-negligence",
+        "genuine-reporting-errors",
+        "genuine-exaggeration",
+        "suspicious",
+        "disputed",
+        "insufficient-evidence",
+        "mixed",
+        "potential-fraud",
+        "confirmed-fraud",
+        "third-party-fraud",
+        "organised-fraud"
+      ]
+    },
+    "fraudType": {
+      "type": "string",
+      "enum": [
+        "none",
+        "staged-accident",
+        "induced-accident",
+        "ghost-accident",
+        "false-details",
+        "pre-existing-damage",
+        "opportunistic-exaggeration",
+        "inflated-repair",
+        "false-expenses",
+        "false-injury",
+        "phantom-passenger",
+        "duplicate-claim",
+        "false-theft",
+        "arson-deliberate-damage",
+        "misrepresentation",
+        "ghost-broking",
+        "fake-documents",
+        "identity-fraud",
+        "repairer-fraud",
+        "recovery-fraud",
+        "witness-fraud",
+        "organised-ring",
+        "insider-fraud"
+      ]
+    },
+    "difficulty": {
+      "type": "string",
+      "enum": [
+        "easy",
+        "moderate",
+        "hard",
+        "expert"
+      ]
+    },
+    "risk": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ]
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "vehicle": {
+      "type": "string",
+      "enum": [
+        "car",
+        "suv",
+        "ev",
+        "two-wheeler",
+        "van",
+        "pickup",
+        "truck",
+        "bus",
+        "taxi",
+        "auto-rickshaw"
+      ]
+    },
+    "weather": {
+      "type": "string",
+      "enum": [
+        "clear",
+        "rain",
+        "heavy-rain",
+        "flood",
+        "storm",
+        "hail",
+        "snow-ice",
+        "fog",
+        "heat",
+        "wildfire",
+        "dust"
+      ]
+    },
+    "accidentType": {
+      "type": "string",
+      "enum": [
+        "rear-end",
+        "head-on",
+        "side-impact",
+        "lane-change",
+        "roundabout",
+        "intersection",
+        "parking",
+        "reversing",
+        "hit-and-run",
+        "multi-vehicle",
+        "single-vehicle",
+        "fixed-object",
+        "pedestrian",
+        "cyclist",
+        "animal",
+        "none"
+      ]
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0,
+      "description": "Optional search words."
+    },
+    "claimant": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 60,
+      "description": "Optional. Short name used in the case file."
+    },
+    "story": {
+      "type": "string",
+      "minLength": 40,
+      "maxLength": 8000,
+      "description": "Exhibit A, the claim notification. Seen by the AI. 40 to 8,000 characters, the case-file limits for one exhibit."
+    },
+    "statement": {
+      "type": "string",
+      "minLength": 40,
+      "maxLength": 8000,
+      "description": "Exhibit B, the claimant's statement. Seen by the AI. 40 to 8,000 characters."
+    },
+    "accounts": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": [
+          "who",
+          "kind",
+          "text"
+        ],
+        "properties": {
+          "who": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "statement",
+              "witness",
+              "report",
+              "record",
+              "message",
+              "document"
+            ]
+          },
+          "text": {
+            "type": "string",
+            "minLength": 40,
+            "maxLength": 8000
+          }
+        }
+      },
+      "description": "Optional further exhibits (C, D, E). Seen by the AI."
+    },
+    "whatHappened": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Reference answer. Never sent to the AI."
+    },
+    "damage": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Seen by the AI in the last exhibit, together with thirdParties and evidence. That exhibit must stay under 8,000 characters."
+    },
+    "thirdParties": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "description": "Seen by the AI (last exhibit)."
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "description": "Seen by the AI (last exhibit)."
+    },
+    "missing": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "description": "Reference answer."
+    },
+    "inconsistencies": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0,
+      "description": "Reference answer."
+    },
+    "indicators": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0,
+      "description": "Reference answer. At least one for fraud intents."
+    },
+    "innocent": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "description": "Reference answer."
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "description": "Reference answer."
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "description": "Reference answer."
+    },
+    "assessment": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Reference answer."
+    },
+    "action": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Reference answer."
+    },
+    "outcomes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "description": "Reference answer."
+    },
+    "sampleId": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

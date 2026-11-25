@@ -1,0 +1,238 @@
+{
+  "UK_ALL_rear-end": {
+    "jurisdiction": {
+      "countryCode": "UK",
+      "countryName": "United Kingdom",
+      "flag": "🇬🇧",
+      "legalSystem": "Common Law",
+      "regulator": "Financial Conduct Authority (FCA) & PRA",
+      "regionCode": "UK-ALL",
+      "regionName": "United Kingdom (General)",
+      "availableRegions": [
+        {
+          "code": "UK-ALL",
+          "name": "United Kingdom (General)"
+        },
+        {
+          "code": "UK-EW",
+          "name": "England & Wales"
+        },
+        {
+          "code": "UK-SCT",
+          "name": "Scotland"
+        },
+        {
+          "code": "UK-NIR",
+          "name": "Northern Ireland"
+        }
+      ],
+      "verificationStatus": "VERIFIED",
+      "lastAuditDate": "Q1 2026"
+    },
+    "applicableRegulations": [
+      {
+        "id": "UK-REG-03",
+        "title": "Contributory Negligence & Apportionment of Liability",
+        "categoryId": "liability-negligence",
+        "jurisdiction": "United Kingdom",
+        "countryCode": "UK",
+        "regionCode": "UK-ALL",
+        "regionName": "United Kingdom (General)",
+        "scope": "Regional / United Kingdom (General)",
+        "legalReference": "Law Reform (Contributory Negligence) Act 1945, Section 1(1)",
+        "authority": "UK Parliament / Senior Courts of England and Wales",
+        "sourceUrl": "https://www.legislation.gov.uk/ukpga/Geo6/8-9/28/section/1",
+        "status": "VERIFIED",
+        "lastVerifiedDate": "2026-01-15",
+        "summary": "Where a person suffers damage partly through their own fault and partly through the fault of another, the damages recoverable shall be reduced to such extent as the court thinks just and equitable.",
+        "whatRuleRequires": "Unlike pure contributory negligence jurisdictions where any fault bars recovery, the UK applies proportional apportionment. Leading authorities establish standard deductions: failure to wear a seatbelt reduces bodily injury damages by 25% if injuries would have been entirely prevented, or 15% if injury severity would have been reduced (Froom v Butcher [1976] QB 286). In roundabout and lane-change collisions, split liability (50/50, 60/40) is frequently applied where both parties failed to maintain proper lookout.",
+        "applicability": "All civil tort claims arising from motor collisions in England and Wales.",
+        "whyItMatters": "Governs right-of-way, following distance, and fault apportionment",
+        "requirementType": {
+          "id": "LEGAL_REQUIREMENT",
+          "label": "Legal Requirement (Statutory / Regulatory Code)",
+          "badgeCls": "bg-blue-500/15 text-blue-400 border-blue-500/30",
+          "description": "Mandate established by enacted national or regional legislation, court precedent, or gazetted regulations."
+        },
+        "evidenceAvailable": [
+          "Claimant statement and scene description"
+        ],
+        "evidenceGap": "Third-party insurer liability response",
+        "investigationImplication": "Liability is supported prima facie; confirm absence of adverse third-party counter-allegations.",
+        "assessmentStatus": "POTENTIALLY SATISFIED",
+        "assessmentRationale": "Claimant account appears plausible and consistent with damage photos; awaiting formal third-party response.",
+        "reviewerConsideration": "Ensure timeframes for liability response under claims protocols are tracked.",
+        "relevanceScore": 25
+      },
+      {
+        "id": "UK-REG-08",
+        "title": "Highway Code Rules on Safe Following Distance, Roundabouts & Mobile Devices",
+        "categoryId": "traffic-laws",
+        "jurisdiction": "United Kingdom",
+        "countryCode": "UK",
+        "regionCode": "UK-ALL",
+        "regionName": "United Kingdom (General)",
+        "scope": "Regional / United Kingdom (General)",
+        "legalReference": "The Highway Code (Rules 126, 149, 185) & Road Traffic Act 1988 s. 41D",
+        "authority": "Driver and Vehicle Standards Agency (DVSA) / DfT",
+        "sourceUrl": "https://www.gov.uk/guidance/the-highway-code",
+        "status": "VERIFIED",
+        "lastVerifiedDate": "2026-01-15",
+        "summary": "Establishes statutory standards of care: the two-second following rule (Rule 126), priority to the right on roundabouts (Rule 185), and strict prohibition against using hand-held mobile devices while driving (s. 41D).",
+        "whatRuleRequires": "While the Highway Code is not itself primary legislation, failure to observe its provisions may be relied upon in civil proceedings to establish liability or breach of statutory duty under RTA 1988 s. 38(7). Rule 126 creates a presumption of negligence against the following driver in rear-end collisions unless sudden braking was completely unjustified. Section 41D imposes 6 penalty points and £200 fine for any handheld device usage.",
+        "applicability": "All drivers of motor vehicles on roads in Great Britain.",
+        "whyItMatters": "Governs right-of-way, following distance, and fault apportionment",
+        "requirementType": {
+          "id": "LEGAL_REQUIREMENT",
+          "label": "Legal Requirement (Statutory / Regulatory Code)",
+          "badgeCls": "bg-blue-500/15 text-blue-400 border-blue-500/30",
+          "description": "Mandate established by enacted national or regional legislation, court precedent, or gazetted regulations."
+        },
+        "evidenceAvailable": [
+          "Claimant statement and scene description"
+        ],
+        "evidenceGap": "Third-party insurer liability response",
+        "investigationImplication": "Liability is supported prima facie; confirm absence of adverse third-party counter-allegations.",
+        "assessmentStatus": "POTENTIALLY SATISFIED",
+        "assessmentRationale": "Claimant account appears plausible and consistent with damage photos; awaiting formal third-party response.",
+        "reviewerConsideration": "Ensure timeframes for liability response under claims protocols are tracked.",
+        "relevanceScore": 25
+      },
+      {
+        "id": "UK-REG-01",
+        "title": "Compulsory Third-Party Motor Insurance Obligation",
+        "categoryId": "mandatory-insurance",
+        "jurisdiction": "United Kingdom",
+        "countryCode": "UK",
+        "regionCode": "UK-ALL",
+        "regionName": "United Kingdom (General)",
+        "scope": "Regional / United Kingdom (General)",
+        "legalReference": "Road Traffic Act 1988, Section 143(1)(a)",
+        "authority": "UK Parliament / Department for Transport",
+        "sourceUrl": "https://www.legislation.gov.uk/ukpga/1988/52/section/143",
+        "status": "VERIFIED",
+        "lastVerifiedDate": "2026-01-15",
+        "summary": "A person must not use, or cause or permit any other person to use, a motor vehicle on a road or other public place unless there is in force a valid policy of insurance complying with statutory third-party requirements.",
+        "whatRuleRequires": "Under Section 143 of the Road Traffic Act 1988, driving or permitting the use of an uninsured vehicle is a strict liability offence. The policy must cover third-party bodily injury (unlimited liability) and property damage (minimum £1.2 million, in practice policies cover £20M+). Breach triggers an IN10 conviction, 6 penalty points, fixed penalties, and potential vehicle seizure under s. 165A.",
+        "applicability": "All motor vehicle drivers, registered keepers, and commercial fleet operators on public roads or accessible public spaces across England, Wales, and Scotland.",
+        "whyItMatters": "Applicable statutory authority for motor claims in this jurisdiction",
+        "requirementType": {
+          "id": "LEGAL_REQUIREMENT",
+          "label": "Legal Requirement (Statutory / Regulatory Code)",
+          "badgeCls": "bg-blue-500/15 text-blue-400 border-blue-500/30",
+          "description": "Mandate established by enacted national or regional legislation, court precedent, or gazetted regulations."
+        },
+        "evidenceAvailable": [
+          "Active claim notification under insured policy number"
+        ],
+        "evidenceGap": "Validated motor insurance certificate and certificate validity dates",
+        "investigationImplication": "Confirm policy schedule excess and endorsements prior to disbursement.",
+        "assessmentStatus": "POTENTIALLY SATISFIED",
+        "assessmentRationale": "Compulsory insurance coverage exists under active claim diary; formal policy schedule requires standard administrative validation.",
+        "reviewerConsideration": "Verify that the vehicle was operated within the scope of permitted use.",
+        "relevanceScore": 5
+      },
+      {
+        "id": "UK-REG-02",
+        "title": "Statutory Duty of Driver to Stop and Report Accident",
+        "categoryId": "accident-reporting",
+        "jurisdiction": "United Kingdom",
+        "countryCode": "UK",
+        "regionCode": "UK-ALL",
+        "regionName": "United Kingdom (General)",
+        "scope": "Regional / United Kingdom (General)",
+        "legalReference": "Road Traffic Act 1988, Section 170",
+        "authority": "UK Parliament / Home Office",
+        "sourceUrl": "https://www.legislation.gov.uk/ukpga/1988/52/section/170",
+        "status": "VERIFIED",
+        "lastVerifiedDate": "2026-01-15",
+        "summary": "The driver of a motor vehicle must stop after an accident causing personal injury or property damage, provide particulars, and report to the police within 24 hours if particulars are not exchanged at the scene.",
+        "whatRuleRequires": "Section 170 mandates that where damage or injury is caused to a person, vehicle, animal, or roadside property, the driver must stop and give name, address, vehicle registration, and insurance certificate details to any person having reasonable grounds to require them. If not given at the scene for any reason, the driver must report the incident in person at a police station or to a police constable as soon as reasonably practicable and in any case within 24 hours.",
+        "applicability": "Any driver involved in a collision on a road or other public place in the UK.",
+        "whyItMatters": "Applicable statutory authority for motor claims in this jurisdiction",
+        "requirementType": {
+          "id": "LEGAL_REQUIREMENT",
+          "label": "Legal Requirement (Statutory / Regulatory Code)",
+          "badgeCls": "bg-blue-500/15 text-blue-400 border-blue-500/30",
+          "description": "Mandate established by enacted national or regional legislation, court precedent, or gazetted regulations."
+        },
+        "evidenceAvailable": [
+          "First-party claim notification statement"
+        ],
+        "evidenceGap": "Official Police Collision Report or incident reference number",
+        "investigationImplication": "Determine whether this accident met the statutory criteria requiring mandatory police notification in this jurisdiction.",
+        "assessmentStatus": "NOT ESTABLISHED",
+        "assessmentRationale": "The claim file contains the driver’s accident notification, but an official police accident report has not been supplied. Under investigative safeguards, missing paperwork does not prove statutory non-compliance unless reporting was mandatory under the specific circumstances (e.g., personal injury, failure to exchange details, or public property damage).",
+        "reviewerConsideration": "Check if involved parties exchanged details at the scene, which often waives the police reporting mandate for non-injury collisions.",
+        "relevanceScore": 0
+      }
+    ],
+    "legalDecisionImpact": {
+      "affectingParagraph": "The legal and regulatory framework of United Kingdom (United Kingdom (General)) supports the recommendation to APPROVE this claim. Verified exhibits sufficiently fulfill statutory reporting standards, damage proof requirements, and prima facie liability conditions. Crucially, cross-examination identified zero substantiated indicators of statutory insurance fraud, staged collision, or bad faith. Standard administrative policy checks and indemnity disbursement protocols can safely proceed in full compliance with Financial Conduct Authority (FCA) & PRA guidelines.",
+      "considerations": [
+        "Statutory proof of loss and vehicle damage criteria under United Kingdom regulations are substantiated by submitted photographic and repair documentation.",
+        "No active or unresolved material contradictions violate statutory road traffic fault principles or liability allocation rules.",
+        "Zero substantiated indicators of insurance fraud or staged collision were identified, eliminating regulatory grounds for indemnity denial.",
+        "Approval complies with insurer statutory duties for prompt, fair claim resolution under Financial Conduct Authority (FCA) & PRA fair-treatment standards."
+      ],
+      "actionItems": [
+        {
+          "priority": 1,
+          "action": "Complete standard pre-disbursement policy excess validation.",
+          "authority": "Financial Conduct Authority (FCA) & PRA"
+        },
+        {
+          "priority": 2,
+          "action": "Maintain completed forensic investigation report in audit-ready state.",
+          "authority": "Internal Audit & Compliance"
+        }
+      ],
+      "decisionCategory": "APPROVE"
+    },
+    "traceabilityChain": [
+      {
+        "regulationId": "UK-REG-03",
+        "title": "Contributory Negligence & Apportionment of Liability",
+        "legalReference": "Law Reform (Contributory Negligence) Act 1945, Section 1(1)",
+        "requirement": "Unlike pure contributory negligence jurisdictions where any fault bars recovery, the UK applies proportional apportionment. Leading authorities establish standard deductions: failure to wear a seatbelt reduces bodily injury damages by 25% if injuries would have been entirely prevented, or 15% if injury severity would have been reduced (Froom v Butcher [1976] QB 286). In roundabout and lane-change collisions, split liability (50/50, 60/40) is frequently applied where both parties failed to maintain proper lookout.",
+        "evidence": "Claimant statement and scene description",
+        "assessment": "POTENTIALLY SATISFIED",
+        "decisionRelevance": "Governs right-of-way, following distance, and fault apportionment"
+      },
+      {
+        "regulationId": "UK-REG-08",
+        "title": "Highway Code Rules on Safe Following Distance, Roundabouts & Mobile Devices",
+        "legalReference": "The Highway Code (Rules 126, 149, 185) & Road Traffic Act 1988 s. 41D",
+        "requirement": "While the Highway Code is not itself primary legislation, failure to observe its provisions may be relied upon in civil proceedings to establish liability or breach of statutory duty under RTA 1988 s. 38(7). Rule 126 creates a presumption of negligence against the following driver in rear-end collisions unless sudden braking was completely unjustified. Section 41D imposes 6 penalty points and £200 fine for any handheld device usage.",
+        "evidence": "Claimant statement and scene description",
+        "assessment": "POTENTIALLY SATISFIED",
+        "decisionRelevance": "Governs right-of-way, following distance, and fault apportionment"
+      },
+      {
+        "regulationId": "UK-REG-01",
+        "title": "Compulsory Third-Party Motor Insurance Obligation",
+        "legalReference": "Road Traffic Act 1988, Section 143(1)(a)",
+        "requirement": "Under Section 143 of the Road Traffic Act 1988, driving or permitting the use of an uninsured vehicle is a strict liability offence. The policy must cover third-party bodily injury (unlimited liability) and property damage (minimum £1.2 million, in practice policies cover £20M+). Breach triggers an IN10 conviction, 6 penalty points, fixed penalties, and potential vehicle seizure under s. 165A.",
+        "evidence": "Active claim notification under insured policy number",
+        "assessment": "POTENTIALLY SATISFIED",
+        "decisionRelevance": "Applicable statutory authority for motor claims in this jurisdiction"
+      },
+      {
+        "regulationId": "UK-REG-02",
+        "title": "Statutory Duty of Driver to Stop and Report Accident",
+        "legalReference": "Road Traffic Act 1988, Section 170",
+        "requirement": "Section 170 mandates that where damage or injury is caused to a person, vehicle, animal, or roadside property, the driver must stop and give name, address, vehicle registration, and insurance certificate details to any person having reasonable grounds to require them. If not given at the scene for any reason, the driver must report the incident in person at a police station or to a police constable as soon as reasonably practicable and in any case within 24 hours.",
+        "evidence": "First-party claim notification statement",
+        "assessment": "NOT ESTABLISHED",
+        "decisionRelevance": "Applicable statutory authority for motor claims in this jurisdiction"
+      }
+    ],
+    "totalRegulationsEvaluated": 4,
+    "evaluatedAt": "2026-11-23T11:28:31.237Z",
+    "researchMode": "live-claude-verified",
+    "provider": "Claude",
+    "model": "claude-sonnet-5-5",
+    "researchedAt": "2026-11-23T11:28:31.237Z",
+    "sourceIdentificationConfidence": "High (Cross-referenced against official legislative registries)"
+  }
+}

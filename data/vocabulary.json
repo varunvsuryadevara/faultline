@@ -1,0 +1,671 @@
+{
+  "stageGroups": [
+    {
+      "value": "intake",
+      "label": "Intake and cover"
+    },
+    {
+      "value": "assessment-settlement",
+      "label": "Assessment and settlement"
+    },
+    {
+      "value": "third-parties",
+      "label": "Third parties, recovery and legal"
+    },
+    {
+      "value": "fraud-compliance",
+      "label": "Fraud, compliance and customer"
+    }
+  ],
+  "filters": [
+    {
+      "key": "country",
+      "label": "Country",
+      "all": "All countries"
+    },
+    {
+      "key": "stage",
+      "label": "Claim stage",
+      "all": "All claim stages"
+    },
+    {
+      "key": "category",
+      "label": "Category",
+      "all": "All categories"
+    },
+    {
+      "key": "claimType",
+      "label": "Claim type",
+      "all": "All claim types"
+    },
+    {
+      "key": "intent",
+      "label": "Intent",
+      "all": "All intents"
+    },
+    {
+      "key": "fraudType",
+      "label": "Fraud type",
+      "all": "All fraud types"
+    },
+    {
+      "key": "risk",
+      "label": "Risk level",
+      "all": "All risk levels"
+    },
+    {
+      "key": "difficulty",
+      "label": "Difficulty",
+      "all": "All difficulties"
+    },
+    {
+      "key": "vehicle",
+      "label": "Vehicle type",
+      "all": "All vehicles"
+    },
+    {
+      "key": "weather",
+      "label": "Weather",
+      "all": "All weather"
+    },
+    {
+      "key": "accidentType",
+      "label": "Accident type",
+      "all": "All accident types"
+    }
+  ],
+  "values": {
+    "country": [
+      {
+        "value": "UK",
+        "label": "United Kingdom"
+      },
+      {
+        "value": "US",
+        "label": "United States"
+      },
+      {
+        "value": "IN",
+        "label": "India"
+      },
+      {
+        "value": "CA",
+        "label": "Canada"
+      },
+      {
+        "value": "AU",
+        "label": "Australia"
+      },
+      {
+        "value": "AE",
+        "label": "United Arab Emirates"
+      },
+      {
+        "value": "DE",
+        "label": "Germany"
+      },
+      {
+        "value": "FR",
+        "label": "France"
+      },
+      {
+        "value": "ZA",
+        "label": "South Africa"
+      },
+      {
+        "value": "SG",
+        "label": "Singapore"
+      },
+      {
+        "value": "IE",
+        "label": "Ireland"
+      },
+      {
+        "value": "NZ",
+        "label": "New Zealand"
+      },
+      {
+        "value": "JP",
+        "label": "Japan"
+      },
+      {
+        "value": "BR",
+        "label": "Brazil"
+      },
+      {
+        "value": "NG",
+        "label": "Nigeria"
+      },
+      {
+        "value": "KE",
+        "label": "Kenya"
+      },
+      {
+        "value": "MY",
+        "label": "Malaysia"
+      },
+      {
+        "value": "NL",
+        "label": "Netherlands"
+      },
+      {
+        "value": "IT",
+        "label": "Italy"
+      },
+      {
+        "value": "ES",
+        "label": "Spain"
+      }
+    ],
+    "stage": [
+      {
+        "value": "notification",
+        "label": "Notice and reporting",
+        "group": "intake"
+      },
+      {
+        "value": "coverage",
+        "label": "Cover checks",
+        "group": "intake"
+      },
+      {
+        "value": "assessment",
+        "label": "Survey and valuation",
+        "group": "assessment-settlement"
+      },
+      {
+        "value": "settlement",
+        "label": "Settlement and payment",
+        "group": "assessment-settlement"
+      },
+      {
+        "value": "third-party",
+        "label": "Third-party claims",
+        "group": "third-parties"
+      },
+      {
+        "value": "legal",
+        "label": "Court and tribunal",
+        "group": "third-parties"
+      },
+      {
+        "value": "recovery",
+        "label": "Recovery and subrogation",
+        "group": "third-parties"
+      },
+      {
+        "value": "fraud",
+        "label": "Fraud investigation",
+        "group": "fraud-compliance"
+      },
+      {
+        "value": "compliance",
+        "label": "Regulatory compliance",
+        "group": "fraud-compliance"
+      },
+      {
+        "value": "customer",
+        "label": "Complaints and customer care",
+        "group": "fraud-compliance"
+      }
+    ],
+    "category": [
+      {
+        "value": "genuine-accident",
+        "label": "Genuine accident"
+      },
+      {
+        "value": "unintentional-damage",
+        "label": "Unintentional damage"
+      },
+      {
+        "value": "environmental",
+        "label": "Weather and natural events"
+      },
+      {
+        "value": "mechanical",
+        "label": "Mechanical and vehicle-related"
+      },
+      {
+        "value": "theft",
+        "label": "Theft and vandalism"
+      },
+      {
+        "value": "negligence",
+        "label": "Negligence"
+      },
+      {
+        "value": "fraud",
+        "label": "Intentional fraud"
+      },
+      {
+        "value": "grey-area",
+        "label": "Grey area"
+      }
+    ],
+    "claimType": [
+      {
+        "value": "own-damage",
+        "label": "Own damage"
+      },
+      {
+        "value": "third-party",
+        "label": "Third-party property"
+      },
+      {
+        "value": "injury",
+        "label": "Injury"
+      },
+      {
+        "value": "theft",
+        "label": "Theft"
+      },
+      {
+        "value": "vandalism",
+        "label": "Vandalism or malicious damage"
+      },
+      {
+        "value": "glass",
+        "label": "Windscreen and glass"
+      },
+      {
+        "value": "weather",
+        "label": "Weather or natural peril"
+      },
+      {
+        "value": "fire",
+        "label": "Fire"
+      },
+      {
+        "value": "total-loss",
+        "label": "Total loss or write-off"
+      },
+      {
+        "value": "mechanical",
+        "label": "Mechanical or electrical"
+      },
+      {
+        "value": "hire-recovery",
+        "label": "Hire, recovery or storage"
+      },
+      {
+        "value": "policy",
+        "label": "Policy or cover dispute"
+      }
+    ],
+    "intent": [
+      {
+        "value": "genuine",
+        "label": "Genuine",
+        "family": "genuine"
+      },
+      {
+        "value": "genuine-negligence",
+        "label": "Genuine with negligence",
+        "family": "genuine"
+      },
+      {
+        "value": "genuine-reporting-errors",
+        "label": "Genuine with reporting errors",
+        "family": "genuine"
+      },
+      {
+        "value": "genuine-exaggeration",
+        "label": "Genuine with potential exaggeration",
+        "family": "genuine"
+      },
+      {
+        "value": "suspicious",
+        "label": "Suspicious",
+        "family": "uncertain"
+      },
+      {
+        "value": "disputed",
+        "label": "Disputed",
+        "family": "uncertain"
+      },
+      {
+        "value": "insufficient-evidence",
+        "label": "Insufficient evidence",
+        "family": "uncertain"
+      },
+      {
+        "value": "mixed",
+        "label": "Mixed scenario",
+        "family": "uncertain"
+      },
+      {
+        "value": "potential-fraud",
+        "label": "Potential fraud",
+        "family": "fraud"
+      },
+      {
+        "value": "confirmed-fraud",
+        "label": "Confirmed fraud scenario",
+        "family": "fraud"
+      },
+      {
+        "value": "third-party-fraud",
+        "label": "Third-party fraud",
+        "family": "fraud"
+      },
+      {
+        "value": "organised-fraud",
+        "label": "Organised fraud",
+        "family": "fraud"
+      }
+    ],
+    "fraudType": [
+      {
+        "value": "none",
+        "label": "No fraud element"
+      },
+      {
+        "value": "staged-accident",
+        "label": "Staged accident"
+      },
+      {
+        "value": "induced-accident",
+        "label": "Induced accident (crash-for-cash)"
+      },
+      {
+        "value": "ghost-accident",
+        "label": "Ghost or paper accident"
+      },
+      {
+        "value": "false-details",
+        "label": "False date, time or place"
+      },
+      {
+        "value": "pre-existing-damage",
+        "label": "Old or unrelated damage"
+      },
+      {
+        "value": "opportunistic-exaggeration",
+        "label": "Opportunistic exaggeration"
+      },
+      {
+        "value": "inflated-repair",
+        "label": "Inflated or unnecessary repairs"
+      },
+      {
+        "value": "false-expenses",
+        "label": "False hire, towing or storage costs"
+      },
+      {
+        "value": "false-injury",
+        "label": "False or exaggerated injury"
+      },
+      {
+        "value": "phantom-passenger",
+        "label": "Phantom passengers"
+      },
+      {
+        "value": "duplicate-claim",
+        "label": "Duplicate or double claim"
+      },
+      {
+        "value": "false-theft",
+        "label": "False theft report"
+      },
+      {
+        "value": "arson-deliberate-damage",
+        "label": "Deliberate damage or arson"
+      },
+      {
+        "value": "misrepresentation",
+        "label": "Misrepresentation (driver, use or details)"
+      },
+      {
+        "value": "ghost-broking",
+        "label": "Ghost broking or fake cover"
+      },
+      {
+        "value": "fake-documents",
+        "label": "Fake documents or invoices"
+      },
+      {
+        "value": "identity-fraud",
+        "label": "Identity fraud or cloning"
+      },
+      {
+        "value": "repairer-fraud",
+        "label": "Garage or repairer fraud"
+      },
+      {
+        "value": "recovery-fraud",
+        "label": "Recovery or storage fraud"
+      },
+      {
+        "value": "witness-fraud",
+        "label": "Witness fraud"
+      },
+      {
+        "value": "organised-ring",
+        "label": "Organised network"
+      },
+      {
+        "value": "insider-fraud",
+        "label": "Insider or staff fraud"
+      }
+    ],
+    "risk": [
+      {
+        "value": "low",
+        "label": "Low risk"
+      },
+      {
+        "value": "medium",
+        "label": "Medium risk"
+      },
+      {
+        "value": "high",
+        "label": "High risk"
+      },
+      {
+        "value": "critical",
+        "label": "Critical risk"
+      }
+    ],
+    "difficulty": [
+      {
+        "value": "easy",
+        "label": "Easy"
+      },
+      {
+        "value": "moderate",
+        "label": "Moderate"
+      },
+      {
+        "value": "hard",
+        "label": "Hard"
+      },
+      {
+        "value": "expert",
+        "label": "Expert"
+      }
+    ],
+    "vehicle": [
+      {
+        "value": "car",
+        "label": "Car"
+      },
+      {
+        "value": "suv",
+        "label": "SUV or 4x4"
+      },
+      {
+        "value": "ev",
+        "label": "Electric car"
+      },
+      {
+        "value": "two-wheeler",
+        "label": "Motorcycle or scooter"
+      },
+      {
+        "value": "van",
+        "label": "Van"
+      },
+      {
+        "value": "pickup",
+        "label": "Pickup, ute or bakkie"
+      },
+      {
+        "value": "truck",
+        "label": "Truck or HGV"
+      },
+      {
+        "value": "bus",
+        "label": "Bus or coach"
+      },
+      {
+        "value": "taxi",
+        "label": "Taxi or private hire"
+      },
+      {
+        "value": "auto-rickshaw",
+        "label": "Auto-rickshaw"
+      }
+    ],
+    "weather": [
+      {
+        "value": "clear",
+        "label": "Clear or dry"
+      },
+      {
+        "value": "rain",
+        "label": "Rain"
+      },
+      {
+        "value": "heavy-rain",
+        "label": "Heavy rain or monsoon"
+      },
+      {
+        "value": "flood",
+        "label": "Flood"
+      },
+      {
+        "value": "storm",
+        "label": "Storm, cyclone or high wind"
+      },
+      {
+        "value": "hail",
+        "label": "Hail"
+      },
+      {
+        "value": "snow-ice",
+        "label": "Snow, ice or frost"
+      },
+      {
+        "value": "fog",
+        "label": "Fog or poor visibility"
+      },
+      {
+        "value": "heat",
+        "label": "Extreme heat"
+      },
+      {
+        "value": "wildfire",
+        "label": "Wildfire or smoke"
+      },
+      {
+        "value": "dust",
+        "label": "Dust or sandstorm"
+      }
+    ],
+    "accidentType": [
+      {
+        "value": "rear-end",
+        "label": "Rear-end"
+      },
+      {
+        "value": "head-on",
+        "label": "Head-on"
+      },
+      {
+        "value": "side-impact",
+        "label": "Side impact"
+      },
+      {
+        "value": "lane-change",
+        "label": "Lane change or blind spot"
+      },
+      {
+        "value": "roundabout",
+        "label": "Roundabout"
+      },
+      {
+        "value": "intersection",
+        "label": "Junction or traffic lights"
+      },
+      {
+        "value": "parking",
+        "label": "Parking"
+      },
+      {
+        "value": "reversing",
+        "label": "Reversing"
+      },
+      {
+        "value": "hit-and-run",
+        "label": "Hit-and-run"
+      },
+      {
+        "value": "multi-vehicle",
+        "label": "Multi-vehicle"
+      },
+      {
+        "value": "single-vehicle",
+        "label": "Single vehicle or loss of control"
+      },
+      {
+        "value": "fixed-object",
+        "label": "Wall, pole or fixed object"
+      },
+      {
+        "value": "pedestrian",
+        "label": "Pedestrian"
+      },
+      {
+        "value": "cyclist",
+        "label": "Cyclist or e-scooter"
+      },
+      {
+        "value": "animal",
+        "label": "Animal"
+      },
+      {
+        "value": "none",
+        "label": "No collision"
+      }
+    ],
+    "confidence": [
+      {
+        "value": "low",
+        "label": "Low confidence"
+      },
+      {
+        "value": "medium",
+        "label": "Medium confidence"
+      },
+      {
+        "value": "high",
+        "label": "High confidence"
+      }
+    ]
+  },
+  "intentFamilies": [
+    {
+      "value": "genuine",
+      "label": "Genuine"
+    },
+    {
+      "value": "uncertain",
+      "label": "Needs a closer look"
+    },
+    {
+      "value": "fraud",
+      "label": "Fraud"
+    }
+  ]
+}
