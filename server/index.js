@@ -57,7 +57,7 @@ function loadEnv() {
 loadEnv();
 
 const PORT = Number(process.env.PORT) || 8787;
-const HOST = process.env.HOST || '127.0.0.1';
+const HOST = process.env.HOST || (process.env.RAILWAY_ENVIRONMENT ? '0.0.0.0' : '127.0.0.1');
 // Read on every request, so a change saved to .env applies without a restart.
 const timeoutMs = () => (Number(process.env.ANALYSIS_TIMEOUT_SECONDS) || 240) * 1000;
 const rateLimitMax = () => Number(process.env.RATE_LIMIT_PER_10_MIN) || 30;
